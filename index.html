@@ -3,1711 +3,1026 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" content="#141110">
 <title>Antica Coltelleria · Pizzeria Birreria · Maniago</title>
-<meta name="description" content="Antica Coltelleria, Maniago. Pizzeria e birreria dove la tradizione incontra il fuoco e il sapore, nella città delle lame.">
+<meta name="description" content="Antica Coltelleria, Maniago. Dove la tradizione incontra il fuoco e il sapore — pizzeria e birreria nell'antica officina dei battiferri, nella città delle lame.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
 <style>
 :root{
-  --nero:#0A0A0B; --nero-2:#0F0F11;
-  --oro:#C6A15B; --oro-vivo:#D9B36A;
-  --bianco:#F1ECE1; --grigio:rgba(241,236,225,.56);
-  --hair:rgba(198,161,91,.28); --hair-soft:rgba(198,161,91,.13);
-  --tab-h:64px;
+  --carbone:#141110; --carbone-2:#1C1715; --carbone-3:#221B18;
+  --terra:#965448; --terra-vivo:#B56A5B; --terra-soft:rgba(150,84,72,.16);
+  --panna:#EFE7DA; --panna-2:#D8CDBE;
+  --ferro:#9A8C82; --ferro-soft:rgba(154,140,130,.5);
+  --hair:rgba(150,84,72,.34); --hair-soft:rgba(216,205,190,.12);
+  --nav-h:74px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
-  background:var(--nero);color:var(--bianco);
-  font-family:"Jost",system-ui,sans-serif;font-weight:300;
-  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
-  padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));
+  background:var(--carbone);color:var(--panna);
+  font-family:"Work Sans",system-ui,sans-serif;font-weight:300;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a,button{touch-action:manipulation}
-.chips button:active,.lang button:active,.btn-oro:active,.soc-links a:active,.tabbar a:active{transform:scale(.97)}
-:focus-visible{outline:1px solid var(--oro);outline-offset:4px}
+:focus-visible{outline:1px solid var(--terra-vivo);outline-offset:3px}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.08}
 
-.hairline{border:0;height:1px;background:var(--hair);width:52px;margin:26px auto}
-.corners{position:absolute;inset:16px;pointer-events:none;z-index:3}
-.corners i{position:absolute;width:24px;height:24px;border:1px solid var(--hair)}
-.corners i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
-.corners i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
-.corners i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
-.corners i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
-.pizza{
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 52%,transparent 71%);
-  mask-image:radial-gradient(circle at 50% 50%,#000 52%,transparent 71%);
-}
-.arc{position:absolute;border:1px dotted var(--hair);border-radius:50%;pointer-events:none}
-
-/* ---------------- top bar ---------------- */
-.top{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:flex-start;justify-content:space-between;
-  padding:calc(14px + env(safe-area-inset-top)) 22px 14px;
-  pointer-events:none;
-}
-/* la sfocatura + il fade vivono su un layer di sfondo, così fiamma e lang
-   restano a piena opacità (niente gradiente sopra di loro) */
-.top::before{
-  content:"";position:absolute;inset:0 0 -18px 0;z-index:-1;pointer-events:none;
-  -webkit-backdrop-filter:saturate(150%) blur(14px);backdrop-filter:saturate(150%) blur(14px);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 30%,rgba(0,0,0,.9) 48%,rgba(0,0,0,.62) 64%,rgba(0,0,0,.34) 78%,rgba(0,0,0,.12) 90%,transparent 100%);
-  mask-image:linear-gradient(180deg,#000 0%,#000 30%,rgba(0,0,0,.9) 48%,rgba(0,0,0,.62) 64%,rgba(0,0,0,.34) 78%,rgba(0,0,0,.12) 90%,transparent 100%);
-  transition:backdrop-filter .45s ease,-webkit-backdrop-filter .45s ease,inset .45s ease;
-}
-.top.solid::before{
-  inset:0 0 -14px 0;
-  -webkit-backdrop-filter:saturate(160%) blur(24px);backdrop-filter:saturate(160%) blur(24px);
-}
-.top .brand{pointer-events:auto;display:inline-flex;align-items:center}
-.top .mark{height:34px;width:auto;object-fit:contain;display:block}
-.lang{
-  pointer-events:auto;align-self:flex-start;
-  display:flex;gap:2px;border:1px solid var(--hair);border-radius:999px;padding:3px;
-  background:rgba(10,10,11,.72);-webkit-backdrop-filter:saturate(160%) blur(12px);backdrop-filter:saturate(160%) blur(12px);
-}
-.lang button{font-size:12px;letter-spacing:.12em;padding:7px 12px;border-radius:999px;color:var(--grigio);transition:color .2s,background .2s}
-.lang button.on{color:var(--nero);background:var(--oro)}
-@media(max-width:560px){
-  .top .mark{height:28px}
-  .lang button{padding:6px 10px;font-size:11px}
-}
-
-
-
-/* ---------------- screens ---------------- */
-.screen{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.screen.compact{min-height:auto;padding:100px 0}
-.bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
-.bgimg.vis{opacity:1}
-.veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,11,.88) 0%,rgba(10,10,11,.5) 45%,rgba(10,10,11,.94) 100%)}
-.inner{position:relative;z-index:2;width:100%;max-width:640px;padding:0 28px;text-align:center}
-
-#splash .logo{width:min(60vw,260px);margin:0 auto 30px;opacity:0;transform:scale(.96);transition:opacity 1.4s ease,transform 1.4s ease}
-#splash.ready .logo{opacity:1;transform:none}
-#splash .split{
-  font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--oro);
-  display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:26px;
-}
-#splash .split::before,#splash .split::after{content:"";width:44px;height:1px;background:var(--hair)}
-#splash h1{font-size:clamp(15px,4vw,19px);color:var(--grigio);font-weight:300;letter-spacing:.12em}
-#splash .diamond{width:7px;height:7px;background:var(--oro);transform:rotate(45deg);margin:30px auto 0;opacity:.8}
-
-.story .eyebrow{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro);margin-bottom:20px}
-.story h2{font-size:clamp(29px,7.4vw,46px);font-weight:200;letter-spacing:.14em;text-transform:uppercase;line-height:1.28}
-.story p{color:var(--grigio);margin-top:22px;font-size:15.5px;max-width:44ch;margin-left:auto;margin-right:auto}
-.num{
-  position:absolute;top:50%;left:12px;transform:translateY(-50%) rotate(180deg);
-  writing-mode:vertical-rl;font-size:9px;letter-spacing:.42em;color:rgba(198,161,91,.4);z-index:2;text-transform:uppercase;
-}
-
-#audaci-hero .pz{position:relative;width:min(76vw,410px);margin:0 auto 8px}
-#audaci-hero .pz .arc{inset:-7%}
-#audaci-hero .pz .arc.a2{inset:-13%;border-color:var(--hair-soft)}
-#audaci-hero h2{font-size:clamp(33px,9vw,52px);font-weight:200;letter-spacing:.24em;text-transform:uppercase}
-#audaci-hero .sub{color:var(--grigio);font-size:14px;letter-spacing:.08em;margin-top:10px}
-
-.fx{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.fx{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
 .fx.vis{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.fx{opacity:1;transform:none;transition:none}}
 
-.teaser{background:var(--nero-2);border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft)}
-.teaser .pz-s{position:relative;width:min(52vw,250px);margin:0 auto 24px}
-.teaser .pz-s .arc{inset:-7%}
-.teaser h2{font-size:clamp(22px,5.8vw,30px);font-weight:200;letter-spacing:.14em;text-transform:uppercase;line-height:1.35}
-.teaser p{color:var(--grigio);margin-top:14px}
-.mini-list{margin:28px auto 0;max-width:330px;text-align:left}
-.mini-list div{
-  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
-  padding:10px 0;border-bottom:1px solid var(--hair-soft);
-  font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+.eyebrow{font-family:"Work Sans";font-size:11px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--terra-vivo)}
+.divider{width:46px;height:1px;background:var(--terra);opacity:.6}
+
+/* ===== NAVBAR ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,52px);
+  transition:background .4s ease,box-shadow .4s ease,height .4s ease}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,17,16,.82) 0%,rgba(20,17,16,.4) 60%,transparent 100%);opacity:1;transition:opacity .4s ease}
+.nav.solid{background:rgba(16,13,12,.9);-webkit-backdrop-filter:saturate(140%) blur(16px);backdrop-filter:saturate(140%) blur(16px);box-shadow:0 1px 0 var(--hair-soft)}
+.nav.solid::before{opacity:0}
+.nav .brand{display:flex;align-items:center;height:100%;padding:15px 0}
+.nav .brand img{height:100%;width:auto;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:clamp(20px,2.4vw,40px)}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--panna-2);
+  position:relative;padding:6px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--terra-vivo);transition:right .3s ease}
+.nav-links a:hover{color:var(--panna)}
+.nav-links a:hover::after{right:0}
+.nav-cta{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--panna);
+  border:1px solid var(--hair);border-radius:2px;padding:11px 20px;transition:background .25s,border-color .25s,color .25s}
+.nav-cta:hover{background:var(--terra);border-color:var(--terra);color:var(--panna)}
+.nav-cta::after{display:none}
+.lang{display:flex;gap:1px;margin-left:6px}
+.lang button{font-size:11px;letter-spacing:.1em;padding:6px 8px;color:var(--ferro);transition:color .2s;font-weight:500}
+.lang button.on{color:var(--terra-vivo)}
+.lang button:hover{color:var(--panna)}
+@media(max-width:960px){
+  :root{--nav-h:62px}
+  .nav-links > a{display:none}
+  .lang{display:flex;margin-left:0}.lang button{padding:6px 7px}
+  .nav .brand img{max-width:190px}
 }
-.mini-list div:last-child{border:0}
-.mini-list b{font-weight:400;color:var(--oro);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.btn-oro{
-  display:inline-block;margin-top:32px;border:1px solid var(--oro);color:var(--oro);
-  font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;padding:16px 34px;
-  transition:background .25s,color .25s;
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:heroZoom 18s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,17,16,.5) 0%,rgba(20,17,16,.2) 35%,rgba(20,17,16,.72) 78%,var(--carbone) 100%),
+   radial-gradient(120% 90% at 80% 20%,transparent 40%,rgba(20,17,16,.55) 100%)}
+.ember{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.ember i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:var(--terra-vivo);opacity:0;
+  box-shadow:0 0 6px 1px rgba(181,106,91,.7);animation:rise linear infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(1)}10%{opacity:.9}90%{opacity:.5}100%{opacity:0;transform:translateY(-88vh) scale(.4)}}
+@media (prefers-reduced-motion:reduce){.ember{display:none}.hero-bg img{animation:none;transform:none}}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,60px) clamp(60px,10vh,120px)}
+.hero .kicker{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.hero .kicker span{font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--panna-2)}
+.hero .kicker::before{content:"";width:40px;height:1px;background:var(--terra-vivo)}
+.hero .pre{font-family:"Work Sans";font-size:clamp(15px,2.4vw,20px);font-weight:300;letter-spacing:.04em;color:var(--panna-2);margin-bottom:6px}
+.hero h1{font-size:clamp(52px,12vw,132px);font-weight:500;letter-spacing:.01em;text-transform:uppercase;color:var(--panna)}
+.hero .sub{margin-top:24px;font-size:clamp(15px,1.6vw,17px);color:var(--ferro);max-width:38ch}
+.hero-actions{display:flex;align-items:center;gap:26px;margin-top:40px;flex-wrap:wrap}
+.btn-terra{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:var(--panna);
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:background .25s,transform .2s}
+.btn-terra:hover{background:var(--terra-vivo)}
+.btn-terra:active{transform:scale(.98)}
+.btn-ghost{display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--panna-2)}
+.btn-ghost .ic{width:42px;height:42px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;font-size:16px;transition:border-color .25s,background .25s}
+.btn-ghost:hover .ic{border-color:var(--terra-vivo);background:var(--terra-soft)}
+.hero-scroll{position:absolute;right:clamp(22px,5vw,60px);bottom:clamp(60px,10vh,120px);z-index:2;
+  writing-mode:vertical-rl;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--ferro);display:flex;align-items:center;gap:14px}
+.hero-scroll::after{content:"";width:1px;height:60px;background:linear-gradient(var(--terra-vivo),transparent)}
+@media(max-width:640px){.hero-scroll{display:none}}
+
+/* ===== STORY ===== */
+.story{position:relative;background:var(--carbone);padding:clamp(70px,11vh,130px) 0}
+.story-grid{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,60px);
+  display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(30px,5vw,80px);align-items:center}
+.story-txt .eyebrow{margin-bottom:24px;display:inline-block}
+.story-txt h2{font-size:clamp(30px,4.6vw,58px);letter-spacing:.005em}
+.story-txt .divider{margin:28px 0}
+.story-txt p{color:var(--ferro);font-size:16px;max-width:46ch}
+.story-txt .btn-line{display:inline-flex;align-items:center;gap:12px;margin-top:34px;
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--panna);
+  border-bottom:1px solid var(--hair);padding-bottom:7px;transition:gap .25s,border-color .25s}
+.story-txt .btn-line:hover{gap:18px;border-color:var(--terra-vivo)}
+.story-img{position:relative;aspect-ratio:4/3.4;overflow:hidden;border-radius:2px}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--hair-soft);border-radius:2px}
+.story-img .tag{position:absolute;left:0;bottom:22px;background:var(--terra);color:var(--panna);
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:9px 16px;font-weight:600}
+@media(max-width:860px){
+  .story-grid{grid-template-columns:1fr;gap:36px}
+  .story-img{aspect-ratio:16/11;order:-1}
 }
-.btn-oro:hover{background:var(--oro);color:var(--nero)}
 
-.strip-wrap{padding:88px 0 56px;border-bottom:1px solid var(--hair-soft)}
-.strip-head{text-align:center;margin-bottom:12px}
-.strip-head .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
-.strip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 12vw;overscroll-behavior-x:contain}
-.strip::-webkit-scrollbar{display:none}
-.strip img{flex:0 0 min(70vw,370px);aspect-ratio:1;object-fit:cover;scroll-snap-align:center}
-
-
-/* story: testo in basso a sinistra, gradient black->alpha fino a centro sezione */
-.story{align-items:flex-end}
-.story .inner{text-align:left;padding:0 28px 72px;margin:0 auto}
-.story .veil{background:linear-gradient(0deg,#0A0A0B 2%,rgba(10,10,11,.92) 22%,rgba(10,10,11,.55) 44%,rgba(10,10,11,.12) 72%,transparent 100%)}
-.story .blurband{display:none}
-.story .hairline{margin:22px 0}
-.story p{margin-left:0;margin-right:0}
-.story .golink{display:inline-block;margin-top:26px;color:var(--oro);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid var(--hair);padding-bottom:6px}
-
-/* chevron + dots (condivisi dai caroselli) */
-.chev{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-  border:1px solid var(--hair);border-radius:50%;color:var(--oro);background:rgba(10,10,11,.55);
-  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-  transition:border-color .28s ease,background .28s ease,transform .28s cubic-bezier(.22,1,.36,1)}
-.chev i{font-size:18px}
-.chev.l{left:3vw}.chev.r{right:3vw}
-@media(hover:hover){.chev:hover{border-color:var(--oro);background:rgba(10,10,11,.8)}}
-.chev:active{transform:translateY(-50%) scale(.92)}
-/* forno arrows live inside the edge fades */
-.strip-wrap .chev{position:relative;top:auto;left:auto;right:auto;transform:none;pointer-events:auto}
-.strip-wrap .chev:active{transform:scale(.92)}
-@media(hover:hover){.strip-wrap .chev:hover{border-color:var(--oro);background:rgba(10,10,11,.8)}}
-.dots{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:22px}
-.dots i{width:8px;height:8px;border-radius:50%;background:var(--hair);transition:all .25s;cursor:pointer}
-.dots i.on{background:var(--oro);transform:scale(1.5)}
-
-/* carosello categorie (catshow) */
-#catshow{position:relative;padding:96px 0 80px;border-top:1px solid var(--hair-soft);overflow:hidden}
-#catshow .rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
-#catshow .rail::-webkit-scrollbar{display:none}
-#catshow .rail.dragging{cursor:grabbing;scroll-snap-type:none}
-#catshow .slide{flex:0 0 100%;scroll-snap-align:center;text-align:center;padding:0 40px}
-#catshow .edge{position:absolute;top:0;bottom:0;width:16vw;max-width:150px;z-index:4;pointer-events:none}
-#catshow .edge.l{left:0;background:linear-gradient(90deg,#0A0A0B,transparent)}
-#catshow .edge.r{right:0;background:linear-gradient(270deg,#0A0A0B,transparent)}
-#catshow .pz{position:relative;width:min(66vw,360px);margin:0 auto 6px}
-#catshow .pz .arc{inset:-7%}
-#catshow .pz .arc.a2{inset:-13%;border-color:var(--hair-soft)}
-#catshow h2{font-size:clamp(30px,8vw,48px);font-weight:200;letter-spacing:.24em;text-transform:uppercase}
-#catshow .sub{color:var(--grigio);font-size:13.5px;letter-spacing:.08em;margin-top:8px}
-#catshow .golink{display:inline-block;margin-top:24px;color:var(--oro);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid var(--hair);padding-bottom:6px}
-
-/* carosello forno: caption + loop */
-.strip{cursor:grab;gap:28px;padding:14px 12vw}
-.strip.dragging{cursor:grabbing;scroll-snap-type:none}
-.strip figure{
-  flex:0 0 min(66vw,340px);scroll-snap-align:center;margin:0;
-  transform:scale(.9);filter:brightness(.7) saturate(.92);opacity:.82;
-  transition:transform .5s cubic-bezier(.22,1,.36,1),filter .5s ease,opacity .5s ease;
+/* ===== VALORI ===== */
+.valori{background:var(--carbone-2);border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft)}
+.valori-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.valori .cell{padding:clamp(46px,6vh,74px) 26px;text-align:center;position:relative}
+.valori .cell + .cell::before{content:"";position:absolute;left:0;top:26%;bottom:26%;width:1px;background:var(--hair-soft)}
+.valori .ic{font-size:34px;color:var(--terra-vivo);display:block;margin-bottom:18px;line-height:1}
+.valori h4{font-family:"Work Sans";font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-bottom:11px;color:var(--panna)}
+.valori p{color:var(--ferro);font-size:13.5px;line-height:1.6;max-width:22ch;margin:0 auto}
+@media(max-width:760px){
+  .valori-grid{grid-template-columns:repeat(2,1fr)}
+  .valori .cell:nth-child(odd)::before{display:none}
+  .valori .cell:nth-child(3)::after,.valori .cell:nth-child(4)::after{content:"";position:absolute;left:20%;right:20%;top:0;height:1px;background:var(--hair-soft)}
 }
-.strip figure.mid{transform:scale(1);filter:brightness(1) saturate(1);opacity:1}
-.strip figure .shot{position:relative}
-.strip figure .shot::after{
-  content:"";position:absolute;inset:0;border-radius:50%;
-  box-shadow:0 26px 60px -18px rgba(0,0,0,.85);opacity:0;transition:opacity .5s ease;
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 52%,transparent 71%);
-  mask-image:radial-gradient(circle at 50% 50%,#000 52%,transparent 71%);
-}
-.strip figure.mid .shot::after{opacity:1}
-.strip figure img{width:100%;aspect-ratio:1;object-fit:cover}
-.strip figcaption{text-align:center;margin-top:10px;transition:opacity .5s ease;opacity:.6}
-.strip figure.mid figcaption{opacity:1}
-.strip figcaption span{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grigio);border:1px solid var(--hair);border-radius:999px;padding:11px 19px;transition:color .4s ease,border-color .4s ease}
-.strip figure.mid figcaption span{color:var(--oro-vivo);border-color:var(--oro)}
-.strip-wrap{position:relative;overflow:hidden}
-.strip-wrap .edge{position:absolute;top:0;bottom:70px;width:22vw;max-width:200px;z-index:4;pointer-events:none;display:flex;align-items:center}
-.strip-wrap .edge.l{left:0;background:linear-gradient(90deg,#0A0A0B 18%,rgba(10,10,11,.6) 60%,transparent);justify-content:flex-start;padding-left:14px}
-.strip-wrap .edge.r{right:0;background:linear-gradient(270deg,#0A0A0B 18%,rgba(10,10,11,.6) 60%,transparent);justify-content:flex-end;padding-right:14px}
 
-/* quote screen */
-.quote h2{font-size:clamp(22px,6vw,32px);font-weight:200;letter-spacing:.1em;line-height:1.55;font-style:italic}
-.quote .who{margin-top:22px;font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
+/* ===== MENU PREVIEW ===== */
+.mprev{position:relative;overflow:hidden}
+.mprev-grid{display:grid;grid-template-columns:1fr 1fr;min-height:min(78vh,720px)}
+.mprev-img{position:relative;overflow:hidden}
+.mprev-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mprev-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,16,.2),rgba(20,17,16,.75) 88%,var(--carbone) 100%)}
+.mprev-txt{background:var(--carbone);display:flex;flex-direction:column;justify-content:center;padding:clamp(50px,8vh,96px) clamp(28px,5vw,80px)}
+.mprev-txt .eyebrow{margin-bottom:20px}
+.mprev-txt h2{font-size:clamp(34px,5vw,60px);color:var(--terra-vivo);letter-spacing:.01em}
+.mprev-txt>p{color:var(--ferro);margin:22px 0 0;max-width:42ch;font-size:15.5px}
+.mprev-txt .btn-terra{margin-top:34px;align-self:flex-start}
+.mprev-index{margin-top:40px;border-top:1px solid var(--hair-soft)}
+.mprev-index a{display:flex;align-items:center;gap:16px;padding:15px 0;border-bottom:1px solid var(--hair-soft);
+  font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--panna);transition:color .25s,padding-left .25s}
+.mprev-index a .ic{font-size:19px;color:var(--terra-vivo);width:24px;text-align:center}
+.mprev-index a:hover{color:var(--terra-vivo);padding-left:8px}
+@media(max-width:860px){
+  .mprev-grid{grid-template-columns:1fr}
+  .mprev-img{min-height:44vh}
+  .mprev-img::after{background:linear-gradient(180deg,rgba(20,17,16,.2),rgba(20,17,16,.7) 88%,var(--carbone) 100%)}
+}
 
-/* ---------------- menu ---------------- */
-#menu{padding:100px 0 30px}
-.menu-head{text-align:center;padding:0 28px;margin-bottom:34px}
-.menu-head .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
-.menu-head h2{font-size:clamp(30px,7vw,44px);font-weight:200;letter-spacing:.24em;text-transform:uppercase;margin-top:8px}
-.menu-head p{color:var(--grigio);font-size:13.5px;max-width:42ch;margin:16px auto 0;letter-spacing:.06em}
-/* chipbar: sticky in alto, subito sotto l'header. Sempre visibile mentre
-   si scorre il menu, comoda e intuitiva da leggere. */
-.chipbar{
-  position:sticky;top:64px;z-index:52;padding:6px 0;
-}
-.chipbar-inner{position:relative;overflow:hidden}
-.chips{
-  display:flex;gap:12px;overflow-x:auto;padding:10px 34px;scrollbar-width:none;
-  justify-content:center;scroll-behavior:smooth;
-}
+/* ===== PIZZA STRIP ===== */
+.strip-wrap{position:relative;background:var(--carbone);padding:clamp(56px,9vh,104px) 0 clamp(70px,10vh,120px);overflow:hidden}
+.strip-head{text-align:center;margin-bottom:48px}
+.strip-head .eyebrow{display:inline-flex;align-items:center;gap:14px}
+.strip-head .eyebrow::before,.strip-head .eyebrow::after{content:"";width:34px;height:1px;background:var(--hair)}
+.strip-view{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.strip{display:flex;gap:clamp(20px,3vw,44px);align-items:center;will-change:transform;transition:transform .6s cubic-bezier(.22,1,.36,1);padding:10px 0}
+.strip .slide{flex:0 0 auto;width:clamp(210px,24vw,300px);text-align:center;opacity:.4;transition:opacity .5s ease,transform .5s ease;transform:scale(.9)}
+.strip .slide.mid{opacity:1;transform:scale(1)}
+.strip .pz{position:relative;width:100%;aspect-ratio:1;margin:0 auto 20px}
+.strip .pz img{width:100%;height:100%;object-fit:cover;border-radius:50%;
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 74%);mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 74%)}
+.strip .pz::before{content:"";position:absolute;inset:-3%;border:1px dotted var(--hair);border-radius:50%;opacity:0;transition:opacity .5s}
+.strip .slide.mid .pz::before{opacity:1}
+.strip .nm{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ferro);transition:color .4s}
+.strip .slide.mid .nm{color:var(--terra-vivo)}
+.strip-nav{position:absolute;top:calc(50% - 20px);z-index:5;width:46px;height:46px;border:1px solid var(--hair);border-radius:50%;
+  display:grid;place-items:center;color:var(--panna);background:rgba(20,17,16,.6);transition:background .25s,border-color .25s}
+.strip-nav:hover{background:var(--terra);border-color:var(--terra)}
+.strip-nav.l{left:clamp(10px,3vw,44px)} .strip-nav.r{right:clamp(10px,3vw,44px)}
+.strip-dots{display:flex;gap:8px;justify-content:center;margin-top:40px}
+.strip-dots i{width:6px;height:6px;border-radius:50%;background:var(--ferro-soft);transition:background .3s,width .3s}
+.strip-dots i.on{background:var(--terra-vivo);width:22px;border-radius:3px}
+@media(max-width:640px){.strip-nav{display:none}}
+
+/* ===== FULL MENU ===== */
+#menu{background:var(--carbone-2);padding:clamp(60px,9vh,110px) 0 90px;border-top:1px solid var(--hair-soft)}
+.menu-head{text-align:center;max-width:640px;margin:0 auto clamp(30px,5vh,50px);padding:0 22px}
+.menu-head .eyebrow{margin-bottom:16px;display:inline-block}
+.menu-head h2{font-size:clamp(40px,7vw,76px);color:var(--panna)}
+.menu-head p{color:var(--ferro);margin-top:14px;font-size:14.5px}
+.chipbar{position:sticky;top:var(--nav-h);z-index:40;background:rgba(28,23,21,.92);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft)}
+.chipbar-inner{max-width:1240px;margin:0 auto;position:relative}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:14px clamp(20px,4vw,52px);scroll-behavior:smooth}
 .chips::-webkit-scrollbar{display:none}
-/* when the chips overflow, JS drops .centered so they scroll from the left */
-.chips.scrollable{justify-content:flex-start}
-.chips button{
-  flex:0 0 auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  padding:11px 20px;border:1px solid var(--hair);border-radius:999px;color:var(--grigio);
-  background:rgba(18,18,20,.62);-webkit-backdrop-filter:saturate(160%) blur(16px);backdrop-filter:saturate(160%) blur(16px);
-  transition:color .28s ease,background .28s ease,border-color .28s ease,transform .28s cubic-bezier(.22,1,.36,1);
-  white-space:nowrap;box-shadow:0 6px 20px -8px rgba(0,0,0,.6);
-}
-@media(hover:hover){
-  .chips button:hover{border-color:var(--oro);color:var(--oro-vivo);transform:translateY(-2px)}
-}
-.chips button.on{border-color:var(--oro);color:var(--nero);background:var(--oro);transform:none}
-.chips button.on:hover{color:var(--nero)}
-/* edge fades: signal horizontal scroll. shown only when scrollable (mobile) */
-.chipbar-inner::before,.chipbar-inner::after{
-  content:"";position:absolute;top:0;bottom:0;width:52px;z-index:5;pointer-events:none;
-  opacity:0;transition:opacity .3s ease;
-}
-.chipbar-inner::before{left:0;background:linear-gradient(90deg,rgba(12,12,14,.96),transparent)}
-.chipbar-inner::after{right:0;background:linear-gradient(270deg,rgba(12,12,14,.96),transparent)}
-.chipbar-inner.can-l::before{opacity:1}
-.chipbar-inner.can-r::after{opacity:1}
-.chipchev{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--oro);
-  opacity:0;pointer-events:none;transition:opacity .3s ease}
-.chipbar-inner.can-l .chipchev.l{opacity:1;pointer-events:auto}
-.chipbar-inner.can-r .chipchev.r{opacity:1;pointer-events:auto}
-.chipchev.l{left:4px}.chipchev.r{right:4px}
-.chipchev i{font-size:16px}
-.chipchev:active{transform:translateY(-50%) scale(.9)}
+.chips button{flex:0 0 auto;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ferro);border:1px solid transparent;border-radius:2px;padding:9px 16px;white-space:nowrap;transition:color .2s,border-color .2s,background .2s}
+.chips button.on{color:var(--panna);background:var(--terra);border-color:var(--terra)}
+.chips button:hover:not(.on){color:var(--panna);border-color:var(--hair)}
+#carta{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,52px)}
+.mcat{padding:clamp(48px,7vh,82px) 0;border-bottom:1px solid var(--hair-soft)}
+.mcat-head{display:flex;align-items:baseline;gap:18px;margin-bottom:6px}
+.mcat-head .n{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--terra);font-style:italic}
+.mcat-head h3{font-size:clamp(30px,4.4vw,48px);color:var(--panna);text-transform:uppercase;letter-spacing:.02em}
+.mcat .tag{color:var(--ferro);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:19px;margin-bottom:30px}
+.mlist{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 56px}
+@media(max-width:760px){.mlist{grid-template-columns:1fr}}
+.item{padding:14px 0;border-bottom:1px solid var(--hair-soft)}
+.item .row{display:flex;align-items:baseline;gap:10px}
+.item .nome{font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:500;color:var(--panna);letter-spacing:.01em}
+.item .dots{flex:1;border-bottom:1px dotted var(--ferro-soft);transform:translateY(-4px)}
+.item .prezzo{font-size:14px;font-weight:500;color:var(--terra-vivo);letter-spacing:.03em;white-space:nowrap}
+.item .desc{color:var(--ferro);font-size:13.5px;margin-top:4px;max-width:52ch}
+.groupline{margin:34px 0 8px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-vivo)}
+.groupsub{color:var(--ferro);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:18px;margin:12px 0 2px}
+.multi .pricegrid{display:flex;gap:22px;margin-top:5px}
+.multi .pricegrid span{font-size:12px;color:var(--ferro)}
+.multi .pricegrid b{color:var(--terra-vivo);font-weight:500;margin-left:5px}
+.multi .sub{display:block;color:var(--ferro);font-style:italic;font-size:13px;margin-top:2px}
 
-.mcat{max-width:640px;margin:0 auto;padding:60px 28px 6px}
-.cat-hero{position:relative;width:min(58vw,280px);margin:0 auto 28px}
-.cat-hero .arc{inset:-6%}
-.cat-hero img.photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
-.cat-hero .illu{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--hair-soft);border-radius:50%}
-.cat-hero .illu svg{width:44%;height:44%;stroke:var(--oro);fill:none;stroke-width:1.1;opacity:.9}
-.mcat header{margin-bottom:6px;display:block;text-align:left}
-.mcat .n{display:block;font-size:12px;letter-spacing:.3em;color:var(--oro);font-weight:400;margin-bottom:10px}
-.mcat h3{font-size:clamp(23px,5.6vw,30px);font-weight:200;letter-spacing:.24em;text-transform:uppercase}
-.mcat .tag{font-size:12.5px;color:var(--oro);letter-spacing:.06em;margin:8px 0 0;text-align:left}
-.mcat .rule{width:44px;height:1px;background:var(--oro);opacity:.75;margin:18px 0 4px}
-
-.item{padding:16px 0;border-bottom:1px solid var(--hair-soft)}
-.item:last-child{border:0}
-.item .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
-.item .nome{font-size:13.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:var(--oro-vivo)}
-.item .dots{flex:1;border-bottom:1px dotted var(--hair);transform:translateY(-4px);min-width:18px}
-.item .prezzo{color:var(--bianco);font-variant-numeric:tabular-nums;font-size:15px;font-weight:300;white-space:nowrap}
-.item .desc{color:var(--grigio);font-size:13px;margin-top:5px;line-height:1.55;max-width:54ch}
-.item .sub{display:block;font-size:10px;letter-spacing:.14em;color:var(--grigio);text-transform:uppercase;margin-top:2px}
-.item.multi .pricegrid{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:7px;font-size:12.5px;color:var(--grigio)}
-.item.multi .pricegrid b{color:var(--bianco);font-weight:300;margin-left:6px;font-variant-numeric:tabular-nums}
-.groupline{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin:34px 0 2px;display:flex;align-items:center;gap:12px}
-.groupline::after{content:"";flex:1;height:1px;background:var(--hair-soft)}
-.groupsub{font-size:12.5px;color:var(--grigio);margin:10px 0 0}
-.dolci-note{font-size:14.5px;color:var(--grigio);font-style:italic;padding:20px 0;line-height:1.6}
-
-
-/* ---------------- gallery esperienza ---------------- */
-#gallery{padding:104px 0 96px;border-top:1px solid var(--hair-soft);background:var(--nero-2);overflow:hidden}
-.g-head{text-align:center;padding:0 28px;margin-bottom:44px}
-.g-head .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
-.g-head h2{font-size:clamp(26px,6.4vw,40px);font-weight:200;letter-spacing:.22em;text-transform:uppercase;margin-top:10px}
-.g-head p{color:var(--grigio);font-size:14px;max-width:46ch;margin:16px auto 0;letter-spacing:.04em}
-.g-grid{
-  display:grid;gap:14px;padding:0 20px;max-width:1080px;margin:0 auto;
-  grid-template-columns:repeat(2,1fr);grid-auto-flow:dense;
-}
-.g-cell{position:relative;overflow:hidden;background:#000;aspect-ratio:1}
-.g-cell.wide{grid-column:span 2;aspect-ratio:16/10}
-.g-cell.tall{grid-row:span 2;aspect-ratio:auto}
-.g-cell img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1),filter .6s ease;filter:brightness(.9) saturate(.96)}
-.g-cell::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,11,.55));opacity:0;transition:opacity .5s ease}
-.g-cap{position:absolute;left:16px;bottom:14px;z-index:2;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--bianco);opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-@media(hover:hover){
-  .g-cell:hover img{transform:scale(1.06);filter:brightness(1) saturate(1)}
-  .g-cell:hover::after{opacity:1}
-  .g-cell:hover .g-cap{opacity:1;transform:none}
-}
-@media(max-width:560px){
-  .g-cell:not(.wide){aspect-ratio:1}
-  .g-cell.tall{grid-row:span 1;aspect-ratio:1}
-  .g-cap{opacity:1;transform:none}
-  .g-cell::after{opacity:1}
-}
-@media(min-width:860px){
-  .g-grid{grid-template-columns:repeat(4,1fr)}
-  .g-cell.wide{grid-column:span 2}
+/* ===== GALLERY ===== */
+#gallery{background:var(--carbone);padding:clamp(60px,9vh,110px) 0}
+.g-head{max-width:1240px;margin:0 auto clamp(34px,5vh,54px);padding:0 clamp(22px,5vw,60px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.g-head .eyebrow{margin-bottom:14px;display:block}
+.g-head h2{font-size:clamp(32px,5vw,58px);color:var(--panna)}
+.g-head p{color:var(--ferro);max-width:40ch;font-size:15px;margin-top:10px}
+.g-mosaic{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,60px);
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:12px}
+.g-cell{position:relative;overflow:hidden;border-radius:2px;cursor:pointer}
+.g-cell img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.g-cell::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(20,17,16,.7));opacity:.7;transition:opacity .4s}
+.g-cell:hover img{transform:scale(1.06)}
+.g-cell:hover::after{opacity:.4}
+.g-cap{position:absolute;left:16px;bottom:14px;z-index:2;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--panna);
+  opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.g-cell:hover .g-cap{opacity:1;transform:none}
+.g-cell.wide{grid-column:span 2} .g-cell.tall{grid-row:span 2}
+@media(max-width:860px){
+  .g-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .g-cell.tall{grid-row:span 1}
 }
 
-/* ---------------- customer gallery ---------------- */
-#customer{padding:100px 28px 96px;max-width:1080px;margin:0 auto;text-align:center}
-#customer .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
-#customer h2{font-size:clamp(24px,6vw,36px);font-weight:200;letter-spacing:.2em;text-transform:uppercase;margin-top:10px}
-#customer .lead{color:var(--grigio);font-size:14.5px;max-width:44ch;margin:16px auto 0}
-.cust-grid{
-  display:grid;gap:12px;margin:46px auto 0;
-  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
-}
-.cust-cell{position:relative;aspect-ratio:1;overflow:hidden;background:var(--nero);border:1px solid var(--hair-soft)}
-.cust-cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.92) saturate(.95);transition:transform .7s cubic-bezier(.22,1,.36,1),filter .5s ease}
-@media(hover:hover){.cust-cell:hover img{transform:scale(1.07);filter:brightness(1) saturate(1)}}
-.cust-badge{position:absolute;top:9px;left:9px;z-index:2;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);background:rgba(10,10,11,.7);border:1px solid var(--hair-soft);border-radius:999px;padding:5px 10px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-.cust-cta-wrap{margin-top:44px}
-.btn-wa{
-  display:inline-flex;align-items:center;gap:12px;
-  border:1px solid var(--oro);color:var(--oro);
-  font-size:11px;letter-spacing:.26em;text-transform:uppercase;padding:16px 30px;
-  transition:background .28s ease,color .28s ease;
-}
-.btn-wa i{font-size:20px}
-.btn-wa:hover{background:var(--oro);color:var(--nero)}
-.cust-hint{margin-top:16px;font-size:11px;letter-spacing:.05em;color:rgba(241,236,225,.42);max-width:40ch;margin-left:auto;margin-right:auto}
+/* ===== BOOKING ===== */
+.book{position:relative;min-height:66svh;display:flex;align-items:center;overflow:hidden}
+.book-bg{position:absolute;inset:0}
+.book-bg img{width:100%;height:100%;object-fit:cover}
+.book-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--carbone) 4%,rgba(20,17,16,.82) 42%,rgba(20,17,16,.45) 100%)}
+.book-inner{position:relative;z-index:2;max-width:1240px;width:100%;margin:0 auto;padding:clamp(56px,9vh,104px) clamp(22px,5vw,60px)}
+.book-inner .eyebrow{margin-bottom:18px;display:block}
+.book-inner h2{font-size:clamp(38px,6.4vw,72px);color:var(--panna);text-transform:uppercase;letter-spacing:.02em}
+.book-inner p{color:var(--panna-2);margin:22px 0 32px;max-width:40ch;font-size:15.5px}
 
-/* ---------------- lightbox (foto a schermo intero) ---------------- */
-[data-zoom]{cursor:zoom-in}
-#lightbox{
-  position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
-  padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom));
-  background:rgba(6,6,7,.92);-webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);
-  opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease;cursor:zoom-out;
-}
-#lightbox.on{opacity:1;visibility:visible}
-#lightbox figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:14px;
-  transform:scale(.94);transition:transform .38s cubic-bezier(.22,1,.36,1)}
-#lightbox.on figure{transform:scale(1)}
-#lightbox img{
-  max-width:100%;max-height:calc(100vh - 120px);width:auto;height:auto;object-fit:contain;
-  border-radius:4px;box-shadow:0 30px 90px -20px rgba(0,0,0,.9);cursor:default;
-}
-#lightbox figcaption{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--grigio);text-align:center}
-#lb-close{
-  position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;z-index:2;
-  width:46px;height:46px;display:flex;align-items:center;justify-content:center;
-  border:1px solid var(--hair);border-radius:50%;color:var(--bianco);background:rgba(10,10,11,.5);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer;
-  transition:border-color .25s,background .25s,transform .25s cubic-bezier(.22,1,.36,1);
-}
-#lb-close:hover{border-color:var(--oro);color:var(--oro);background:rgba(10,10,11,.75)}
-#lb-close:active{transform:scale(.9)}
-#lb-close i{font-size:22px}
-.lb-nav{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  width:50px;height:50px;display:flex;align-items:center;justify-content:center;
-  border:1px solid var(--hair);border-radius:50%;color:var(--bianco);background:rgba(10,10,11,.42);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer;
-  transition:border-color .25s,background .25s,opacity .25s,transform .25s cubic-bezier(.22,1,.36,1);
-}
-.lb-nav:hover{border-color:var(--oro);color:var(--oro);background:rgba(10,10,11,.7)}
-.lb-nav:active{transform:translateY(-50%) scale(.9)}
-.lb-nav.l{left:14px}.lb-nav.r{right:14px}
-.lb-nav i{font-size:24px}
-@media(max-width:560px){
-  .lb-nav{width:42px;height:42px}.lb-nav.l{left:8px}.lb-nav.r{right:8px}
-  #lightbox img{max-height:calc(100vh - 96px)}
+/* ===== SOCIAL ===== */
+#social{background:var(--carbone-2);padding:clamp(60px,9vh,110px) 0;border-top:1px solid var(--hair-soft)}
+.soc-head{text-align:center;margin-bottom:40px}
+.soc-head .eyebrow{margin-bottom:14px;display:inline-block}
+.soc-head h2{font-size:clamp(30px,5vw,54px);color:var(--panna)}
+.soc-links{display:flex;gap:14px;justify-content:center;margin-bottom:52px;flex-wrap:wrap}
+.soc-links a{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--hair);border-radius:2px;
+  padding:12px 20px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--panna-2);transition:background .25s,border-color .25s,color .25s}
+.soc-links a:hover{background:var(--terra);border-color:var(--terra);color:var(--panna)}
+.reviews{max-width:1080px;margin:0 auto;padding:0 clamp(22px,5vw,60px);display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{background:var(--carbone-3);border:1px solid var(--hair-soft);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column}
+.rev .stars{color:var(--terra-vivo);font-size:13px;letter-spacing:3px;margin-bottom:16px}
+.rev p{font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;line-height:1.5;color:var(--panna);flex:1}
+.rev .by{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--hair-soft)}
+.rev .src{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-vivo)}
+.rev .who{font-size:11px;letter-spacing:.1em;color:var(--ferro)}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+
+/* ===== FOOTER ===== */
+#dove{background:var(--carbone);border-top:1px solid var(--hair-soft)}
+.foot-grid{max-width:1240px;margin:0 auto;padding:clamp(56px,8vh,90px) clamp(22px,5vw,60px);
+  display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.foot-info .logo-f{width:210px;margin-bottom:30px}
+.foot-info .row{display:flex;gap:44px;flex-wrap:wrap}
+.foot-info h4{font-family:"Work Sans";font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--terra-vivo);margin-bottom:9px}
+.foot-info p{font-size:14.5px;color:var(--panna-2)}
+.foot-info a{transition:color .2s}.foot-info a:hover{color:var(--terra-vivo)}
+.foot-map{position:relative;aspect-ratio:16/11;border-radius:2px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--hair-soft);display:block}
+.foot-map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(.95) brightness(.85)}
+.foot-bottom{border-top:1px solid var(--hair-soft);text-align:center;padding:24px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ferro)}
+.foot-bottom a{color:var(--terra-vivo)}
+@media(max-width:860px){
+  .foot-grid{grid-template-columns:1fr;gap:40px}
+  .foot-map{aspect-ratio:16/10;order:-1}
 }
 
-/* ---------------- social ---------------- */
-#social{padding:100px 28px 90px;max-width:640px;margin:0 auto;text-align:center}
-#social .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro)}
-#social h2{font-size:clamp(24px,6vw,34px);font-weight:200;letter-spacing:.22em;text-transform:uppercase;margin-top:8px}
-.soc-links{display:flex;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap}
-.soc-links a{
-  display:flex;align-items:center;gap:10px;
-  border:1px solid var(--hair);border-radius:999px;padding:12px 22px;
-  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--grigio);
-  transition:border-color .25s,color .25s;
-}
-.soc-links a:hover{border-color:var(--oro);color:var(--oro)}
-.soc-links i{font-size:18px;color:var(--oro)}
-.reviews{margin-top:46px;display:grid;gap:14px;text-align:left}
-.rev{border:1px solid var(--hair-soft);padding:22px 22px 18px;position:relative;background:var(--nero-2)}
-.rev .stars{color:var(--oro);font-size:12px;letter-spacing:.3em;margin-bottom:10px}
-.rev p{color:var(--grigio);font-size:14px;font-style:italic;line-height:1.6}
-.rev .src{margin-top:14px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(241,236,225,.4)}
-.rev .src b{color:var(--oro);font-weight:400}
-.mapwrap{margin-top:46px;border:1px solid var(--hair-soft);position:relative}
-.mapwrap iframe{
-  display:block;width:100%;height:340px;border:0;
-  filter:invert(92%) hue-rotate(180deg) grayscale(30%) contrast(.9);
-}
-.mapwrap .tag{
-  position:absolute;left:0;right:0;bottom:0;padding:10px;
-  background:rgba(10,10,11,.85);font-size:9.5px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--grigio);text-align:center;
+/* ===== MOBILE TABBAR ===== */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;
+  background:rgba(16,13,12,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-top:1px solid var(--hair-soft);padding-bottom:env(safe-area-inset-bottom)}
+.tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:11px 0;color:var(--ferro)}
+.tabbar a i{font-size:20px}
+.tabbar a span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+.tabbar a.on{color:var(--terra-vivo)}
+@media(max-width:960px){
+  .tabbar{display:flex}
+  body{padding-bottom:60px}
+  .chipbar{top:0}
 }
 
-#dove{padding:90px 28px 50px;text-align:center;background:var(--nero-2);border-top:1px solid var(--hair-soft)}
-#dove .logo-s{width:110px;margin:0 auto 30px}
-#dove h2{font-size:clamp(23px,6vw,32px);font-weight:200;letter-spacing:.24em;text-transform:uppercase}
-.info{margin-top:36px;display:grid;gap:26px;max-width:420px;margin-left:auto;margin-right:auto}
-.info h4{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--oro);margin-bottom:8px;font-weight:400}
-.info p,.info a{color:var(--grigio);font-size:15px}
-.info a{border-bottom:1px solid var(--hair)}
-.foot{margin-top:50px;font-size:10px;letter-spacing:.18em;color:rgba(241,236,225,.28);text-transform:uppercase}
-.foot a{color:rgba(241,236,225,.5)}
-
-.tabbar{
-  position:fixed;left:0;right:0;bottom:0;z-index:60;
-  display:flex;height:calc(var(--tab-h) + env(safe-area-inset-bottom));
-  padding-bottom:env(safe-area-inset-bottom);
-  background:rgba(10,10,11,.98);
-  border-top:1px solid var(--hair-soft);
-}
-.tabbar a{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--grigio);transition:color .2s;
-}
-.tabbar a i{font-size:21px}
-.tabbar a.on{color:var(--oro)}
-
-@media(min-width:760px){
-  .inner{max-width:720px}
-  .story p{font-size:16.5px}
-  .strip img{flex-basis:340px}
-}
-
-/* ---------------- valori (4 pilastri) ---------------- */
-.valori{background:var(--nero-2);border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);padding:74px 22px}
-.valori .k-s{text-align:center;font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro);margin-bottom:40px}
-.valori .grid{max-width:920px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:34px 20px}
-.valori .cell{text-align:center;position:relative}
-.valori .cell + .cell::before{content:"";position:absolute;left:-10px;top:6px;bottom:6px;width:1px;background:var(--hair-soft)}
-.valori .ic{font-size:34px;color:var(--oro);line-height:1;display:block;margin-bottom:16px}
-.valori h4{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;margin-bottom:9px}
-.valori p{color:var(--grigio);font-size:13px;line-height:1.6;max-width:20ch;margin:0 auto}
-@media(max-width:720px){
-  .valori .grid{grid-template-columns:repeat(2,1fr);gap:40px 16px}
-  .valori .cell:nth-child(3)::before,.valori .cell + .cell::before{display:none}
-}
-
-/* ---------------- prenota (booking) ---------------- */
-.book{position:relative;min-height:70svh;display:flex;align-items:center;overflow:hidden}
-.book .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.book .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.94) 0%,rgba(10,10,11,.78) 45%,rgba(10,10,11,.5) 100%)}
-.book .inner{position:relative;z-index:2;max-width:560px;padding:70px 28px;text-align:left;margin:0}
-.book .k-s{font-size:10.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--oro);margin-bottom:18px}
-.book h2{font-size:clamp(30px,7vw,46px);font-weight:200;letter-spacing:.1em;text-transform:uppercase;line-height:1.2}
-.book p{color:var(--grigio);margin:20px 0 30px;font-size:15px;max-width:42ch}
-
+/* ===== LIGHTBOX ===== */
+#lightbox{position:fixed;inset:0;z-index:100;background:rgba(12,10,9,.96);display:none;align-items:center;justify-content:center;padding:24px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:2px}
+#lightbox figcaption{text-align:center;margin-top:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ferro)}
+#lightbox .lb-x{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--panna);font-size:18px}
+#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--panna);font-size:18px;background:rgba(20,17,16,.5)}
+#lightbox .lb-nav.l{left:20px}#lightbox .lb-nav.r{right:20px}
+#lightbox .lb-nav:hover,#lightbox .lb-x:hover{background:var(--terra);border-color:var(--terra)}
 </style>
 </head>
 <body>
 
-<div class="top" id="topbar">
-  <a class="brand" href="#storia" aria-label="Antica Coltelleria"><img class="mark" src="assets/logo.png" alt="Antica Coltelleria"></a>
-  <div class="lang" role="group" aria-label="Language">
-    <button data-lang="it" class="on">IT</button>
-    <button data-lang="en">EN</button>
-    <button data-lang="de">DE</button>
-    <button data-lang="fr">FR</button>
+<!-- ===== NAVBAR ===== -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Antica Coltelleria"><img src="assets/wordmark.png" alt="Antica Coltelleria"></a>
+  <div class="nav-links">
+    <a href="#storia" data-i18n="nav_storia">Storia</a>
+    <a href="#menu" data-i18n="nav_menu">Menù</a>
+    <a href="#dove" data-i18n="nav_contatti">Contatti</a>
+    <a href="tel:+393386803637" data-i18n="nav_chiama">Chiama</a>
+    <a class="nav-cta" href="https://wa.me/393386803637" target="_blank" rel="noopener" data-i18n="nav_prenota">Prenota un tavolo</a>
+    <div class="lang" role="group" aria-label="Lingua">
+      <button data-lang="it" class="on">IT</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="fr">FR</button>
+    </div>
   </div>
-</div>
+</nav>
 
-<!-- 01 · SPLASH -->
-<section class="screen" id="storia">
-  <img class="bgimg" data-src="assets/ac_int_bar1.webp" alt="">
-  <div class="veil" style="background:linear-gradient(180deg,rgba(10,10,11,.93),rgba(10,10,11,.82) 50%,rgba(10,10,11,.96))"></div>
-  <div class="corners"><i></i><i></i><i></i><i></i></div>
-  <div class="inner" id="splash">
-    <p class="split"><span data-i18n="sp_kicker">Maniago · Friuli</span></p>
-    <img class="logo" src="assets/logo.png" alt="Antica Coltelleria, Maniago">
-    <h1 data-i18n="tagline">La pizza di sempre, con un tocco in più.</h1>
-    <div class="diamond"></div>
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="assets/ac_ext3.webp" alt="Antica Coltelleria, Maniago"></div>
+  <div class="ember" id="ember"></div>
+  <div class="hero-inner">
+    <div class="kicker"><span data-i18n="hero_kicker">Pizzeria · Birreria · Cucina</span></div>
+    <p class="pre" data-i18n="hero_pre">Dove la tradizione incontra</p>
+    <h1 data-i18n="hero_title">il fuoco<br>e il sapore</h1>
+    <p class="sub" data-i18n="hero_sub">Nel cuore di Maniago, la città delle lame.</p>
+    <div class="hero-actions">
+      <a class="btn-terra" href="#menu" data-i18n="hero_menu">Scopri il menù</a>
+      <a class="btn-ghost" href="#storia"><span class="ic"><i class="ph-light ph-arrow-down"></i></span><span data-i18n="s_eyebrow">La nostra storia</span></a>
+    </div>
   </div>
-</section>
+  <div class="hero-scroll"><span data-i18n="hero_scroll">Scorri per scoprire</span></div>
+</header>
 
-<!-- 02 · L'ANGOLO -->
-<section class="screen story">
-  <span class="num">01 · Via Battiferri 25</span>
-  <img class="bgimg" data-src="assets/ac_ext3.webp" alt="">
-  <div class="veil"></div><div class="blurband"></div>
-  <div class="inner fx">
-    <h2 data-i18n="s1_title">Nel cuore<br>della città delle lame</h2>
-    <hr class="hairline">
-    <p data-i18n="s1_body">Nell'antica coltelleria di Maniago, tra pietra, ferro e ingranaggi che raccontano il lavoro di un tempo. Un luogo dove la pizza nasce dal fuoco, la porta aperta ogni sera.</p>
-  </div>
-</section>
-
-<!-- 03 · L'ATMOSFERA -->
-<section class="screen story">
-  <span class="num">02 · La nostra storia</span>
-  <img class="bgimg" data-src="assets/ac_int_bar2.webp" alt="">
-  <div class="veil"></div><div class="blurband"></div>
-  <div class="inner fx">
-    <h2 data-i18n="s2_title">Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto</h2>
-    <hr class="hairline">
-    <p data-i18n="s2_body">Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame. Un luogo dove la passione per il cibo si unisce alla tradizione artigiana, creando un'esperienza unica.</p>
-  </div>
-</section>
-
-<!-- 04 · L'IMPASTO -->
-<section class="screen story">
-  <span class="num">03 · L'impasto</span>
-  <img class="bgimg" data-src="assets/pizza3.webp" alt="">
-  <div class="veil"></div><div class="blurband"></div>
-  <div class="inner fx">
-    <h2 data-i18n="s3_title">Lunga lievitazione,<br>cottura nel forno</h2>
-    <hr class="hairline">
-    <p data-i18n="s3_body">Farine selezionate e ingredienti di altissima qualità. Impasto a lunga lievitazione: leggero, digeribile, fragrante. Ogni pizza racconta la nostra passione.</p>
+<!-- ===== STORY ===== -->
+<section class="story" id="storia">
+  <div class="story-grid">
+    <div class="story-txt fx">
+      <span class="eyebrow" data-i18n="s_eyebrow">La nostra storia</span>
+      <h2 data-i18n="s_title">Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto.</h2>
+      <div class="divider"></div>
+      <p data-i18n="s_body">Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame. Un'antica officina dei battiferri, oggi luogo dove la passione per il cibo si unisce alla tradizione artigiana — tra pietra, ingranaggi e il fuoco del forno.</p>
+      <a class="btn-line" href="#menu"><span data-i18n="s_cta">Scopri di più</span><i class="ph-light ph-arrow-right"></i></a>
+    </div>
+    <div class="story-img fx">
+      <img src="assets/ac_int_bar2.webp" alt="Interno Antica Coltelleria con macchinari d'epoca">
+      <span class="tag">Maniago · 1453</span>
+    </div>
   </div>
 </section>
 
-
-<!-- 04b · VALORI -->
+<!-- ===== VALORI ===== -->
 <section class="valori fx">
-  <p class="k-s" data-i18n="v_eyebrow">Perché noi</p>
-  <div class="grid">
-    <div class="cell"><i class="ic ph-thin ph-knife"></i><h4 data-i18n="v_trad">Tradizione</h4><p data-i18n="v_trad_d">Radici profonde nella storia di Maniago.</p></div>
-    <div class="cell"><i class="ic ph-thin ph-fire"></i><h4 data-i18n="v_pass">Passione</h4><p data-i18n="v_pass_d">Il fuoco del forno, la passione di sempre.</p></div>
-    <div class="cell"><i class="ic ph-thin ph-plant"></i><h4 data-i18n="v_qual">Qualità</h4><p data-i18n="v_qual_d">Ingredienti selezionati, freschi e genuini.</p></div>
-    <div class="cell"><i class="ic ph-thin ph-users-three"></i><h4 data-i18n="v_acc">Accoglienza</h4><p data-i18n="v_acc_d">Un ambiente caldo per sentirsi a casa.</p></div>
+  <div class="valori-grid">
+    <div class="cell"><i class="ic ph-light ph-anvil"></i><h4 data-i18n="v_trad">Tradizione</h4><p data-i18n="v_trad_d">Radici profonde nella storia di Maniago.</p></div>
+    <div class="cell"><i class="ic ph-light ph-flame"></i><h4 data-i18n="v_pass">Passione</h4><p data-i18n="v_pass_d">Il fuoco del forno, la passione di sempre.</p></div>
+    <div class="cell"><i class="ic ph-light ph-plant"></i><h4 data-i18n="v_qual">Qualità</h4><p data-i18n="v_qual_d">Ingredienti selezionati, freschi e genuini.</p></div>
+    <div class="cell"><i class="ic ph-light ph-users-three"></i><h4 data-i18n="v_acc">Accoglienza</h4><p data-i18n="v_acc_d">Un ambiente caldo per sentirsi a casa.</p></div>
   </div>
 </section>
 
-<!-- 05 · LE NOSTRE PIZZE (carosello categorie) -->
-<section id="catshow">
-  <div class="edge l"></div><div class="edge r"></div>
-  <button class="chev l" data-show="-1" aria-label="Precedente"><i class="ph-thin ph-caret-left"></i></button>
-  <button class="chev r" data-show="1" aria-label="Successiva"><i class="ph-thin ph-caret-right"></i></button>
-  <div class="rail" id="showrail"></div>
-</section>
-
-<!-- 06 · CORNICIONE -->
-<section class="screen compact teaser">
-  <div class="inner fx">
-    <div class="pz-s">
-      <span class="arc"></span>
-      <img class="pizza bgimg" style="position:static" data-src="assets/pizza2.webp" alt="">
+<!-- ===== MENU PREVIEW ===== -->
+<section class="mprev">
+  <div class="mprev-grid">
+    <div class="mprev-img"><img src="assets/pizza1.webp" alt="Pizza d'autore Antica Coltelleria"></div>
+    <div class="mprev-txt fx">
+      <span class="eyebrow" data-i18n="mp_eyebrow">Il nostro menù</span>
+      <h2 data-i18n="mp_title">Pizze d'autore</h2>
+      <p data-i18n="mp_body">Impasto a lunga lievitazione, farine selezionate e ingredienti di altissima qualità. Ogni pizza racconta la nostra passione.</p>
+      <div class="mprev-index">
+        <a href="#cat-classiche"><i class="ic ph-light ph-pizza"></i><span data-i18n="mp_l_pizze">Pizze</span></a>
+        <a href="#cat-cucina"><i class="ic ph-light ph-cooking-pot"></i><span data-i18n="mp_l_cucina">Cucina</span></a>
+        <a href="#cat-hamburger"><i class="ic ph-light ph-hamburger"></i><span data-i18n="mp_l_burger">Hamburger</span></a>
+        <a href="#cat-bevande"><i class="ic ph-light ph-beer-stein"></i><span data-i18n="mp_l_birre">Birre</span></a>
+      </div>
+      <a class="btn-terra" href="#menu" data-i18n="mp_cta">Scopri le pizze</a>
     </div>
-    <h2 data-i18n="t_title">Hai già provato il nostro cornicione ripieno?</h2>
-    <p data-i18n="t_body">Il vero must della nostra pizza.</p>
-    <div class="mini-list">
-      <div><span>Ricotta</span><b>3,00</b></div>
-      <div><span>Brie</span><b>3,00</b></div>
-      <div><span data-i18n="gorgo">Gorgonzola dolce</span><b>3,00</b></div>
-    </div>
-    <a class="btn-oro" href="#menu" data-i18n="t_cta">Scopri il menù</a>
   </div>
 </section>
 
-<!-- 07 · STRIP FORNO -->
+<!-- ===== PIZZA STRIP ===== -->
 <div class="strip-wrap">
-  <div class="strip-head fx"><p class="k-s" data-i18n="strip_k">Dal nostro forno</p></div>
-  <div class="edge l"><button class="chev l" data-forno="-1" aria-label="Precedente"><i class="ph-thin ph-caret-left"></i></button></div>
-  <div class="edge r"><button class="chev r" data-forno="1" aria-label="Successiva"><i class="ph-thin ph-caret-right"></i></button></div>
-  <div class="strip" id="forno"></div>
-  <div class="dots" id="fornodots"></div>
+  <div class="strip-head"><span class="eyebrow" data-i18n="strip_k">Dal nostro forno</span></div>
+  <button class="strip-nav l" data-strip="-1" aria-label="Precedente"><i class="ph-light ph-caret-left"></i></button>
+  <button class="strip-nav r" data-strip="1" aria-label="Successiva"><i class="ph-light ph-caret-right"></i></button>
+  <div class="strip-view"><div class="strip" id="strip"></div></div>
+  <div class="strip-dots" id="stripdots"></div>
 </div>
 
-<!-- 08 · MENU -->
+<!-- ===== FULL MENU ===== -->
 <section id="menu">
   <div class="menu-head fx">
-    <p class="k-s" data-i18n="m_eyebrow">La carta</p>
+    <span class="eyebrow" data-i18n="m_eyebrow">La carta</span>
     <h2 data-i18n="m_title">Il Menù</h2>
     <p data-i18n="m_note">Impasto a lunga lievitazione, prodotti selezionati, cottura nel forno</p>
   </div>
   <div class="chipbar"><div class="chipbar-inner">
-    <button class="chipchev l" data-chip="-1" aria-label="Indietro"><i class="ph-thin ph-caret-left"></i></button>
-    <button class="chipchev r" data-chip="1" aria-label="Avanti"><i class="ph-thin ph-caret-right"></i></button>
-    <nav class="chips" id="chips" aria-label="Menu categories"></nav>
+    <nav class="chips" id="chips" aria-label="Categorie menù"></nav>
   </div></div>
   <div id="carta"></div>
 </section>
 
-<!-- 09 · QUOTE -->
-<section class="screen story quote">
-  <img class="bgimg" data-src="assets/ac_int_lounge.webp" alt="">
-  <div class="veil"></div><div class="blurband"></div>
-  <div class="inner fx">
-    <h2 data-i18n="q_text">«Dal ferro nascono le lame, dal fuoco nasce il gusto.»</h2>
-    <p class="who">Antica Coltelleria</p>
-  </div>
-</section>
-
-
-
-<!-- PRENOTA -->
-<section class="book fx" id="prenota">
-  <img class="bgimg" data-src="assets/ac_int_lounge.webp" alt="">
-  <div class="veil"></div>
-  <div class="inner">
-    <p class="k-s" data-i18n="book_eyebrow">Prenota</p>
-    <h2 data-i18n="book_title">Il tuo tavolo</h2>
-    <p data-i18n="book_body">Che sia una cena intima o una serata tra amici, prenota il tuo tavolo e vivi l'esperienza Antica Coltelleria.</p>
-    <a class="btn-oro" href="https://wa.me/393386803637" target="_blank" rel="noopener" data-i18n="book_cta">Prenota ora</a>
-  </div>
-</section>
-
-<!-- GALLERY · L'ESPERIENZA -->
+<!-- ===== GALLERY ===== -->
 <section id="gallery">
   <div class="g-head fx">
-    <p class="k-s" data-i18n="g_eyebrow">L'atmosfera</p>
-    <h2 data-i18n="g_title">Un luogo autentico</h2>
-    <p data-i18n="g_note">Tra il calore del forno e l'eleganza dei dettagli, ogni angolo racconta la nostra storia.</p>
+    <div>
+      <span class="eyebrow" data-i18n="g_eyebrow">L'atmosfera</span>
+      <h2 data-i18n="g_title">Un luogo autentico</h2>
+      <p data-i18n="g_note">Tra il calore del forno e l'eleganza dei dettagli, ogni angolo racconta la nostra storia.</p>
+    </div>
   </div>
-  <div class="g-grid fx" id="ggrid"></div>
+  <div class="g-mosaic fx" id="gmosaic"></div>
 </section>
 
-<!-- CUSTOMER GALLERY -->
-<section id="customer">
-  <p class="k-s" data-i18n="cu_eyebrow">La community</p>
-  <h2 data-i18n="cu_title">Racconta la tua esperienza</h2>
-  <p class="lead" data-i18n="cu_lead">Le vostre serate all'Antica Coltelleria. Una selezione di scatti condivisi dai nostri ospiti.</p>
-  <div class="cust-grid fx" id="custgrid"></div>
-  <div class="cust-cta-wrap fx">
-    <a class="btn-wa" id="custcta" href="#" target="_blank" rel="noopener">
-      <i class="ph-thin ph-whatsapp-logo"></i><span data-i18n="cu_cta">Condividi il ricordo</span>
-    </a>
-    <p class="cust-hint" data-i18n="cu_hint">Inviaci la tua foto su WhatsApp: la pubblicheremo dopo la tua conferma.</p>
+<!-- ===== BOOKING ===== -->
+<section class="book" id="prenota">
+  <div class="book-bg"><img src="assets/ac_int_lounge.webp" alt=""></div>
+  <div class="book-inner fx">
+    <span class="eyebrow" data-i18n="book_eyebrow">Prenota</span>
+    <h2 data-i18n="book_title">Il tuo tavolo</h2>
+    <p data-i18n="book_body">Che sia una cena intima o una serata tra amici, prenota il tuo tavolo e vivi l'esperienza Antica Coltelleria.</p>
+    <a class="btn-terra" href="https://wa.me/393386803637" target="_blank" rel="noopener" data-i18n="book_cta">Prenota ora</a>
   </div>
 </section>
 
-<!-- SOCIAL -->
+<!-- ===== SOCIAL & REVIEWS ===== -->
 <section id="social">
-  <p class="k-s" data-i18n="so_eyebrow">Seguici</p>
-  <h2 data-i18n="so_title">Social & Recensioni</h2>
-  <div class="soc-links">
-    <a href="https://www.instagram.com/pizzeriaviaromamaniago/" target="_blank" rel="noopener"><i class="ph-thin ph-instagram-logo"></i>Instagram</a>
-    <a href="https://www.facebook.com/people/Pizzeria-Via-Roma/61562436140782/" target="_blank" rel="noopener"><i class="ph-thin ph-facebook-logo"></i>Facebook</a>
-    <a href="https://www.tripadvisor.it/Restaurant_Review-g790406-d20931745-Reviews-Pizzeria_Via_Roma-Maniago_Province_of_Pordenone_Friuli_Venezia_Giulia.html" target="_blank" rel="noopener"><i class="ph-thin ph-star"></i>Tripadvisor</a>
+  <div class="soc-head fx">
+    <span class="eyebrow" data-i18n="so_eyebrow">Seguici</span>
+    <h2 data-i18n="so_title">Social & Recensioni</h2>
   </div>
-  <div class="reviews">
-    <div class="rev fx"><div class="stars">★ ★ ★ ★ ★</div><p data-i18n="r1">Impasto leggero e digeribile, cornicione perfetto. La Burrata e Crudo è imperdibile.</p><div class="src"><a href="https://maps.google.com/?cid=7212905066552907909" target="_blank" rel="noopener"><b>Google&nbsp;↗</b></a><span>Marta V.</span></div></div>
-    <div class="rev fx"><div class="stars">★ ★ ★ ★ ★</div><p data-i18n="r2">Locale moderno e curato, personale gentile. Ottime anche le birre artigianali friulane.</p><div class="src"><a href="https://www.tripadvisor.it/Restaurant_Review-g790406-d20931745-Reviews-Pizzeria_Via_Roma-Maniago_Province_of_Pordenone_Friuli_Venezia_Giulia.html" target="_blank" rel="noopener"><b>Tripadvisor&nbsp;↗</b></a><span>Giulio B.</span></div></div>
-    <div class="rev fx"><div class="stars">★ ★ ★ ★ ★</div><p data-i18n="r3">La pizza di sempre, con un tocco in più, davvero. Torneremo di sicuro.</p><div class="src"><a href="https://maps.google.com/?cid=7212905066552907909" target="_blank" rel="noopener"><b>Google&nbsp;↗</b></a><span>Sara T.</span></div></div>
+  <div class="soc-links fx">
+    <a href="https://www.instagram.com/pizzeriaantica.coltelleria/" target="_blank" rel="noopener"><i class="ph-light ph-instagram-logo"></i>Instagram</a>
+    <a href="https://www.facebook.com/pizzerianticacoltelleria/" target="_blank" rel="noopener"><i class="ph-light ph-facebook-logo"></i>Facebook</a>
+    <a href="https://www.tripadvisor.it/Restaurant_Review-g790406-d4770749-Reviews-Pizzeria_Antica_Coltelleria-Maniago_Province_of_Pordenone_Friuli_Venezia_Giulia.html" target="_blank" rel="noopener"><i class="ph-light ph-star"></i>Tripadvisor</a>
   </div>
-  <div class="mapwrap fx">
-    <iframe title="Mappa" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?cid=7212905066552907909&hl=it&z=16&output=embed"></iframe>
-  </div>
+  <div class="reviews fx" id="reviews"></div>
 </section>
 
-<!-- DOVE / FOOTER -->
-<section id="dove">
-  <img class="logo-s" src="assets/logo.png" alt="">
-  <div class="info">
-    <div>
-      <h4 data-i18n="d_dove">Dove</h4>
-      <p><a href="https://www.google.com/maps/search/?api=1&query=Antica+Coltelleria+Via+Battiferri+25+Maniago" target="_blank" rel="noopener">Via Battiferri 25/27 · 33085 Maniago (PN)</a></p>
+<!-- ===== FOOTER ===== -->
+<footer id="dove">
+  <div class="foot-grid">
+    <div class="foot-info fx">
+      <img class="logo-f" src="assets/logo_full.png" alt="Antica Coltelleria">
+      <div class="row">
+        <div>
+          <h4 data-i18n="d_dove">Dove</h4>
+          <p><a href="https://www.google.com/maps/place/Pizzeria+Antica+Coltelleria/@46.1792716,12.7095079,17z" target="_blank" rel="noopener">Via Battiferri 25/27<br>33085 Maniago (PN)</a></p>
+        </div>
+        <div>
+          <h4 data-i18n="d_orari">Orari</h4>
+          <p data-i18n="d_orari_v">18:00 - 22:30 · Martedì chiuso</p>
+        </div>
+        <div>
+          <h4 data-i18n="d_contatti">Contatti</h4>
+          <p><a href="tel:+393386803637">338 680 3637</a></p>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4 data-i18n="d_orari">Orari</h4>
-      <p data-i18n="d_orari_v">18:00 - 23:30 · Lunedì chiuso</p>
-    </div>
-    <div>
-      <h4 data-i18n="d_contatti">Contatti</h4>
-      <p><a href="tel:+393386803637">338 680 3637</a></p>
-    </div>
+    <a class="foot-map fx" href="https://www.google.com/maps/place/Pizzeria+Antica+Coltelleria/@46.1792716,12.7095079,17z" target="_blank" rel="noopener" aria-label="Mappa">
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa Antica Coltelleria"
+        src="https://www.google.com/maps?q=46.1792716,12.7095079&z=16&output=embed"></iframe>
+    </a>
   </div>
-  <p class="foot">© 2026 Antica Coltelleria · Pizzeria Birreria · Maniago · <a href="https://mementostudio.it" target="_blank" rel="noopener">Memento Studio</a></p>
-</section>
+  <p class="foot-bottom">© 2026 Antica Coltelleria · <span data-i18n="foot_p">Pizzeria Birreria · Maniago</span> · <a href="https://mementostudio.it" target="_blank" rel="noopener">Memento Studio</a></p>
+</footer>
 
+<!-- ===== MOBILE TABBAR ===== -->
 <nav class="tabbar" aria-label="Navigazione">
-  <a href="#storia" data-tab="storia"><i class="ph-thin ph-fire"></i><span data-i18n="tab_storia">Storia</span></a>
-  <a href="#menu" data-tab="menu"><i class="ph-thin ph-fork-knife"></i><span data-i18n="tab_menu">Menù</span></a>
-  <a href="tel:+393386803637"><i class="ph-thin ph-phone"></i><span data-i18n="tab_chiama">Chiama</span></a>
-  <a href="#dove" data-tab="dove"><i class="ph-thin ph-map-pin"></i><span data-i18n="tab_dove">Dove</span></a>
+  <a href="#storia" data-tab="storia"><i class="ph-light ph-scroll"></i><span data-i18n="tab_storia">Storia</span></a>
+  <a href="#menu" data-tab="menu"><i class="ph-light ph-fork-knife"></i><span data-i18n="tab_menu">Menù</span></a>
+  <a href="#dove" data-tab="dove"><i class="ph-light ph-map-pin"></i><span data-i18n="tab_contatti">Contatti</span></a>
+  <a href="tel:+393386803637"><i class="ph-light ph-phone"></i><span data-i18n="tab_chiama">Chiama</span></a>
 </nav>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto">
-  <button id="lb-close" aria-label="Chiudi"><i class="ph-thin ph-x"></i></button>
-  <button class="lb-nav l" aria-label="Precedente"><i class="ph-thin ph-caret-left"></i></button>
-  <button class="lb-nav r" aria-label="Successiva"><i class="ph-thin ph-caret-right"></i></button>
+  <button class="lb-x" aria-label="Chiudi"><i class="ph-light ph-x"></i></button>
+  <button class="lb-nav l" aria-label="Precedente"><i class="ph-light ph-caret-left"></i></button>
+  <button class="lb-nav r" aria-label="Successiva"><i class="ph-light ph-caret-right"></i></button>
   <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
 </div>
 
 <script>
-/* =============== UI + narrative i18n =============== */
 const T = {
 it:{
-  sp_kicker:"Maniago · Friuli", tagline:"Dove la tradizione incontra il fuoco e il sapore.", scroll:"scorri",
-  s1_eyebrow:"Maniago · Friuli Venezia Giulia", s1_title:"Nel cuore<br>della città delle lame",
-  s1_body:"Nell'antica coltelleria di Maniago,<br>tra pietra, ferro e ingranaggi che raccontano il lavoro di un tempo.<br><br>Un luogo dove la pizza nasce dal fuoco,<br>la porta aperta ogni sera.",
-  s2_eyebrow:"La nostra storia", s2_title:"Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto",
-  s2_body:"Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame.<br><br>Un luogo dove la passione per il cibo si unisce alla tradizione artigiana, creando un'esperienza unica.",
-  s3_eyebrow:"L'impasto", s3_title:"Lunga lievitazione,<br>cottura nel forno",
-  s3_body:"Farine selezionate e ingredienti di altissima qualità.<br>Impasto a lunga lievitazione: leggero, digeribile, fragrante.<br><br>Ogni pizza racconta la nostra passione.",
-  a_title:"Le Speciali", a_sub:"Le pizze d'autore della casa",
-  a_body:"Pizze dal cuore audace, ingredienti del territorio e abbinamenti sorprendenti. Per chi non si accontenta mai.",
-  t_title:"Hai provato il nostro cornicione ripieno?", t_body:"Il vero must delle nostre pizze speciali.",
-  t_cta:"Scopri il menù", gorgo:"Gorgonzola dolce", strip_k:"Dal nostro forno",
-  m_eyebrow:"La carta", m_title:"Il Menù",
-  m_note:"Impasto a lunga lievitazione, prodotti selezionati, cottura nel forno",
-  q_text:"“Dal ferro nascono le lame, dal fuoco nasce il gusto.”",
-  sel_cta:"Scopri la selezione",
-  dolci_note:"Chiedi al personale la disponibilità del giorno!",
-  g_eyebrow:"L'atmosfera", g_title:"Un luogo autentico",
-  g_note:"Tra il calore del forno e l'eleganza dei dettagli, ogni angolo racconta la nostra storia.",
-  g_cap_sala:"La sala", g_cap_bancone:"Il bancone", g_cap_forno:"Il fuoco",
-  g_cap_angolo:"L'ingresso", g_cap_impasto:"L'impasto", g_cap_dettagli:"Gli ingranaggi",
-  cu_eyebrow:"La community", cu_title:"Racconta la tua esperienza",
-  cu_lead:"Le vostre serate all'Antica Coltelleria. Una selezione di scatti condivisi dai nostri ospiti.",
-  cu_cta:"Condividi il ricordo", cu_badge:"Ospite",
-  cu_hint:"Inviaci la tua foto su WhatsApp: la pubblicheremo dopo la tua conferma.",
-  wa_msg:"Ciao Antica Coltelleria! Vorrei condividere una foto della mia serata da voi 🍕 (in allegato). Potete pubblicarla?",
-  so_eyebrow:"Seguici", so_title:"Social & Recensioni",
-  r1:"Ambiente unico, dentro una vecchia officina piena di fascino. Pizza cotta a legna davvero ottima.",
-  r2:"Locale caratteristico e accogliente, ottime birre artigianali. Da tornare.",
-  r3:"Dove la tradizione incontra il fuoco e il sapore. Esperienza da provare.",
-  d_title:"Vi aspettiamo", d_dove:"Dove", d_maps:"Apri in Google Maps",
-  d_orari:"Orari", d_orari_v:"18:00 - 23:30 · Lunedì chiuso", d_contatti:"Contatti",
-  tab_storia:"Storia", tab_menu:"Menù", tab_chiama:"Chiama", tab_dove:"Dove",
-  v_eyebrow:"Perché noi", v_trad:"Tradizione", v_trad_d:"Radici profonde nella storia di Maniago.",
+  nav_storia:"Storia", nav_menu:"Menù", nav_contatti:"Contatti", nav_chiama:"Chiama", nav_prenota:"Prenota un tavolo",
+  hero_kicker:"Pizzeria · Birreria · Cucina", hero_pre:"Dove la tradizione incontra",
+  hero_title:"il fuoco<br>e il sapore", hero_sub:"Nel cuore di Maniago, la città delle lame.",
+  hero_menu:"Scopri il menù", hero_scroll:"Scorri per scoprire",
+  s_eyebrow:"La nostra storia", s_title:"Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto.",
+  s_body:"Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame. Un'antica officina dei battiferri, oggi luogo dove la passione per il cibo si unisce alla tradizione artigiana — tra pietra, ingranaggi e il fuoco del forno.",
+  s_cta:"Scopri di più",
+  v_trad:"Tradizione", v_trad_d:"Radici profonde nella storia di Maniago.",
   v_pass:"Passione", v_pass_d:"Il fuoco del forno, la passione di sempre.",
   v_qual:"Qualità", v_qual_d:"Ingredienti selezionati, freschi e genuini.",
   v_acc:"Accoglienza", v_acc_d:"Un ambiente caldo per sentirsi a casa.",
+  mp_eyebrow:"Il nostro menù", mp_title:"Pizze d'autore",
+  mp_body:"Impasto a lunga lievitazione, farine selezionate e ingredienti di altissima qualità. Ogni pizza racconta la nostra passione.",
+  mp_cta:"Scopri le pizze",
+  mp_l_pizze:"Pizze", mp_l_cucina:"Cucina", mp_l_burger:"Hamburger", mp_l_birre:"Birre", mp_l_sandwich:"Sandwich", mp_l_vini:"Vini",
+  m_eyebrow:"La carta", m_title:"Il Menù",
+  m_note:"Impasto a lunga lievitazione, prodotti selezionati, cottura nel forno",
+  strip_k:"Dal nostro forno",
+  g_eyebrow:"L'atmosfera", g_title:"Un luogo autentico",
+  g_note:"Tra il calore del forno e l'eleganza dei dettagli, ogni angolo racconta la nostra storia.",
+  g_cta:"Guarda la gallery",
+  g_cap_sala:"La sala", g_cap_bancone:"Il bancone", g_cap_forno:"Il fuoco",
+  g_cap_angolo:"L'ingresso", g_cap_impasto:"Gli ingranaggi", g_cap_dettagli:"I dettagli",
   book_eyebrow:"Prenota", book_title:"Il tuo tavolo",
   book_body:"Che sia una cena intima o una serata tra amici, prenota il tuo tavolo e vivi l'esperienza Antica Coltelleria.",
   book_cta:"Prenota ora",
+  so_eyebrow:"Seguici", so_title:"Social & Recensioni",
+  r1:"Locale piacevolissimo in un'antica coltelleria ristrutturata. Rustico e moderno allo stesso tempo, pizza eccellente e servizio gentile.",
+  r1a:"sgocichri · Trieste",
+  r2:"La pizza è ottima, il servizio veloce e cortese. La sala è immensa, si presta bene anche per cene ed eventi in compagnia.",
+  r2a:"kappa19S · Spilimbergo",
+  r3:"Locale molto caratteristico, ricavato in una vecchia fabbrica. Pizza ben stesa e sottile, ingredienti ottimi. Ci ritornerò sicuramente!",
+  r3a:"Flavio B · Fossano",
+  d_dove:"Dove", d_orari:"Orari", d_orari_v:"18:00 - 22:30 · Martedì chiuso", d_contatti:"Contatti",
+  d_maps:"Apri in Google Maps", foot_p:"Pizzeria Birreria · Maniago",
+  tab_storia:"Storia", tab_menu:"Menù", tab_contatti:"Contatti", tab_chiama:"Chiama",
   cats:{
-    classiche:["Le Classiche","Le nostre radici, intramontabili!"],
-    speciali:["Le Speciali","Le pizze d'autore della casa!"],
-    bianche:["Le Bianche","Senza pomodoro, tutto il gusto!"],
-    calzoni:["I Calzoni","Amore ripieno!"],
-    cucina:["Dalla Cucina","Sapori del territorio, oltre la pizza!"],
-    stuzzicherie:["Stuzzicherie","Il miglior antidoto alla fame!"],
-    bevande:["Le Bevande","Alla spina, artigianali e del territorio"],
-    dolci:["Dolci della Casa","La miglior conclusione!"]
+    classiche:["Le Classiche","Le nostre radici, intramontabili"],
+    speciali:["Le Speciali","Le pizze d'autore della casa"],
+    cucina:["Dalla Cucina","Sapori del territorio, oltre la pizza"],
+    hamburger:["Gli Hamburger","Serviti con patatine e salse"],
+    sandwich:["I Sandwich","Farciti e sostanziosi"],
+    bevande:["Le Bevande","Alla spina, artigianali e del territorio"]
   },
-  varianti:"Aggiunte", coperto:"Coperto", impasti:"Impasti speciali", cornice:"Cornicione ripieno",
-  spina:"Alla spina", bottiglia:"Birre in bottiglia", vini:"Vini e bollicine", spritz:"Spritz & Co.",
-  calice:"calice", caraffa:"caraffa", bott:"bottiglia"
+  varianti:"Aggiunte", cornice:"", coperto:"Coperto", impasti:"Impasti speciali",
+  spina:"Alla spina", bottiglia:"Birre artigianali in bottiglia", vini:"Vini della casa", altro:"Bevande",
+  calice:"calice", bott:"bottiglia"
 },
 en:{
-  sp_kicker:"Maniago · Friuli, Italy", tagline:"Where tradition meets fire and flavour.", scroll:"scroll",
-  s1_eyebrow:"Maniago · Friuli Venezia Giulia, Italy", s1_title:"In the heart<br>of the town of blades",
-  s1_body:"Inside Maniago's old cutlery workshop,<br>among stone, iron and gears that tell of work gone by.<br><br>A place where pizza is born from fire,<br>the door open every evening.",
-  s2_eyebrow:"Our story", s2_title:"From iron<br>come the blades,<br>from fire<br>comes the taste",
-  s2_body:"Antica Coltelleria was born in the heart of Maniago, a town famous worldwide for blade-making.<br><br>A place where passion for food meets artisan tradition, creating a unique experience.",
-  s3_eyebrow:"The dough", s3_title:"Slow-leavened,<br>oven baked",
-  s3_body:"Selected flours and top-quality ingredients.<br>Slow-leavened dough: light, digestible, fragrant.<br><br>Every pizza tells our passion.",
-  a_title:"Le Speciali", a_sub:"The house signature pizzas",
-  a_body:"Bold-hearted pizzas, local ingredients and surprising pairings. For those who never settle.",
-  t_title:"Have you tried our stuffed crust?", t_body:"The true must of our signature pizzas.",
-  t_cta:"Discover the menu", gorgo:"Sweet gorgonzola", strip_k:"From our oven",
-  m_eyebrow:"The menu", m_title:"The Menu",
-  m_note:"Slow-leavened dough, selected ingredients, oven baked",
-  q_text:"“From iron come the blades, from fire comes the taste.”",
-  sel_cta:"Discover the selection",
-  dolci_note:"Ask our staff about today's selection.",
-  g_eyebrow:"The atmosphere", g_title:"An authentic place",
-  g_note:"Between the warmth of the oven and the elegance of details, every corner tells our story.",
-  g_cap_sala:"The room", g_cap_bancone:"The counter", g_cap_forno:"The fire",
-  g_cap_angolo:"The entrance", g_cap_impasto:"The dough", g_cap_dettagli:"The gears",
-  cu_eyebrow:"The community", cu_title:"Share your experience",
-  cu_lead:"Your evenings at Antica Coltelleria. A selection of shots shared by our guests.",
-  cu_cta:"Share your memory", cu_badge:"Guest",
-  cu_hint:"Send us your photo on WhatsApp: we'll publish it once you confirm.",
-  wa_msg:"Hi Antica Coltelleria! I'd love to share a photo from my evening with you 🍕 (attached). May you publish it?",
-  so_eyebrow:"Follow us", so_title:"Social & Reviews",
-  r1:"A unique setting inside a charming old workshop. Excellent wood-fired pizza.",
-  r2:"Characterful, welcoming place with great craft beers. Will be back.",
-  r3:"Where tradition meets fire and flavour. An experience worth trying.",
-  d_title:"We're waiting for you", d_dove:"Where", d_maps:"Open in Google Maps",
-  d_orari:"Hours", d_orari_v:"6 pm - 11:30 pm · Monday closed", d_contatti:"Contact",
-  tab_storia:"Story", tab_menu:"Menu", tab_chiama:"Call", tab_dove:"Find us",
-  v_eyebrow:"Why us", v_trad:"Tradition", v_trad_d:"Deep roots in the history of Maniago.",
+  nav_storia:"Story", nav_menu:"Menu", nav_contatti:"Contact", nav_chiama:"Call", nav_prenota:"Book a table",
+  hero_kicker:"Pizzeria · Brewery · Kitchen", hero_pre:"Where tradition meets",
+  hero_title:"fire<br>and flavour", hero_sub:"In the heart of Maniago, the town of blades.",
+  hero_menu:"Discover the menu", hero_scroll:"Scroll to discover",
+  s_eyebrow:"Our story", s_title:"From iron<br>come the blades,<br>from fire<br>comes the taste.",
+  s_body:"Antica Coltelleria was born in the heart of Maniago, a town famous worldwide for blade-making. An old forge workshop, today a place where passion for food meets artisan tradition — among stone, gears and the fire of the oven.",
+  s_cta:"Read more",
+  v_trad:"Tradition", v_trad_d:"Deep roots in the history of Maniago.",
   v_pass:"Passion", v_pass_d:"The fire of the oven, the passion of always.",
   v_qual:"Quality", v_qual_d:"Selected ingredients, fresh and genuine.",
   v_acc:"Hospitality", v_acc_d:"A warm place to feel at home.",
+  mp_eyebrow:"Our menu", mp_title:"Signature pizzas",
+  mp_body:"Slow-leavened dough, selected flours and top-quality ingredients. Every pizza tells our passion.",
+  mp_cta:"Discover the pizzas",
+  mp_l_pizze:"Pizzas", mp_l_cucina:"Kitchen", mp_l_burger:"Burgers", mp_l_birre:"Beers", mp_l_sandwich:"Sandwiches", mp_l_vini:"Wines",
+  m_eyebrow:"The menu", m_title:"The Menu",
+  m_note:"Slow-leavened dough, selected ingredients, oven baked",
+  strip_k:"From our oven",
+  g_eyebrow:"The atmosphere", g_title:"An authentic place",
+  g_note:"Between the warmth of the oven and the elegance of details, every corner tells our story.",
+  g_cta:"View the gallery",
+  g_cap_sala:"The room", g_cap_bancone:"The counter", g_cap_forno:"The fire",
+  g_cap_angolo:"The entrance", g_cap_impasto:"The gears", g_cap_dettagli:"The details",
   book_eyebrow:"Book", book_title:"Your table",
   book_body:"Whether an intimate dinner or an evening with friends, book your table and live the Antica Coltelleria experience.",
   book_cta:"Book now",
+  so_eyebrow:"Follow us", so_title:"Social & Reviews",
+  r1:"A lovely place inside a restored old cutlery workshop. Rustic and modern at once, excellent pizza and friendly service.",
+  r1a:"sgocichri · Trieste",
+  r2:"The pizza is excellent, service quick and courteous. The room is huge, great for dinners and gatherings too.",
+  r2a:"kappa19S · Spilimbergo",
+  r3:"A very characterful place inside an old factory. Thin, well-stretched pizza, great ingredients. I'll definitely be back!",
+  r3a:"Flavio B · Fossano",
+  d_dove:"Where", d_orari:"Hours", d_orari_v:"6:00 pm - 10:30 pm · Closed Tuesday", d_contatti:"Contact",
+  d_maps:"Open in Google Maps", foot_p:"Pizzeria Brewery · Maniago",
+  tab_storia:"Story", tab_menu:"Menu", tab_contatti:"Contact", tab_chiama:"Call",
   cats:{
     classiche:["Le Classiche","Our roots, timeless"],
     speciali:["Le Speciali","The house signature pizzas"],
-    bianche:["Le Bianche","No tomato, all the flavour"],
-    calzoni:["I Calzoni","Filled with love"],
     cucina:["From the Kitchen","Local flavours, beyond pizza"],
-    stuzzicherie:["Starters","The best antidote to hunger"],
-    bevande:["Drinks","On tap, craft and local"],
-    dolci:["House Desserts!","The best way to end"]
+    hamburger:["Burgers","Served with fries and sauces"],
+    sandwich:["Sandwiches","Filling and hearty"],
+    bevande:["Drinks","On tap, craft and local"]
   },
-  varianti:"Add-ons", coperto:"Cover charge", impasti:"Special doughs", cornice:"Stuffed crust",
-  spina:"On tap", bottiglia:"Bottled beers", vini:"Wines & bubbles", spritz:"Spritz & Co.",
-  calice:"glass", caraffa:"carafe", bott:"bottle"
+  varianti:"Add-ons", cornice:"", coperto:"Cover charge", impasti:"Special doughs",
+  spina:"On tap", bottiglia:"Bottled craft beers", vini:"House wines", altro:"Drinks",
+  calice:"glass", bott:"bottle"
 },
 de:{
-  sp_kicker:"Maniago · Friaul, Italien", tagline:"Wo Tradition auf Feuer und Geschmack trifft.", scroll:"scrollen",
-  s1_eyebrow:"Maniago · Friaul-Julisch Venetien, Italien", s1_title:"Im Herzen<br>der Stadt der Klingen",
-  s1_body:"In der alten Messerschmiede von Maniago,<br>zwischen Stein, Eisen und Zahnrädern vergangener Arbeit.<br><br>Ein Ort, wo Pizza aus dem Feuer entsteht,<br>die Tür jeden Abend geöffnet.",
-  s2_eyebrow:"Unsere Geschichte", s2_title:"Aus Eisen<br>entstehen die Klingen,<br>aus Feuer<br>der Geschmack",
-  s2_body:"Antica Coltelleria entstand im Herzen von Maniago, einer weltweit für die Klingenherstellung berühmten Stadt.<br><br>Ein Ort, wo die Leidenschaft fürs Essen auf Handwerkstradition trifft und ein einzigartiges Erlebnis schafft.",
-  s3_eyebrow:"Der Teig", s3_title:"Lang gereift,<br>im Ofen gebacken",
-  s3_body:"Ausgewählte Mehle und Zutaten höchster Qualität.<br>Lang gereifter Teig: leicht, bekömmlich, aromatisch.<br><br>Jede Pizza erzählt unsere Leidenschaft.",
-  a_title:"Le Speciali", a_sub:"Die Signature-Pizzen des Hauses",
-  a_body:"Pizzen mit mutigem Herz, regionale Zutaten und überraschende Kombinationen. Für alle, die sich nie zufriedengeben.",
-  t_title:"Schon unseren gefüllten Rand probiert?", t_body:"Das wahre Muss unserer Signature-Pizzen.",
-  t_cta:"Menü entdecken", gorgo:"Milder Gorgonzola", strip_k:"Aus unserem Ofen",
-  m_eyebrow:"Die Karte", m_title:"Das Menü",
-  m_note:"Lang gereifter Teig, ausgewählte Zutaten, im Ofen gebacken",
-  q_text:"„Aus Eisen entstehen die Klingen, aus Feuer der Geschmack.“",
-  sel_cta:"Auswahl entdecken",
-  dolci_note:"Fragen Sie unser Personal nach der heutigen Auswahl.",
-  g_eyebrow:"Die Atmosphäre", g_title:"Ein authentischer Ort",
-  g_note:"Zwischen der Wärme des Ofens und der Eleganz der Details erzählt jede Ecke unsere Geschichte.",
-  g_cap_sala:"Der Saal", g_cap_bancone:"Die Theke", g_cap_forno:"Das Feuer",
-  g_cap_angolo:"Der Eingang", g_cap_impasto:"Der Teig", g_cap_dettagli:"Die Zahnräder",
-  cu_eyebrow:"Die Community", cu_title:"Teile dein Erlebnis",
-  cu_lead:"Eure Abende in der Antica Coltelleria. Eine Auswahl von Aufnahmen unserer Gäste.",
-  cu_cta:"Erinnerung teilen", cu_badge:"Gast",
-  cu_hint:"Sende uns dein Foto per WhatsApp: Wir veröffentlichen es nach deiner Bestätigung.",
-  wa_msg:"Hallo Antica Coltelleria! Ich möchte ein Foto meines Abends bei euch teilen 🍕 (im Anhang). Dürft ihr es veröffentlichen?",
-  so_eyebrow:"Folgt uns", so_title:"Social & Bewertungen",
-  r1:"Einzigartiges Ambiente in einer charmanten alten Werkstatt. Ausgezeichnete Holzofenpizza.",
-  r2:"Charaktervoller, gemütlicher Ort mit tollen Craft-Bieren. Wir kommen wieder.",
-  r3:"Wo Tradition auf Feuer und Geschmack trifft. Ein Erlebnis, das man probieren sollte.",
-  d_title:"Wir erwarten Sie", d_dove:"Wo", d_maps:"In Google Maps öffnen",
-  d_orari:"Öffnungszeiten", d_orari_v:"18:00 - 23:30 · Montag geschlossen", d_contatti:"Kontakt",
-  tab_storia:"Geschichte", tab_menu:"Menü", tab_chiama:"Anrufen", tab_dove:"Anfahrt",
-  v_eyebrow:"Warum wir", v_trad:"Tradition", v_trad_d:"Tiefe Wurzeln in der Geschichte Maniagos.",
+  nav_storia:"Geschichte", nav_menu:"Menü", nav_contatti:"Kontakt", nav_chiama:"Anrufen", nav_prenota:"Tisch reservieren",
+  hero_kicker:"Pizzeria · Brauerei · Küche", hero_pre:"Wo Tradition auf",
+  hero_title:"Feuer<br>und Geschmack trifft", hero_sub:"Im Herzen von Maniago, der Stadt der Klingen.",
+  hero_menu:"Menü entdecken", hero_scroll:"Scrollen zum Entdecken",
+  s_eyebrow:"Unsere Geschichte", s_title:"Aus Eisen<br>entstehen die Klingen,<br>aus Feuer<br>der Geschmack.",
+  s_body:"Antica Coltelleria entstand im Herzen von Maniago, einer weltweit für die Klingenherstellung berühmten Stadt. Eine alte Schmiedewerkstatt, heute ein Ort, wo Leidenschaft fürs Essen auf Handwerkstradition trifft — zwischen Stein, Zahnrädern und dem Feuer des Ofens.",
+  s_cta:"Mehr erfahren",
+  v_trad:"Tradition", v_trad_d:"Tiefe Wurzeln in der Geschichte Maniagos.",
   v_pass:"Leidenschaft", v_pass_d:"Das Feuer des Ofens, die Leidenschaft von immer.",
   v_qual:"Qualität", v_qual_d:"Ausgewählte Zutaten, frisch und echt.",
   v_acc:"Gastfreundschaft", v_acc_d:"Ein warmer Ort, um sich wie zu Hause zu fühlen.",
+  mp_eyebrow:"Unser Menü", mp_title:"Signature-Pizzen",
+  mp_body:"Lang gereifter Teig, ausgewählte Mehle und Zutaten höchster Qualität. Jede Pizza erzählt unsere Leidenschaft.",
+  mp_cta:"Pizzen entdecken",
+  mp_l_pizze:"Pizzen", mp_l_cucina:"Küche", mp_l_burger:"Burger", mp_l_birre:"Biere", mp_l_sandwich:"Sandwiches", mp_l_vini:"Weine",
+  m_eyebrow:"Die Karte", m_title:"Das Menü",
+  m_note:"Lang gereifter Teig, ausgewählte Zutaten, im Ofen gebacken",
+  strip_k:"Aus unserem Ofen",
+  g_eyebrow:"Die Atmosphäre", g_title:"Ein authentischer Ort",
+  g_note:"Zwischen der Wärme des Ofens und der Eleganz der Details erzählt jede Ecke unsere Geschichte.",
+  g_cta:"Galerie ansehen",
+  g_cap_sala:"Der Saal", g_cap_bancone:"Die Theke", g_cap_forno:"Das Feuer",
+  g_cap_angolo:"Der Eingang", g_cap_impasto:"Die Zahnräder", g_cap_dettagli:"Die Details",
   book_eyebrow:"Reservieren", book_title:"Ihr Tisch",
   book_body:"Ob intimes Dinner oder Abend mit Freunden, reservieren Sie Ihren Tisch und erleben Sie die Antica Coltelleria.",
   book_cta:"Jetzt reservieren",
+  so_eyebrow:"Folgt uns", so_title:"Social & Bewertungen",
+  r1:"Ein wunderbarer Ort in einer restaurierten alten Messerwerkstatt. Rustikal und modern zugleich, ausgezeichnete Pizza und freundlicher Service.",
+  r1a:"sgocichri · Triest",
+  r2:"Die Pizza ist ausgezeichnet, der Service schnell und höflich. Der Saal ist riesig, ideal auch für Abendessen und Feiern.",
+  r2a:"kappa19S · Spilimbergo",
+  r3:"Ein sehr charaktervoller Ort in einer alten Fabrik. Dünne, gut ausgezogene Pizza, tolle Zutaten. Ich komme sicher wieder!",
+  r3a:"Flavio B · Fossano",
+  d_dove:"Wo", d_orari:"Öffnungszeiten", d_orari_v:"18:00 - 22:30 · Dienstag geschlossen", d_contatti:"Kontakt",
+  d_maps:"In Google Maps öffnen", foot_p:"Pizzeria Brauerei · Maniago",
+  tab_storia:"Geschichte", tab_menu:"Menü", tab_contatti:"Kontakt", tab_chiama:"Anrufen",
   cats:{
     classiche:["Le Classiche","Unsere Wurzeln, zeitlos"],
     speciali:["Le Speciali","Die Signature-Pizzen des Hauses"],
-    bianche:["Le Bianche","Ohne Tomate, voller Geschmack"],
-    calzoni:["I Calzoni","Mit Liebe gefüllt"],
     cucina:["Aus der Küche","Regionale Aromen, mehr als Pizza"],
-    stuzzicherie:["Vorspeisen","Das beste Mittel gegen Hunger"],
-    bevande:["Getränke","Vom Fass, Craft und regional"],
-    dolci:["Hausdesserts!","Der beste Abschluss"]
+    hamburger:["Burger","Mit Pommes und Saucen serviert"],
+    sandwich:["Sandwiches","Herzhaft und sättigend"],
+    bevande:["Getränke","Vom Fass, Craft und regional"]
   },
-  varianti:"Extras", coperto:"Gedeck", impasti:"Spezialteige", cornice:"Gefüllter Rand",
-  spina:"Vom Fass", bottiglia:"Flaschenbiere", vini:"Weine & Perlweine", spritz:"Spritz & Co.",
-  calice:"Glas", caraffa:"Karaffe", bott:"Flasche"
+  varianti:"Extras", cornice:"", coperto:"Gedeck", impasti:"Spezialteige",
+  spina:"Vom Fass", bottiglia:"Craft-Flaschenbiere", vini:"Hausweine", altro:"Getränke",
+  calice:"Glas", bott:"Flasche"
 },
 fr:{
-  sp_kicker:"Maniago · Frioul, Italie", tagline:"Où la tradition rencontre le feu et la saveur.", scroll:"défiler",
-  s1_eyebrow:"Maniago · Frioul-Vénétie Julienne, Italie", s1_title:"Au cœur<br>de la ville des lames",
-  s1_body:"Dans l'ancienne coutellerie de Maniago,<br>parmi la pierre, le fer et les engrenages d'autrefois.<br><br>Un lieu où la pizza naît du feu,<br>la porte ouverte chaque soir.",
-  s2_eyebrow:"Notre histoire", s2_title:"Du fer<br>naissent les lames,<br>du feu<br>naît le goût",
-  s2_body:"Antica Coltelleria est née au cœur de Maniago, ville mondialement célèbre pour la fabrication des lames.<br><br>Un lieu où la passion de la cuisine rencontre la tradition artisanale, pour une expérience unique.",
-  s3_eyebrow:"La pâte", s3_title:"Longue levée,<br>cuite au four",
-  s3_body:"Farines sélectionnées et ingrédients de très haute qualité.<br>Pâte à longue levée : légère, digeste, parfumée.<br><br>Chaque pizza raconte notre passion.",
-  a_title:"Le Speciali", a_sub:"Les pizzas signature de la maison",
-  a_body:"Des pizzas au cœur audacieux, des ingrédients du terroir et des accords surprenants. Pour ceux qui ne se contentent jamais.",
-  t_title:"Avez-vous goûté notre bord farci ?", t_body:"Le vrai must de nos pizzas signature.",
-  t_cta:"Découvrir le menu", gorgo:"Gorgonzola doux", strip_k:"De notre four",
-  m_eyebrow:"La carte", m_title:"Le Menu",
-  m_note:"Pâte à longue levée, ingrédients sélectionnés, cuite au four",
-  q_text:"« Du fer naissent les lames, du feu naît le goût. »",
-  sel_cta:"Découvrir la sélection",
-  dolci_note:"Demandez au personnel la sélection du jour.",
-  g_eyebrow:"L'ambiance", g_title:"Un lieu authentique",
-  g_note:"Entre la chaleur du four et l'élégance des détails, chaque coin raconte notre histoire.",
-  g_cap_sala:"La salle", g_cap_bancone:"Le comptoir", g_cap_forno:"Le feu",
-  g_cap_angolo:"L'entrée", g_cap_impasto:"La pâte", g_cap_dettagli:"Les engrenages",
-  cu_eyebrow:"La communauté", cu_title:"Partagez votre expérience",
-  cu_lead:"Vos soirées à l'Antica Coltelleria. Une sélection de photos partagées par nos hôtes.",
-  cu_cta:"Partager le souvenir", cu_badge:"Hôte",
-  cu_hint:"Envoyez-nous votre photo sur WhatsApp : nous la publierons après votre confirmation.",
-  wa_msg:"Bonjour Antica Coltelleria ! J'aimerais partager une photo de ma soirée chez vous 🍕 (en pièce jointe). Pouvez-vous la publier ?",
-  so_eyebrow:"Suivez-nous", so_title:"Réseaux & Avis",
-  r1:"Cadre unique dans un ancien atelier plein de charme. Excellente pizza au feu de bois.",
-  r2:"Lieu de caractère et accueillant, superbes bières artisanales. On reviendra.",
-  r3:"Où la tradition rencontre le feu et la saveur. Une expérience à essayer.",
-  d_title:"Nous vous attendons", d_dove:"Où", d_maps:"Ouvrir dans Google Maps",
-  d_orari:"Horaires", d_orari_v:"18h00 - 23h30 · Lundi fermé", d_contatti:"Contact",
-  tab_storia:"Histoire", tab_menu:"Menu", tab_chiama:"Appeler", tab_dove:"Accès",
-  v_eyebrow:"Pourquoi nous", v_trad:"Tradition", v_trad_d:"Des racines profondes dans l'histoire de Maniago.",
+  nav_storia:"Histoire", nav_menu:"Menu", nav_contatti:"Contact", nav_chiama:"Appeler", nav_prenota:"Réserver une table",
+  hero_kicker:"Pizzeria · Brasserie · Cuisine", hero_pre:"Où la tradition rencontre",
+  hero_title:"le feu<br>et la saveur", hero_sub:"Au cœur de Maniago, la ville des lames.",
+  hero_menu:"Découvrir le menu", hero_scroll:"Défiler pour découvrir",
+  s_eyebrow:"Notre histoire", s_title:"Du fer<br>naissent les lames,<br>du feu<br>naît le goût.",
+  s_body:"Antica Coltelleria est née au cœur de Maniago, ville mondialement célèbre pour la fabrication des lames. Un ancien atelier de forge, aujourd'hui un lieu où la passion de la cuisine rencontre la tradition artisanale — parmi la pierre, les engrenages et le feu du four.",
+  s_cta:"En savoir plus",
+  v_trad:"Tradition", v_trad_d:"Des racines profondes dans l'histoire de Maniago.",
   v_pass:"Passion", v_pass_d:"Le feu du four, la passion de toujours.",
   v_qual:"Qualité", v_qual_d:"Des ingrédients sélectionnés, frais et authentiques.",
   v_acc:"Accueil", v_acc_d:"Un lieu chaleureux pour se sentir chez soi.",
+  mp_eyebrow:"Notre menu", mp_title:"Pizzas signature",
+  mp_body:"Pâte à longue levée, farines sélectionnées et ingrédients de très haute qualité. Chaque pizza raconte notre passion.",
+  mp_cta:"Découvrir les pizzas",
+  mp_l_pizze:"Pizzas", mp_l_cucina:"Cuisine", mp_l_burger:"Burgers", mp_l_birre:"Bières", mp_l_sandwich:"Sandwichs", mp_l_vini:"Vins",
+  m_eyebrow:"La carte", m_title:"Le Menu",
+  m_note:"Pâte à longue levée, ingrédients sélectionnés, cuite au four",
+  strip_k:"De notre four",
+  g_eyebrow:"L'ambiance", g_title:"Un lieu authentique",
+  g_note:"Entre la chaleur du four et l'élégance des détails, chaque coin raconte notre histoire.",
+  g_cta:"Voir la galerie",
+  g_cap_sala:"La salle", g_cap_bancone:"Le comptoir", g_cap_forno:"Le feu",
+  g_cap_angolo:"L'entrée", g_cap_impasto:"Les engrenages", g_cap_dettagli:"Les détails",
   book_eyebrow:"Réserver", book_title:"Votre table",
   book_body:"Que ce soit un dîner intime ou une soirée entre amis, réservez votre table et vivez l'expérience Antica Coltelleria.",
   book_cta:"Réserver",
+  so_eyebrow:"Suivez-nous", so_title:"Réseaux & Avis",
+  r1:"Un lieu charmant dans une ancienne coutellerie restaurée. Rustique et moderne à la fois, pizza excellente et service aimable.",
+  r1a:"sgocichri · Trieste",
+  r2:"La pizza est excellente, le service rapide et courtois. La salle est immense, parfaite aussi pour dîners et fêtes.",
+  r2a:"kappa19S · Spilimbergo",
+  r3:"Un lieu plein de caractère dans une ancienne usine. Pizza fine et bien étalée, excellents ingrédients. J'y retournerai sûrement !",
+  r3a:"Flavio B · Fossano",
+  d_dove:"Où", d_orari:"Horaires", d_orari_v:"18h00 - 22h30 · Mardi fermé", d_contatti:"Contact",
+  d_maps:"Ouvrir dans Google Maps", foot_p:"Pizzeria Brasserie · Maniago",
+  tab_storia:"Histoire", tab_menu:"Menu", tab_contatti:"Contact", tab_chiama:"Appeler",
   cats:{
     classiche:["Le Classiche","Nos racines, intemporelles"],
     speciali:["Le Speciali","Les pizzas signature de la maison"],
-    bianche:["Le Bianche","Sans tomate, tout le goût"],
-    calzoni:["I Calzoni","Farcis d'amour"],
     cucina:["De la Cuisine","Saveurs du terroir, au-delà de la pizza"],
-    stuzzicherie:["Entrées","Le meilleur remède à la faim"],
-    bevande:["Boissons","À la pression, artisanales et locales"],
-    dolci:["Desserts Maison !","La meilleure conclusion"]
+    hamburger:["Burgers","Servis avec frites et sauces"],
+    sandwich:["Sandwichs","Généreux et copieux"],
+    bevande:["Boissons","À la pression, artisanales et locales"]
   },
-  varianti:"Suppléments", coperto:"Couvert", impasti:"Pâtes spéciales", cornice:"Bord farci",
-  spina:"À la pression", bottiglia:"Bières en bouteille", vini:"Vins & bulles", spritz:"Spritz & Co.",
-  calice:"verre", caraffa:"carafe", bott:"bouteille"
+  varianti:"Suppléments", cornice:"", coperto:"Couvert", impasti:"Pâtes spéciales",
+  spina:"À la pression", bottiglia:"Bières artisanales en bouteille", vini:"Vins de la maison", altro:"Boissons",
+  calice:"verre", bott:"bouteille"
 },
 };
-const TERMS = [
-["mozzarella di Bufala in cottura","buffalo mozzarella, baked in","Büffelmozzarella, mitgebacken","mozzarella de bufflonne, cuite"],
-["mozzarella di Bufala fuori cottura","buffalo mozzarella, added fresh","Büffelmozzarella, frisch dazu","mozzarella de bufflonne, ajoutée à froid"],
-["prosciutto crudo San Daniele","San Daniele cured ham","San-Daniele-Rohschinken","jambon cru San Daniele"],
-["passata di pomodorino giallo","yellow cherry-tomato passata","gelbe Kirschtomaten-Passata","coulis de tomate cerise jaune"],
-["passata di peperoni","sweet-pepper passata","Paprika-Passata","coulis de poivrons"],
-["pomodorini semi dry","semi-dried cherry tomatoes","halbgetrocknete Kirschtomaten","tomates cerises mi-séchées"],
-["pizzette fritte con pomodoro, mozzarella e grana","fried mini pizzas with tomato, mozzarella and Grana","frittierte Mini-Pizzen mit Tomate, Mozzarella und Grana","mini-pizzas frites tomate, mozzarella et Grana"],
-["pane con impasto della pizza","bread from our pizza dough","Brot aus unserem Pizzateig","pain à base de pâte à pizza"],
-["provola affumicata in cottura","smoked provola, baked in","geräucherte Provola, mitgebacken","provola fumée, cuite"],
-["buffala affumicata fuori cottura","smoked buffalo mozzarella, added fresh","geräucherter Büffelmozzarella, frisch dazu","mozzarella de bufflonne fumée, à froid"],
-["provola affumicata di bufala","smoked buffalo provola","geräucherte Büffel-Provola","provola de bufflonne fumée"],
-["provola affumicata","smoked provola","geräucherte Provola","provola fumée"],
-["ricotta affumicata","smoked ricotta","geräucherte Ricotta","ricotta fumée"],
-["ricotta fresca","fresh ricotta","frische Ricotta","ricotta fraîche"],
-["Grana Padano in scaglie","Grana Padano shavings","Grana-Padano-Späne","copeaux de Grana Padano"],
-["Grana a scaglie","Grana shavings","Grana-Späne","copeaux de Grana"],
-["grana a scaglie","Grana shavings","Grana-Späne","copeaux de Grana"],
-["Grana in cottura","Grana, baked in","Grana, mitgebacken","Grana, cuit"],
-["bordo ripieno di","crust stuffed with","Rand gefüllt mit","bord farci à la"],
-["melanzane fritte","fried aubergine","frittierte Auberginen","aubergines frites"],
-["patate al forno","oven-roasted potatoes","Ofenkartoffeln","pommes de terre au four"],
-["fonduta di montasio","Montasio fondue","Montasio-Fondue","fondue de Montasio"],
-["crema di olive nere","black-olive cream","Creme von schwarzen Oliven","crème d'olives noires"],
-["formaggio di capra","goat's cheese","Ziegenkäse","fromage de chèvre"],
-["formaggio salato","local salted cheese","regionaler Salzkäse","fromage salé local"],
-["formaggi misti","mixed cheeses","gemischter Käse","fromages variés"],
-["verdure miste","mixed vegetables","gemischtes Gemüse","légumes variés"],
-["granella di pistacchio","chopped pistachios","gehackte Pistazien","éclats de pistache"],
-["tuorlo d'uovo","egg yolk","Eigelb","jaune d'œuf"],
-["lardo alle erbe","herbed lardo","Kräuter-Lardo","lardo aux herbes"],
-["salame piccante","spicy salami","scharfe Salami","salami piquant"],
-["salsa caesar","Caesar dressing","Caesar-Dressing","sauce César"],
-["pollo fritto","crispy fried chicken","knuspriges Hähnchen","poulet frit"],
-["misticanza","mixed leaves","Blattsalate","mesclun"],
-["cipolla rossa","red onion","rote Zwiebel","oignon rouge"],
-["peperoncino","chilli","Peperoncino","piment"],
-["pepe nero","black pepper","schwarzer Pfeffer","poivre noir"],
-["olive nere","black olives","schwarze Oliven","olives noires"],
-["miele piccante","spicy honey","scharfer Honig","miel piquant"],
-["radicchio","radicchio","Radicchio","radicchio"],
-["mortadella","mortadella","Mortadella","mortadelle"],
-["guanciale","guanciale","Guanciale","guanciale"],
-["pecorino","pecorino","Pecorino","pecorino"],
-["friarielli","friarielli greens","Friarielli","friarielli"],
-["montasio","Montasio cheese","Montasio","Montasio"],
-["speck","speck","Speck","speck"],
-["feta","feta","Feta","feta"],
-["brie","brie","Brie","brie"],
-["gorgonzola","gorgonzola","Gorgonzola","gorgonzola"],
-["mandorle","almonds","Mandeln","amandes"],
-["naturale / frizzante","still / sparkling","still / sprudelnd","plate / gazeuse"],
-["Non filtrata, non pastorizzata","Unfiltered, unpasteurised","Unfiltriert, nicht pasteurisiert","Non filtrée, non pasteurisée"],
-["Artigianale Friulana","Friulian craft brewery","Friaulische Craft-Brauerei","brasserie artisanale frioulane"],
-["Keller Pils, senza glutine","Keller Pils, gluten-free","Keller Pils, glutenfrei","Keller Pils, sans gluten"],
-["Senza glutine","Gluten-free","Glutenfrei","Sans gluten"],
-["American pale ale","American pale ale","American Pale Ale","American pale ale"],
-["ripieno:","filling:","Füllung:","farce :"],
-["base:","base:","Basis:","base :"],
-["pomodorini","cherry tomatoes","Kirschtomaten","tomates cerises"],
-["pomodoro","tomato","Tomate","tomate"],
-["basilico","basil","Basilikum","basilic"],
-["aglio","garlic","Knoblauch","ail"],
-["olive","olives","Oliven","olives"],
-["olio","oil","Öl","huile"],
-["origano","oregano","Oregano","origan"],
-["capperi","capers","Kapern","câpres"],
-["acciughe","anchovies","Sardellen","anchois"],
-["prosciutto","cooked ham","Kochschinken","jambon cuit"],
-["porcini","porcini mushrooms","Steinpilze","cèpes"],
-["funghi","mushrooms","Champignons","champignons"],
-["carciofi","artichokes","Artischocken","artichauts"],
-["tonno","tuna","Thunfisch","thon"],
-["cipolla","onion","Zwiebel","oignon"],
-["rucola","rocket","Rucola","roquette"],
-["pesto genovese","Genoese pesto","Pesto Genovese","pesto génois"],
-["bufala in cottura","buffalo mozzarella, baked in","Büffelmozzarella, mitgebacken","mozzarella de bufflonne, cuite"],
-["bufala","buffalo mozzarella","Büffelmozzarella","mozzarella de bufflonne"],
-["polenta","polenta","Polenta","polenta"],
-["würstel","frankfurters","Würstel","saucisses"],
-["wurstel","frankfurters","Würstel","saucisses"],
-["pancetta","pancetta","Pancetta","pancetta"],
-["salamino","salami","Salami","salami"],
-["salame","salami","Salami","salami"],
-["salsiccia","Italian sausage","Salsiccia","saucisse italienne"],
-["bresaola","bresaola","Bresaola","bresaola"],
-["zucchine","courgettes","Zucchini","courgettes"],
-["pepe","pepper","Pfeffer","poivre"],
-["noci","walnuts","Walnüsse","noix"],
-["miele","honey","Honig","miel"],
-["porro","leek","Lauch","poireau"],
-["patate","potatoes","Kartoffeln","pommes de terre"],
-["Bionda","Blonde","Hell","Blonde"],
-["Ambrata","Amber","Bernstein","Ambrée"],
-["Scura","Dark","Dunkel","Brune"],
-["Lagher","Lager","Lager","Lager"],
-["Bock","Bock","Bock","Bock"],
-["Ipa","IPA","IPA","IPA"],
-["Wieze","Wieze","Wieze","Wieze"],
-];
-function trDesc(s){
-  if(LANG==="it"||!s) return s;
-  const i = LANG==="en"?1:LANG==="de"?2:3;
-  let out = s;
-  for(const t of TERMS) out = out.split(t[0]).join(t[i]||t[0]);
-  return out;
-}
-/* nomi generici tradotti (le pizze restano in italiano) — [en, de, fr] */
-const NAME_TR = {
-"Prosciutto Crudo":["Cured ham","Rohschinken","Jambon cru"],
-"Prosciutto Crudo con Burrata":["Cured ham with burrata","Rohschinken mit Burrata","Jambon cru & burrata"],
-"Prosciutto Crudo con Mozzarella di Bufala":["Cured ham with buffalo mozzarella","Rohschinken mit Büffelmozzarella","Jambon cru & mozzarella de bufflonne"],
-"Tagliere di Affettati Misti e Formaggi":["Mixed cured-meat & cheese board","Aufschnitt- & Käseplatte","Planche de charcuterie & fromages"],
-"Caprese con Bufala e Pomodorini":["Caprese with buffalo mozzarella & cherry tomatoes","Caprese mit Büffelmozzarella & Kirschtomaten","Caprese à la bufflonne & tomates cerises"],
-"Cotoletta e Patate Fritte":["Cutlet & fries","Schnitzel & Pommes","Escalope & frites"],
-"Insalata Mista":["Mixed salad","Gemischter Salat","Salade mixte"],
-"Panino Vegetariano e Patate Fritte":["Veggie sandwich & fries","Vegetarisches Sandwich & Pommes","Sandwich végétarien & frites"],
-"Hot Dog e Patate Fritte":["Hot dog & fries","Hot Dog & Pommes","Hot-dog & frites"],
-"Patatine Fritte":["French fries","Pommes frites","Frites"],
-"Alette di Pollo (6 pz)":["Chicken wings (6 pcs)","Chicken Wings (6 Stk.)","Ailes de poulet (6 pcs)"],
-"Anelli di Cipolla (6 pz)":["Onion rings (6 pcs)","Zwiebelringe (6 Stk.)","Rondelles d'oignon (6 pcs)"],
-"Mini Frico (8 pz)":["Mini frico (8 pcs)","Mini-Frico (8 Stk.)","Mini frico (8 pcs)"],
-"Pepite di Asiago (8 pz)":["Asiago nuggets (8 pcs)","Asiago-Nuggets (8 Stk.)","Nuggets d'Asiago (8 pcs)"],
-"Montanare (4 pz)":["Montanare (4 pcs)","Montanare (4 Stk.)","Montanare (4 pcs)"],
-"Stuzzica Mix":["Stuzzica mix","Stuzzica-Mix","Stuzzica mix"],
-"Acqua 0,5 l · naturale / frizzante":["Water 0.5 l · still / sparkling","Wasser 0,5 l · still / sprudelnd","Eau 0,5 l · plate / gazeuse"],
-"Bibite · bevande analcoliche 0,3 l":["Soft drinks · 0.3 l","Softdrinks · 0,3 l","Boissons sans alcool · 0,3 l"],
-"Di Bufala":["Buffalo mozzarella","Büffelmozzarella","Mozzarella de bufflonne"],
-"Crudo":["Cured ham","Rohschinken","Jambon cru"],
-"Burrata":["Burrata","Burrata","Burrata"],
-"Porcini":["Porcini","Steinpilze","Cèpes"],
-"Pitina":["Pitina","Pitina","Pitina"],
-"Ricotta":["Ricotta","Ricotta","Ricotta"],
-"Brie":["Brie","Brie","Brie"],
-"Gorgonzola dolce":["Sweet gorgonzola","Milder Gorgonzola","Gorgonzola doux"],
-};
-function trName(n){
-  if(LANG==="it") return n;
-  const t = NAME_TR[n];
-  const i = LANG==="en"?0:LANG==="de"?1:2;
-  return t ? (t[i]||n) : n;
-}
 
-/* =============== dati menù ANTICA COLTELLERIA (carta 2025) =============== */
+/* =============== dati menù ANTICA COLTELLERIA (carta ufficiale 2025) =============== */
 const MENU = {
 classiche:[
-["Marinara","pomodoro, aglio, origano, olio evo","5,50"],
-["Margherita","pomodoro, mozzarella, basilico","6,50"],
-["Napoli","pomodoro, mozzarella, acciughe, capperi, origano","8,00"],
-["Prosciutto","pomodoro, mozzarella, prosciutto cotto","8,00"],
-["Funghi","pomodoro, mozzarella, funghi","8,00"],
-["Prosciutto e Funghi","pomodoro, mozzarella, prosciutto cotto, funghi","8,50"],
-["Wurstel","pomodoro, mozzarella, wurstel","8,00"],
-["Capricciosa","pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive","9,50"],
-["Quattro Stagioni","pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive","9,50"],
-["Quattro Formaggi","pomodoro, mozzarella, gorgonzola, grana, provola","9,50"],
-["Diavola","pomodoro, mozzarella, salame piccante","8,50"],
-["Vegetariana","pomodoro, mozzarella, verdure di stagione","9,00"],
+["Marinara","pomodoro, aglio, olio, origano","5,50"],
+["Margherita","pomodoro, mozzarella","6,50"],
+["Romana","pomodoro, mozzarella, acciughe, origano","7,50"],
+["Diavola","pomodoro, mozzarella, salamino piccante","8,00"],
+["Viennese","pomodoro, mozzarella, würstel","7,50"],
+["Prosciutto e Funghi","pomodoro, mozzarella, prosciutto, funghi","8,00"],
+["Capricciosa","pomodoro, mozzarella, prosciutto, funghi, carciofi, olive","9,00"],
 ["Tonno e Cipolla","pomodoro, mozzarella, tonno, cipolla","8,50"],
-["Bufala","pomodoro, mozzarella di bufala, basilico","9,00"],
-["Bufala e Crudo","pomodoro, mozzarella di bufala, prosciutto crudo San Daniele","11,00"],
+["Quattro Formaggi","pomodoro, mozzarella, gorgonzola, edamer, grana","8,50"],
+["Ricotta e Spinaci","pomodoro, mozzarella, ricotta, spinaci","8,00"],
+["San Daniele","pomodoro, mozzarella, prosciutto crudo","9,50"],
+["Porcini","pomodoro, mozzarella, porcini","9,00"],
+["Bufalina","pomodoro, mozzarella, bufala, pomodorini","9,50"],
+["Rucola e Grana","pomodoro, mozzarella, rucola, grana in scaglie","8,50"],
+["Valtellina","pomodoro, mozzarella, bresaola, rucola, grana in scaglie","10,00"],
+["Verdure","pomodoro, mozzarella, verdure miste","9,00"],
+["Calzone","pomodoro, mozzarella, prosciutto, funghi","9,00"],
+["Calzone Ricotta","pomodoro, mozzarella, prosciutto, ricotta","9,00"],
 ],
 speciali:[
-["Coltelleria","pomodoro, mozzarella, speck, gorgonzola, noci","11,00"],
-["Battiferri","pomodoro, mozzarella, salsiccia, friarielli, provola affumicata","11,00"],
-["Maniago","pomodoro, mozzarella, radicchio, montasio, speck","11,00"],
-["Forgia","bordo ripieno di ricotta, pomodoro, mozzarella, salame piccante, 'nduja","12,00"],
-["Fuoco","pomodoro, mozzarella, salsiccia, peperoni, cipolla, peperoncino","11,00"],
-["Boscaiola","pomodoro, mozzarella, funghi porcini, salsiccia","11,00"],
-["Montanara","pomodoro, mozzarella, speck, brie, funghi","11,00"],
-["Contadina","pomodoro, mozzarella, patate al forno, salsiccia, rosmarino","10,50"],
-["Friulana","pomodoro, mozzarella, frico, patate, cipolla","11,00"],
-["Bufalina d'Autore","pomodoro, mozzarella di bufala, pomodorini, rucola, grana in scaglie, crudo","12,50"],
-["Tartufo","mozzarella, crema al tartufo, funghi, grana","12,50"],
-["Mare","pomodoro, mozzarella, frutti di mare","12,00"],
-],
-bianche:[
-["Focaccia","olio evo, rosmarino, sale","4,50"],
-["Focaccia Farcita","prosciutto crudo, stracchino","8,50"],
-["Ortolana","mozzarella, verdure grigliate, grana","9,50"],
-["Speck e Brie","mozzarella, speck, brie","10,00"],
-["Salmone","mozzarella, salmone, rucola, philadelphia","11,50"],
-["Quattro Formaggi Bianca","mozzarella, gorgonzola, grana, provola","9,50"],
-["Patate e Salsiccia","mozzarella, patate al forno, salsiccia","10,00"],
-],
-calzoni:[
-["Calzone Classico","pomodoro, mozzarella, prosciutto cotto, funghi","9,00"],
-["Calzone Farcito","pomodoro, mozzarella, prosciutto cotto, salame, ricotta","10,50"],
-["Calzone Vegetariano","pomodoro, mozzarella, verdure di stagione","9,50"],
+["Pizza del Mese","chiedi informazioni al personale",""],
+["La Golosa","pomodoro, origano, aglio, cipolla, salamino, grana, stracciatella","10,00"],
+["Genovese","mozzarella, pesto alla genovese, pomodori secchi, burrata","12,00"],
+["Boscaiola","pomodoro, mozzarella, porcini, salsiccia, stracchino, rucola","12,00"],
+["Romagna","mozzarella, mortadella, granella di pistacchio, burrata","13,00"],
+["Parmigiana","pomodoro, mozzarella, melanzane fritte, provola affumicata, grana","11,00"],
+["Burrata e Crudo","pomodoro, prosciutto crudo, burrata","13,00"],
+["Aspromonte","pomodoro, scamorza, n'duja, bufala","11,50"],
+["Monte Jouf","pomodoro, scamorza, prosciutto, ricotta, bufala, speck","12,00"],
+["Wally","mozzarella, radicchio, gorgonzola, salamino","10,00"],
+["Carbonara","mozzarella, uovo, guanciale, pepe, pecorino","9,00"],
+["Kiriaky","pomodoro, olive, feta greca, pomodorini, cipolla","10,00"],
+["La Grassa","pomodoro, mozzarella, salamino, würstel, salsiccia, pancetta","10,00"],
+["Messicana","pomodoro, mozzarella, fagioli, pancetta, n'duja","10,00"],
+["Dolce Salato","mozzarella, speck, gorgonzola, noci, miele","11,00"],
+["Bombolone Bufalotto","bufala 250g, prosciutto crudo, rucola, grana, pomodorini","13,00"],
+["Siciliana","pomodoro, mozzarella, capperi, olive, acciughe, origano","8,00"],
+["Calabrese","pomodoro, mozzarella, peperoni, salsiccia, salamino piccante","9,00"],
+["Petlidzan","pomodoro, mozzarella, melanzane, salsiccia","9,00"],
+["Sarah","mozzarella, patate al forno, brie, salamino","9,50"],
+["Primo Amore","pomodoro, mozzarella di bufala, pomodorini, basilico","9,00"],
+["Parigina","mozzarella, brie, noci","8,50"],
+["Pizza Chips","pomodoro, mozzarella, patate fritte","7,50"],
+["Treviso","pomodoro, mozzarella, radicchio","8,50"],
+["Antica Coltelleria","pomodoro, scamorza, bufala, olive, pomodori secchi","11,00"],
+["Dama Bianca","mozzarella, ricotta, prosciutto crudo, bufala","10,00"],
+["Friarelli e Salsiccia","mozzarella, broccoli napoletani, salsiccia","10,00"],
+["Friuli","pomodoro, mozzarella, radicchio, sopressa, montasio","10,00"],
+["Provola e Speck","pomodoro, mozzarella, provola, speck","9,50"],
+["Maglio","pomodoro, mozzarella, cipolla, rosmarino, salsiccia, patate al forno","9,00"],
+["Stracchino e Pancetta","mozzarella, stracchino, pancetta","9,00"],
+["Primavera","pomodorini, mozzarella, bufala, crudo, rucola, grana","12,00"],
+["Stracchino Mais e Pomodorini","pomodoro, mozzarella, stracchino, mais, pomodorini","9,00"],
+["Tirolese","mozzarella, panna, porcini, speck","10,00"],
+["Montana","pomodoro, mozzarella, funghi misti","9,00"],
+["Francesina","mozzarella, prosciutto cotto, brie, patate","9,00"],
+["Brie Speck Ricotta","pomodoro, mozzarella, brie, speck, ricotta affumicata","11,00"],
+["Pizza N'duja","pomodoro, mozzarella, n'duja","9,00"],
+["Raf","pomodoro, mozzarella, salsiccia, gorgonzola, porcini, bufala, rucola","12,00"],
 ],
 cucina:[
-["Tagliere della Coltelleria","salumi e formaggi del territorio","14,00"],
-["Frico con Polenta","frico friulano, polenta","10,00"],
-["Cotoletta e Patate Fritte","","12,00"],
-["Gnocchi al Ragù","","9,00"],
-["Insalatona","misticanza, pomodorini, mais, tonno, uovo","9,00"],
-["Insalata Mista","","5,00"],
+["Tagliata di Manzo","con patate e verdure","19,00"],
+["Salsiccia","con patate e polenta","11,00"],
+["Hamburger","alla piastra con patatine","10,00"],
+["Frico","con polenta","9,50"],
+["Bistecca Impanata","con patate fritte","11,00"],
+["Grigliata Mista","tagliata, würstel, salsiccia, frico, polenta, patatine, verdure e arrosticini d'agnello","18,00"],
+["Grigliata Mista per 2","tagliata 2pz, würstel 2pz, salsiccia 2pz, frico, polenta, patatine, verdure e arrosticini d'agnello","36,00"],
+["Arrosticini d'Agnello","con patate","12,00"],
+["Galletto con Patate Fritte","a scelta tra piccante o normale","13,90"],
+["Galletto con Verdure","a scelta tra piccante o normale","14,90"],
+["Ljubljanska","con patate","17,00"],
+["Duo","salsiccia, frico, patate e polenta","14,00"],
 ],
-stuzzicherie:[
-["Patatine Fritte","","4,50"],
-["Alette di Pollo","","6,50"],
-["Anelli di Cipolla","","5,50"],
-["Nuggets di Pollo","","6,00"],
-["Mozzarelline Fritte","","6,00"],
-["Olive Ascolane","","6,00"],
-["Mix Fritto","","9,00"],
+hamburger:[
+["Classico","hamburger 150g, cheddar, lattuga e pomodoro","10,00"],
+["Maxi Burger","hamburger 220g, cheddar, lattuga e pomodoro","12,00"],
+["Bacon","hamburger 150g, cheddar, lattuga, pomodoro, cipolla, pancetta","11,00"],
+["Maxi Bacon","hamburger 220g, cheddar, lattuga, pomodoro, cipolla, pancetta","13,00"],
+["Bismarck","hamburger 220g, cheddar, lattuga, pomodoro, cipolla, pancetta, uovo alla piastra","14,00"],
+["Chianina","hamburger 220g, scamorza affumicata, lattuga, pomodoro","13,00"],
+["Black Angus","hamburger 220g, cheddar, lattuga, pomodoro, pancetta, cipolla","13,00"],
+["Chicken Burger","cotoletta di pollo, lattuga, salsa antica","10,00"],
+["L'Affumicato","pane della pizza, salsiccia, peperoni, cipolla, scamorza","12,00"],
+["Panino Caldo Vegetariano","pane della pizza, bufala, verdure crude e grigliate","10,00"],
+["Hot-Dog","","7,50"],
 ],
-dolci:[]
+sandwich:[
+["Club Sandwich Classico","bacon, pomodoro, lattuga, uovo, prosciutto cotto, zucchine, salsa antica","12,00"],
+["Antica Club","bacon, pomodoro, lattuga, uovo, pollo fritto, zucchine, salsa antica","12,00"],
+["Toast","prosciutto cotto e formaggio","7,00"],
+],
 };
 
-/* immagine o illustrazione per ogni categoria */
+/* immagine per ogni categoria menu */
 const CAT_IMG = {
   classiche:"assets/pizza3.webp",
   speciali:"assets/pizza1.webp",
-  bianche:"assets/pizza8.webp",
-  calzoni:"assets/pizza7.webp",
   cucina:"assets/ac_int_lounge.webp",
-  stuzzicherie:"assets/pizza5.webp",
-  bevande:"assets/ac_bar.webp",
-  dolci:"assets/ac_int_bar1.webp"
+  hamburger:"assets/pizza5.webp",
+  sandwich:"assets/pizza7.webp",
+  bevande:"assets/ac_bar.webp"
 };
 
-const VARIANTI = [["Bufala","2,50"],["Crudo San Daniele","3,00"],["Porcini","2,50"],["Burrata","4,00"],["Speck","2,50"]];
-const CORNICE  = [["Ricotta","3,00"],["Wurstel","3,00"],["Gorgonzola","3,00"]];
-const SPINA = [
-["Bionda","Lager chiara","3,00","5,00","15,00"],
-["Rossa","Ambrata","3,50","5,50","16,50"],
-["Weiss","Bianca di frumento","3,50","5,50","16,50"]];
-const BOTTIGLIA = [
-["Birre Artigianali Friulane","selezione del territorio",[
-  ["Pale Ale","American pale ale · 0,33 l","5,00"],
-  ["Pils","Keller pils · 0,33 l","5,00"],
-  ["Ambrata","0,33 l","5,00"],
-  ["Scura","0,33 l","5,00"]]],
-["Birre Internazionali","",[
-  ["Weiss","0,5 l","5,50"],
-  ["Doppio Malto","0,5 l","5,50"]]]];
-const VINI = [
-["Cabernet","2,00","7,00","12,00"],
-["Merlot","2,00","7,00","12,00"],
-["Friulano","2,00","7,00","12,00"],
-["Prosecco DOC","3,00","8,00","15,00"]];
-const SPRITZ = [["Spritz Aperol","5,00"],["Spritz Campari","5,00"],["Negroni","6,00"],["Americano","5,00"],["Amaro del Capo","4,00"],["Montenegro","4,00"],["Grappa","4,00"]];
-const ALTRO = [["Acqua 0,5 l · naturale / frizzante","2,00"],["Bibite · bevande analcoliche 0,33 l","3,00"],["Caffè","1,50"]];
+const AGGIUNTE = [["Aggiunta di Bufala","3,00"],["Aggiunta di Crudo","3,00"],["Maggiorazione x aggiunta","1,00"],["Impasto integrale","2,00"],["Coperto","1,00"]];
 
-/* =============== render =============== */
+/* bevande — dalla carta birreria (birre alla spina, bottiglia, vini) */
+const SPINA = [
+["Bionda","lager chiara","3,00","5,00"],
+["Rossa","ambrata","3,50","5,50"],
+["Weiss","bianca di frumento","3,50","5,50"]];
+const BOTTIGLIA = [
+["Artigianali Friulane","selezione del territorio",[
+  ["Pale Ale","0,33 l","5,00"],
+  ["Pils","0,33 l","5,00"],
+  ["Ambrata","0,33 l","5,00"],
+  ["Scura","0,33 l","5,00"]]]];
+const VINI = [
+["Cabernet","2,00","10,00"],
+["Merlot","2,00","10,00"],
+["Friulano","2,00","10,00"],
+["Prosecco DOC","2,50","12,00"]];
+const ALTRO = [["Acqua 0,5 l · naturale / frizzante","2,00"],["Bibite · analcoliche 0,33 l","3,00"],["Caffè","1,50"]];
+
+/* ============ state ============ */
 let LANG = "it";
 const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
 
+/* ============ menu render ============ */
 function item(n,d,p){
-  return `<div class="item"><div class="row"><span class="nome">${trName(n)}</span><span class="dots"></span><span class="prezzo">${p}</span></div>${d?`<p class="desc">${trDesc(d)}</p>`:""}</div>`;
+  return `<div class="item"><div class="row"><span class="nome">${n}</span><span class="dots"></span>${p?`<span class="prezzo">${p}</span>`:""}</div>${d?`<p class="desc">${d}</p>`:""}</div>`;
 }
 const simple = rows => rows.map(r=>item(r[0],"",r[1])).join("");
 
+const MENU_ORDER = ["classiche","speciali","cucina","hamburger","sandwich","bevande"];
+
 function renderMenu(){
   const t = T[LANG];
-  const order = ["classiche","speciali","bianche","calzoni","cucina","stuzzicherie","bevande","dolci"];
-  $("#chips").innerHTML = order.map((id,i)=>`<button data-go="${id}" class="${i===0?"on":""}">${t.cats[id][0]}</button>`).join("");
-
+  $("#chips").innerHTML = MENU_ORDER.map((id,i)=>`<button data-go="${id}" class="${i===0?"on":""}">${t.cats[id][0]}</button>`).join("");
   let html = "";
-  order.forEach((id,idx)=>{
+  MENU_ORDER.forEach((id,idx)=>{
     const [titolo,tag] = t.cats[id];
     const n = String(idx+1).padStart(2,"0");
     html += `<section class="mcat fx" id="cat-${id}">`;
-    if(CAT_IMG[id]){
-      const isPhoto = ["cucina","bevande","dolci"].includes(id);
-      html += `<div class="cat-hero"><span class="arc"></span><img class="${isPhoto?'photo':'pizza'}" src="${CAT_IMG[id]}" alt="" loading="lazy"></div>`;
-    }
-    html += `<header><span class="n">${n}</span><h3>${titolo}</h3></header><p class="tag">${tag}</p><div class="rule"></div>`;
-    if(id==="dolci") html += `<p class="dolci-note">${t.dolci_note}</p>`;
-    else if(MENU[id]) html += MENU[id].map(v=>item(v[0],v[1],v[2])).join("");
-
-    if(id==="calzoni") html += `<p class="groupline">${t.varianti}</p>` + simple(VARIANTI);
-    if(id==="speciali")  html += `<p class="groupline">${t.cornice}</p>` + simple(CORNICE)
-                             + simple([[t.impasti,"3,00"],[t.coperto,"1,50"]]);
+    html += `<div class="mcat-head"><span class="n">${n}</span><h3>${titolo}</h3></div><p class="tag">${tag}</p>`;
     if(id==="bevande"){
-      html += `<p class="groupline">${t.spina}</p>`;
-      html += SPINA.map(b=>`<div class="item multi"><div class="row"><span class="nome">${b[0]}</span><span class="dots"></span></div><span class="sub">${trDesc(b[1])}</span><div class="pricegrid"><span>0,3 l<b>${b[2]}</b></span><span>0,5 l<b>${b[3]}</b></span><span>1,5 l<b>${b[4]}</b></span></div></div>`).join("");
+      html += `<div class="mlist">`;
+      html += `<div><p class="groupline">${t.spina}</p>`;
+      html += SPINA.map(b=>`<div class="item multi"><div class="row"><span class="nome">${b[0]}</span><span class="dots"></span></div><span class="sub">${b[1]}</span><div class="pricegrid"><span>0,3 l<b>${b[2]}</b></span><span>0,5 l<b>${b[3]}</b></span></div></div>`).join("");
       html += `<p class="groupline">${t.bottiglia}</p>`;
       for(const g of BOTTIGLIA){
-        html += `<p class="groupsub">${trDesc(g[0])}${g[1]?`, ${trDesc(g[1])}`:""}</p>`;
+        html += `<p class="groupsub">${g[0]}${g[1]?` — ${g[1]}`:""}</p>`;
         html += g[2].map(b=>item(b[0],b[1],b[2])).join("");
       }
+      html += `</div><div>`;
       html += `<p class="groupline">${t.vini}</p>`;
-      html += VINI.map(v=>`<div class="item multi"><div class="row"><span class="nome">${v[0]}</span><span class="dots"></span></div><div class="pricegrid"><span>${t.calice}<b>${v[1]}</b></span><span>${t.caraffa} 0,5<b>${v[2]}</b></span><span>${t.bott} 0,75<b>${v[3]}</b></span></div></div>`).join("");
-      html += `<p class="groupline">${t.spritz}</p>` + simple(SPRITZ) + simple(ALTRO);
+      html += VINI.map(v=>`<div class="item multi"><div class="row"><span class="nome">${v[0]}</span><span class="dots"></span></div><div class="pricegrid"><span>${t.calice}<b>${v[1]}</b></span><span>${t.bott} 0,75<b>${v[2]}</b></span></div></div>`).join("");
+      html += `<p class="groupline">${t.altro}</p>` + simple(ALTRO);
+      html += `</div></div>`;
+    } else {
+      html += `<div class="mlist">` + MENU[id].map(v=>item(v[0],v[1],v[2])).join("") + `</div>`;
+      if(id==="speciali") html += `<p class="groupline">${t.varianti} · ${t.coperto}</p><div class="mlist">`+simple(AGGIUNTE)+`</div>`;
     }
     html += `</section>`;
   });
   $("#carta").innerHTML = html;
   bindChips(); observeAll();
-  if(typeof chipScrollState==="function") requestAnimationFrame(chipScrollState);
 }
 
-/* =============== i18n apply =============== */
-function applyLang(l){
-  LANG = l;
-  document.documentElement.lang = l;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const k = el.dataset.i18n;
-    if(T[l][k] !== undefined) el.innerHTML = T[l][k];
-  });
-  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on", b.dataset.lang===l));
-  renderShow();
-  renderMenu();
-  renderGallery();
-  renderCustomer();
-  document.querySelectorAll("#showrail .bgimg, #forno .bgimg, #ggrid .bgimg, #custgrid .bgimg").forEach(im=>imgObs.observe(im));
-  if(window.__lbTag) window.__lbTag();
-}
-document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
-
-/* =============== chips + spy =============== */
-let spyCat;
+/* ============ chips + scrollspy ============ */
+let spy;
 function bindChips(){
-  document.querySelectorAll("#chips button").forEach(b=>{
-    b.addEventListener("click",()=>{
-      const el = document.getElementById("cat-"+b.dataset.go);
-      // offset = posizione sticky della chipbar (64) + sua altezza + margine
-      const cb = document.querySelector(".chipbar");
-      const off = 64 + (cb ? cb.offsetHeight : 60) + 12;
-      const y = el.getBoundingClientRect().top + scrollY - off;
-      scrollTo({top:y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto":"smooth"});
-    });
+  $$("#chips button").forEach(b=>{
+    b.onclick=()=>{
+      const el=document.getElementById("cat-"+b.dataset.go);
+      const cb=$(".chipbar");
+      const off=(matchMedia("(max-width:960px)").matches?0:parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")))+(cb?cb.offsetHeight:56)+12;
+      scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+    };
   });
-  if(spyCat) spyCat.disconnect();
-  spyCat = new IntersectionObserver(es=>{
+  if(spy) spy.disconnect();
+  spy=new IntersectionObserver(es=>{
     es.forEach(e=>{
       if(e.isIntersecting){
-        const id = e.target.id.replace("cat-","");
-        document.querySelectorAll("#chips button").forEach(b=>{
-          const on = b.dataset.go===id;
+        const id=e.target.id.replace("cat-","");
+        $$("#chips button").forEach(b=>{
+          const on=b.dataset.go===id;
           b.classList.toggle("on",on);
           if(on) b.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
         });
       }
     });
-  },{rootMargin:"-25% 0px -65% 0px"});
-  document.querySelectorAll(".mcat").forEach(s=>spyCat.observe(s));
+  },{rootMargin:"-45% 0px -50% 0px"});
+  MENU_ORDER.forEach(id=>{const el=document.getElementById("cat-"+id);if(el)spy.observe(el);});
 }
 
-
-/* =============== carosello categorie (catshow) =============== */
-const SHOW = [
-["classiche","assets/pizza3.webp"],
-["speciali","assets/pizza1.webp"],
-["bianche","assets/pizza8.webp"],
-["calzoni","assets/pizza7.webp"],
-["stuzzicherie","assets/pizza5.webp"],
-["cucina","assets/ac_int_lounge.webp"],
+/* ============ pizza strip ============ */
+const STRIP = [
+  ["pizza1.webp","Burrata e Crudo"],["pizza2.webp","Margherita"],["pizza3.webp","Rucola e Grana"],
+  ["pizza4.webp","Boscaiola"],["pizza5.webp","Parmigiana"],["pizza6.webp","Diavola"],
+  ["pizza7.webp","Calzone"],["pizza8.webp","Primavera"]
 ];
-function renderShow(){
-  const t = T[LANG];
-  const slide = ([id,img]) => {
-    const isPhoto = ["cucina","bevande","dolci"].includes(id);
-    return `<div class="slide" data-cat="${id}">
-      <div class="pz"><span class="arc"></span><span class="arc a2"></span>
-        <img class="${isPhoto?'photo':'pizza'} bgimg" style="position:static${isPhoto?';border-radius:50%':''}" data-src="${img}" alt=""></div>
-      <h2>${t.cats[id][0]}</h2>
-      <p class="sub">${t.cats[id][1]}</p><hr class="hairline" style="margin:22px auto">
-      <a class="golink" href="#cat-${id}">${t.sel_cta}</a>
-    </div>`;
-  };
-  // loop: clone ultimo in testa + clone primo in coda
-  document.getElementById("showrail").innerHTML =
-    slide(SHOW[SHOW.length-1]) + SHOW.map(slide).join("") + slide(SHOW[0]);
+let stripIdx=0;
+function renderStrip(){
+  $("#strip").innerHTML = STRIP.map(([img,nm],i)=>
+    `<div class="slide" data-i="${i}"><div class="pz"><img src="assets/${img}" alt="${nm}" loading="lazy"></div><div class="nm">${nm}</div></div>`).join("");
+  $("#stripdots").innerHTML = STRIP.map((_,i)=>`<i data-d="${i}"></i>`).join("");
+  $$("#stripdots i").forEach(d=>d.onclick=()=>{stripIdx=+d.dataset.d;layoutStrip();});
+  $$("#strip .slide").forEach(s=>s.onclick=()=>{stripIdx=+s.dataset.i;layoutStrip();});
+  layoutStrip();
 }
+function layoutStrip(){
+  const slides=$$("#strip .slide"); if(!slides.length) return;
+  const n=slides.length; stripIdx=(stripIdx%n+n)%n;
+  const mid=slides[stripIdx];
+  const strip=$("#strip");
+  const view=$(".strip-view");
+  const cx=view.clientWidth/2;
+  const target=mid.offsetLeft+mid.offsetWidth/2;
+  strip.style.transform=`translateX(${cx-target}px)`;
+  slides.forEach((s,i)=>s.classList.toggle("mid",i===stripIdx));
+  $$("#stripdots i").forEach((d,i)=>d.classList.toggle("on",i===stripIdx));
+}
+$$('[data-strip]').forEach(b=>b.onclick=()=>{stripIdx+=+b.dataset.strip;layoutStrip();});
+let stripAuto=setInterval(()=>{stripIdx++;layoutStrip();},4500);
+$(".strip-wrap").addEventListener("pointerdown",()=>{clearInterval(stripAuto);});
+addEventListener("resize",()=>layoutStrip());
 
-/* =============== carosello categorie: loop control =============== */
-const rail = document.getElementById("showrail");
-const SN = SHOW.length;
-const showW = () => rail.querySelector(".slide").getBoundingClientRect().width;
-const showCenter = i => rail.scrollTo({left:(i+1)*showW(), behavior:"auto"});
-let showIdx = 0, showTick;
-rail.addEventListener("scroll",()=>{
-  clearTimeout(showTick);
-  showTick = setTimeout(()=>{
-    const raw = Math.round(rail.scrollLeft/showW()) - 1;
-    if(raw < 0){ showCenter(SN-1); showIdx=SN-1; }
-    else if(raw >= SN){ showCenter(0); showIdx=0; }
-    else showIdx = raw;
-  },90);
-},{passive:true});
-document.querySelectorAll("[data-show]").forEach(b=>b.addEventListener("click",()=>{
-  rail.scrollBy({left: Number(b.dataset.show)*showW(), behavior:"smooth"});
-}));
-
-/* =============== carosello forno: nomi, loop, dots, drag =============== */
-/* NB: nomi 5-6-7 dedotti dagli ingredienti in foto, da verificare col cliente */
-const FORNO = [
-["assets/pizza3.webp","Margherita Classica"],
-["assets/pizza8.webp","Povera"],
-["assets/pizza6.webp","Rucola, Grana e Pomodorini"],
-["assets/pizza1.webp","Burrata e Crudo"],
-["assets/pizza5.webp","Saporita"],
-["assets/pizza4.webp","Estiva"],
-["assets/pizza2.webp","Parmigiana"],
-];
-const forno = document.getElementById("forno");
-const N = FORNO.length;
-function fig(d,clone){return `<figure${clone?' data-clone="1" aria-hidden="true"':''}><div class="shot"><img class="pizza bgimg" style="position:static" data-src="${d[0]}" alt="${clone?'':d[1]}"></div><figcaption><span>${d[1]}</span></figcaption></figure>`}
-/* loop infinito: buffer di cloni su entrambi i lati, ampio abbastanza
-   da coprire il viewport più largo. CLONES = N garantisce copertura totale. */
-const CLONES = N;
-(function buildForno(){
-  let head="", tail="";
-  for(let i=0;i<CLONES;i++){
-    head += fig(FORNO[(N - CLONES + i)%N], true);   // ultimi CLONES elementi
-    tail += fig(FORNO[i%N], true);                    // primi CLONES elementi
-  }
-  forno.innerHTML = head + FORNO.map(d=>fig(d,false)).join("") + tail;
-})();
-document.getElementById("fornodots").innerHTML = FORNO.map((_,i)=>`<i data-d="${i}"></i>`).join("");
-
-const gap = () => parseFloat(getComputedStyle(forno).columnGap || getComputedStyle(forno).gap) || 0;
-const figs = () => forno.querySelectorAll("figure");
-const figW = () => forno.querySelector("figure").offsetWidth;
-const step = () => figW() + gap();
-const slideW = step;   // alias retained for existing callers
-/* posiziona la figure con indice DOM assoluto fi, centrata nel viewport */
-const scrollToDom = (fi,behavior="auto") => {
-  const f = figs()[fi];
-  if(!f) return;
-  forno.scrollTo({left: f.offsetLeft - (forno.clientWidth - f.offsetWidth)/2, behavior});
-};
-/* indice logico i (0..N-1) → prima copia reale (offset = CLONES) */
-const scrollToFig = (i,behavior="auto") => scrollToDom(CLONES + ((i%N)+N)%N, behavior);
-const center = i => scrollToFig(i,"auto");
-let fornoIdx = 0;
-function setDot(i){
-  fornoIdx = ((i%N)+N)%N;
-  document.querySelectorAll("#fornodots i").forEach((d,k)=>d.classList.toggle("on",k===fornoIdx));
-}
-/* indice DOM della figure più vicina al centro viewport */
-function nearestDom(){
-  const mid = forno.scrollLeft + forno.clientWidth/2;
-  let best=0, bd=1e9;
-  figs().forEach((f,k)=>{
-    const c = f.offsetLeft + f.offsetWidth/2;
-    const d = Math.abs(c - mid);
-    if(d<bd){bd=d;best=k}
-  });
-  return best;
-}
-/* indice logico (0..N-1) della card centrata */
-const nearestLogical = () => (((nearestDom() - CLONES)%N)+N)%N;
-/* evidenzia la figure centrata (scale/shadow/brightness) */
-function markMid(){
-  const b = nearestDom();
-  figs().forEach((f,k)=>f.classList.toggle("mid",k===b));
-}
-/* riporta invisibilmente lo scroll nella fascia reale se siamo finiti sui cloni.
-   Avviene mentre l'utente non sta trascinando; salto istantaneo (auto) senza
-   animazione, quindi impercettibile. */
-let looping=false;
-function normalizeLoop(){
-  if(looping || forno.classList.contains("dragging")) return;
-  const dom = nearestDom();
-  const real = CLONES + nearestLogical();
-  if(dom !== real){
-    looping=true;
-    const f = figs()[dom];
-    const target = figs()[real];
-    // preserva l'offset frazionario rispetto al centro della card
-    const delta = forno.scrollLeft - (f.offsetLeft - (forno.clientWidth - f.offsetWidth)/2);
-    forno.scrollLeft = (target.offsetLeft - (forno.clientWidth - target.offsetWidth)/2) + delta;
-    requestAnimationFrame(()=>{ looping=false; });
-  }
-}
-let fornoTick;
-forno.addEventListener("scroll",()=>{
-  markMid();
-  clearTimeout(fornoTick);
-  fornoTick = setTimeout(()=>{
-    setDot(nearestLogical());
-    normalizeLoop();
-  },80);
-},{passive:true});
-document.querySelectorAll("[data-forno]").forEach(b=>b.addEventListener("click",()=>{
-  scrollToDom(nearestDom() + Number(b.dataset.forno), "smooth");
-}));
-document.querySelectorAll("#fornodots i").forEach(d=>d.addEventListener("click",()=>{
-  scrollToFig(Number(d.dataset.d), "smooth");
-}));
-
-/* drag-to-scroll desktop (mouse) per entrambi.
-   Il drag termina immediatamente al rilascio del mouse: nessuna inerzia,
-   snap fluido alla card più vicina, centrata. */
-function dragScroll(el){
-  let down=false, sx=0, sl=0, moved=false;
-  const release = ()=>{
-    if(!down) return;
-    down=false; el.classList.remove("dragging");
-    const first = el.querySelector("figure, .slide");
-    if(!first) return;
-    const full = first.classList.contains("slide");   // rail categorie: slide piena larghezza
-    if(full){
-      const w = first.getBoundingClientRect().width;
-      const i = Math.round(el.scrollLeft / w);
-      el.scrollTo({left: i*w, behavior:"smooth"});
-    } else {
-      // forno: snap immediato alla figure più vicina, centrata.
-      // offsetLeft è indipendente da transform:scale e dal padding del rail.
-      const mid = el.scrollLeft + el.clientWidth/2;
-      let best=first, bd=1e9;
-      el.querySelectorAll("figure").forEach(f=>{
-        const c=f.offsetLeft+f.offsetWidth/2, d=Math.abs(c-mid);
-        if(d<bd){bd=d;best=f}
-      });
-      el.scrollTo({left: best.offsetLeft - (el.clientWidth - best.offsetWidth)/2, behavior:"smooth"});
-    }
-  };
-  el.addEventListener("pointerdown",e=>{
-    if(e.pointerType!=="mouse") return;
-    down=true; moved=false; sx=e.clientX; sl=el.scrollLeft;
-    el.classList.add("dragging");
-  });
-  addEventListener("pointermove",e=>{
-    if(!down) return;
-    const dx = e.clientX - sx;
-    if(Math.abs(dx)>4) moved=true;
-    el.scrollLeft = sl - dx;
-  });
-  addEventListener("pointerup",release);
-  // il mouse esce dalla finestra mentre trascina → termina comunque subito
-  addEventListener("pointercancel",release);
-  window.addEventListener("blur",release);
-  el.addEventListener("click",e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); } },true);
-}
-dragScroll(forno); dragScroll(rail);
-
-/* =============== gallery esperienza =============== */
-/* Placeholder: usa gli scatti attuali del locale. Sostituire con
-   la nuova fotografia (interni, atmosfera, forno, staff, lifestyle). */
+/* ============ gallery ============ */
 const GALLERY = [
-  ["assets/ac_int_bar1.webp","g_cap_sala","wide"],
-  ["assets/ac_ext1.webp","g_cap_angolo","tall"],
-  ["assets/ac_bar.webp","g_cap_bancone",""],
-  ["assets/pizza2.webp","g_cap_forno",""],
-  ["assets/pizza3.webp","g_cap_impasto",""],
-  ["assets/ac_int_bar2.webp","g_cap_dettagli","wide"],
+  ["ac_int_bar1.webp","g_cap_sala","wide"],
+  ["ac_ext1.webp","g_cap_angolo","tall"],
+  ["ac_bar.webp","g_cap_bancone",""],
+  ["ac_int_lounge.webp","g_cap_forno",""],
+  ["ac_int_bar2.webp","g_cap_impasto","wide"],
+  ["ac_ext2.webp","g_cap_dettagli",""]
 ];
 function renderGallery(){
-  const t = T[LANG];
-  document.getElementById("ggrid").innerHTML = GALLERY.map(([src,capKey,mod])=>
-    `<figure class="g-cell ${mod}">
-       <img class="bgimg" data-src="${src}" alt="${t[capKey]||""}">
-       <figcaption class="g-cap">${t[capKey]||""}</figcaption>
-     </figure>`).join("");
+  const t=T[LANG];
+  $("#gmosaic").innerHTML = GALLERY.map(([src,cap,mod],i)=>
+    `<figure class="g-cell ${mod}" data-lb="${i}"><img src="assets/${src}" alt="${t[cap]}" loading="lazy"><figcaption class="g-cap">${t[cap]}</figcaption></figure>`).join("");
+  $$("#gmosaic .g-cell").forEach(c=>c.onclick=()=>openLB(+c.dataset.lb));
 }
 
-/* =============== customer gallery =============== */
-const WA_NUMBER = "393386803637";           // WhatsApp business (da confermare)
-/* Placeholder: al momento riusa scatti pizze. Sostituire con foto clienti approvate,
-   ottimizzate WebP/AVIF + srcset responsive. */
-const CUSTOMER = ["assets/pizza1.webp","assets/pizza4.webp","assets/pizza5.webp","assets/pizza6.webp","assets/pizza7.webp","assets/pizza8.webp"];
-function renderCustomer(){
-  const t = T[LANG];
-  document.getElementById("custgrid").innerHTML = CUSTOMER.map(src=>
-    `<figure class="cust-cell">
-       <span class="cust-badge">${t.cu_badge}</span>
-       <img class="bgimg" data-src="${src}" alt="">
-     </figure>`).join("");
-  const cta = document.getElementById("custcta");
-  cta.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(t.wa_msg)}`;
+/* ============ reviews ============ */
+function renderReviews(){
+  const t=T[LANG];
+  const R=[["r1","r1a"],["r2","r2a"],["r3","r3a"]];
+  $("#reviews").innerHTML = R.map(([q,a])=>
+    `<div class="rev"><div class="stars">★★★★★</div><p>“${t[q]}”</p><div class="by"><span class="src">Tripadvisor</span><span class="who">${t[a]}</span></div></div>`).join("");
 }
 
-/* =============== lightbox: foto a schermo intero =============== */
-(function(){
-  const lb = document.getElementById("lightbox");
-  const lbImg = document.getElementById("lb-img");
-  const lbCap = document.getElementById("lb-cap");
-  const navL = lb.querySelector(".lb-nav.l");
-  const navR = lb.querySelector(".lb-nav.r");
-  // gruppi di immagini apribili: contenitore cliccabile → immagine + caption
-  const GROUPS = [
-    {tap:"#forno figure:not([data-clone])", img:"img", all:"#forno figure:not([data-clone]) img",
-     capFrom:im=>im.closest("figure").querySelector("figcaption span")?.textContent||""},
-    {tap:"#ggrid .g-cell", img:"img", all:"#ggrid .g-cell img",
-     capFrom:im=>im.closest(".g-cell").querySelector(".g-cap")?.textContent||""},
-    {tap:"#custgrid .cust-cell", img:"img", all:"#custgrid .cust-cell img",
-     capFrom:()=>""}
-  ];
-  let group=[], idx=0, scrollY=0;
-  // src piena risoluzione: usa data-src (lazy) se presente, altrimenti src
-  const fullSrc = im => im.getAttribute("data-src") || im.currentSrc || im.src;
+/* ============ lightbox ============ */
+let lbIdx=0;
+function openLB(i){lbIdx=i;showLB();$("#lightbox").classList.add("open");}
+function showLB(){
+  const t=T[LANG];const[src,cap]=GALLERY[lbIdx];
+  $("#lb-img").src="assets/"+src;$("#lb-cap").textContent=t[cap];
+}
+$(".lb-x").onclick=()=>$("#lightbox").classList.remove("open");
+$("#lightbox").onclick=e=>{if(e.target.id==="lightbox")$("#lightbox").classList.remove("open");};
+$(".lb-nav.l").onclick=()=>{lbIdx=(lbIdx-1+GALLERY.length)%GALLERY.length;showLB();};
+$(".lb-nav.r").onclick=()=>{lbIdx=(lbIdx+1)%GALLERY.length;showLB();};
+addEventListener("keydown",e=>{
+  if(!$("#lightbox").classList.contains("open"))return;
+  if(e.key==="Escape")$("#lightbox").classList.remove("open");
+  if(e.key==="ArrowLeft")$(".lb-nav.l").click();
+  if(e.key==="ArrowRight")$(".lb-nav.r").click();
+});
 
-  function show(i){
-    idx = (i+group.length)%group.length;
-    const im = group[idx];
-    lbImg.src = fullSrc(im);
-    lbImg.alt = im.alt||"";
-    const cap = im.__cap ? im.__cap() : "";
-    lbCap.textContent = cap;
-    lbCap.style.display = cap ? "" : "none";
-    const multi = group.length>1;
-    navL.style.display = navR.style.display = multi ? "" : "none";
-  }
-  function open(im, list){
-    group = list; scrollY = window.scrollY;
-    // blocca lo scroll di fondo SENZA spostare la pagina (niente position:fixed):
-    // overflow hidden mantiene la posizione corrente intatta.
-    document.documentElement.style.overflow="hidden";
-    document.body.style.overflow="hidden";
-    show(list.indexOf(im));
-    lb.classList.add("on");
-  }
-  function close(){
-    lb.classList.remove("on");
-    document.documentElement.style.overflow="";
-    document.body.style.overflow="";
-    // ripristina la posizione dopo che il layout si è ristabilito
-    const y = scrollY;
-    requestAnimationFrame(()=>window.scrollTo(0, y));
-  }
+/* ============ i18n ============ */
+function applyLang(l){
+  LANG=l;document.documentElement.lang=l;
+  $$("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(T[l][k]!==undefined)el.innerHTML=T[l][k];});
+  $$(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
+  renderMenu();renderGallery();renderReviews();
+  if($("#lightbox").classList.contains("open"))showLB();
+}
+$$(".lang button").forEach(b=>b.onclick=()=>applyLang(b.dataset.lang));
 
-  // delegazione: un solo listener per tutti (anche immagini caricate dopo)
-  document.addEventListener("click", e=>{
-    if(lb.classList.contains("on")) return;               // già aperto → gestito altrove
-    for(const g of GROUPS){
-      const cell = e.target.closest(g.tap);
-      if(cell){
-        const im = cell.querySelector(g.img);
-        if(!im) return;
-        const list=[...document.querySelectorAll(g.all)];
-        list.forEach(x=>x.__cap = ()=>g.capFrom(x));
-        open(im, list);
-        return;
-      }
-    }
-  });
-  // marca il cursore zoom-in sulle celle apribili (estetica)
-  function tagZoom(){ GROUPS.forEach(g=>document.querySelectorAll(g.tap).forEach(c=>c.setAttribute("data-zoom",""))); }
-  tagZoom(); addEventListener("resize", tagZoom);
-  window.__lbTag = tagZoom;   // richiamabile dopo i re-render
+/* ============ reveal observer ============ */
+let io;
+function observeAll(){
+  if(!io) io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis");io.unobserve(e.target);}}),{rootMargin:"0px 0px -8% 0px"});
+  $$(".fx:not(.vis)").forEach(el=>io.observe(el));
+}
 
-  // chiusura: click fuori (sfull'overlay/vuoto), bottone X, Esc.
-  // Non chiude cliccando sull'immagine, sulle frecce o sulla X, né dopo un drag.
-  let suppressClick=false;
-  lb.addEventListener("click", e=>{
-    if(suppressClick){ suppressClick=false; return; }
-    if(e.target.closest("#lb-img, .lb-nav, #lb-close")) return;
-    close();
-  });
-  document.getElementById("lb-close").addEventListener("click", e=>{ e.stopPropagation(); close(); });
-  navL.addEventListener("click", e=>{ e.stopPropagation(); show(idx-1); });
-  navR.addEventListener("click", e=>{ e.stopPropagation(); show(idx+1); });
-  addEventListener("keydown", e=>{
-    if(!lb.classList.contains("on")) return;
-    if(e.key==="Escape") close();
-    else if(e.key==="ArrowLeft" && group.length>1) show(idx-1);
-    else if(e.key==="ArrowRight" && group.length>1) show(idx+1);
-  });
+/* ============ nav solidify + tab spy ============ */
+const nav=$("#nav");
+addEventListener("scroll",()=>{nav.classList.toggle("solid",scrollY>40);},{passive:true});
+const tabSpy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)$$(".tabbar a[data-tab]").forEach(a=>a.classList.toggle("on",a.dataset.tab===e.target.dataset.zone));
+}),{rootMargin:"-45% 0px -50% 0px"});
+[["storia","storia"],["menu","menu"],["dove","dove"]].forEach(([id,z])=>{const el=document.getElementById(id);if(el){el.dataset.zone=z;tabSpy.observe(el);}});
 
-  /* drag / swipe per cambiare foto (mouse + touch).
-     L'immagine segue il dito; oltre la soglia si passa alla foto prec/succ,
-     altrimenti torna al centro. */
-  let dragging=false, sx=0, sy=0, dx=0, decided=null;
-  const fig = lb.querySelector("figure");
-  function dragStart(e){
-    if(group.length<2) return;
-    if(e.target.closest(".lb-nav, #lb-close")) return;
-    dragging=true; decided=null; dx=0;
-    sx=e.clientX; sy=e.clientY;
-    fig.style.transition="none";
-    try{ lb.setPointerCapture(e.pointerId); }catch(_){}
+/* ============ embers ============ */
+(function embers(){
+  const box=$("#ember");if(!box||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  const N=window.innerWidth<640?10:18;
+  for(let i=0;i<N;i++){
+    const e=document.createElement("i");
+    e.style.left=Math.random()*100+"%";
+    e.style.animationDuration=(6+Math.random()*7)+"s";
+    e.style.animationDelay=(Math.random()*8)+"s";
+    const s=.6+Math.random()*1.4;e.style.transform=`scale(${s})`;
+    box.appendChild(e);
   }
-  function dragMove(e){
-    if(!dragging) return;
-    const mx=e.clientX-sx, my=e.clientY-sy;
-    // decide una sola volta se il gesto è orizzontale (swipe) o verticale (ignora)
-    if(decided===null && (Math.abs(mx)>6 || Math.abs(my)>6)){
-      decided = Math.abs(mx) > Math.abs(my) ? "h" : "v";
-    }
-    if(decided!=="h") return;
-    e.preventDefault();
-    dx=mx;
-    fig.style.transform=`translateX(${dx}px)`;
-    fig.style.opacity = String(Math.max(.4, 1 - Math.abs(dx)/600));
-  }
-  function dragEnd(){
-    if(!dragging) return;
-    dragging=false;
-    if(decided==="h" && Math.abs(dx)>4) suppressClick=true;
-    fig.style.transition="";
-    const threshold = Math.min(120, innerWidth*0.18);
-    if(decided==="h" && Math.abs(dx)>threshold){
-      const dir = dx<0 ? 1 : -1;   // trascina a sinistra → foto successiva
-      // esci nella direzione del drag, poi mostra e rientra dal lato opposto
-      fig.style.transition="transform .2s ease, opacity .2s ease";
-      fig.style.transform=`translateX(${dx<0?-innerWidth:innerWidth}px)`;
-      fig.style.opacity="0";
-      setTimeout(()=>{
-        show(idx+dir);
-        fig.style.transition="none";
-        fig.style.transform=`translateX(${dx<0?innerWidth:-innerWidth}px)`;
-        fig.style.opacity="0";
-        requestAnimationFrame(()=>{
-          fig.style.transition="transform .32s cubic-bezier(.22,1,.36,1), opacity .32s ease";
-          fig.style.transform="translateX(0)";
-          fig.style.opacity="1";
-        });
-      },180);
-    } else {
-      // torna al centro
-      fig.style.transform="translateX(0)";
-      fig.style.opacity="1";
-    }
-    dx=0; decided=null;
-  }
-  lb.addEventListener("pointerdown", dragStart);
-  lb.addEventListener("pointermove", dragMove);
-  addEventListener("pointerup", dragEnd);
-  addEventListener("pointercancel", dragEnd);
 })();
 
-/* chevron chips + rilevamento scroll (fade laterali) */
-const chipsEl = document.getElementById("chips");
-const chipInner = document.querySelector(".chipbar-inner");
-document.querySelectorAll("[data-chip]").forEach(b=>b.addEventListener("click",()=>{
-  chipsEl.scrollBy({left: Number(b.dataset.chip)*180, behavior:"smooth"});
-}));
-function chipScrollState(){
-  const overflow = chipsEl.scrollWidth - chipsEl.clientWidth;
-  const scrollable = overflow > 2;
-  chipsEl.classList.toggle("scrollable", scrollable);
-  if(!scrollable){ chipInner.classList.remove("can-l","can-r"); return; }
-  chipInner.classList.toggle("can-l", chipsEl.scrollLeft > 4);
-  chipInner.classList.toggle("can-r", chipsEl.scrollLeft < overflow - 4);
-}
-chipsEl.addEventListener("scroll", chipScrollState, {passive:true});
-addEventListener("resize", chipScrollState);
+/* ============ boot ============ */
+renderStrip();renderMenu();renderGallery();renderReviews();observeAll();
+requestAnimationFrame(()=>{layoutStrip();});
 
-/* =============== reveal + lazy =============== */
-let fxObs;
-function observeAll(){
-  if(fxObs) fxObs.disconnect();
-  fxObs = new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add("vis"); fxObs.unobserve(e.target); }
-  }),{threshold:.1});
-  document.querySelectorAll(".fx").forEach(el=>fxObs.observe(el));
-}
-const imgObs = new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    const im = e.target;
-    if(im.dataset.src){ im.src = im.dataset.src; im.onload = ()=>im.classList.add("vis"); }
-    imgObs.unobserve(im);
-  }
-}),{rootMargin:"250px"});
-document.querySelectorAll(".bgimg").forEach(im=>imgObs.observe(im));
-
-/* =============== top bar + tab spy =============== */
-const sent = document.createElement("div");
-sent.style.cssText = "position:absolute;top:60px;height:1px;width:1px;pointer-events:none";
-document.body.prepend(sent);
-new IntersectionObserver(([e])=>{$("#topbar").classList.toggle("solid",!e.isIntersecting)},{rootMargin:"0px"}).observe(sent);
-const tabSpy = new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll(".tabbar a[data-tab]").forEach(a=>a.classList.toggle("on",a.dataset.tab===e.target.dataset.zone));
-    }
-  });
-},{rootMargin:"-40% 0px -55% 0px"});
-document.getElementById("storia").dataset.zone="storia";
-document.getElementById("menu").dataset.zone="menu";
-document.getElementById("dove").dataset.zone="dove";
-["storia","menu","dove"].forEach(id=>tabSpy.observe(document.getElementById(id)));
-
-renderShow();
-renderMenu();
-renderGallery();
-renderCustomer();
-observeAll();
-document.querySelectorAll("#showrail .bgimg, #forno .bgimg, #ggrid .bgimg, #custgrid .bgimg").forEach(im=>imgObs.observe(im));
-requestAnimationFrame(()=>{
-  showCenter(0); showIdx=0;   // catshow sul primo slide reale (dopo il clone)
-  center(0); setDot(0);       // forno sul primo slide reale
-  markMid();
-  chipScrollState();
-});
-requestAnimationFrame(()=>document.getElementById("splash").classList.add("ready"));
 </script>
 </body>
 </html>
