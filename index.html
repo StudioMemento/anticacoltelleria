@@ -53,8 +53,9 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   background:linear-gradient(180deg,rgba(20,17,16,.82) 0%,rgba(20,17,16,.4) 60%,transparent 100%);opacity:1;transition:opacity .4s ease}
 .nav.solid{background:rgba(16,13,12,.9);-webkit-backdrop-filter:saturate(140%) blur(16px);backdrop-filter:saturate(140%) blur(16px);box-shadow:0 1px 0 var(--hair-soft)}
 .nav.solid::before{opacity:0}
-.nav .brand{display:flex;align-items:center;height:100%;padding:16px 0;justify-self:start}
-.nav .brand img{height:100%;width:auto;object-fit:contain}
+.nav .brand{display:flex;align-items:center;height:100%;justify-self:start;overflow:visible}
+.nav .brand img{height:30px;width:auto;max-width:none;object-fit:contain;transition:height .4s ease}
+.nav.solid .brand img{height:27px}
 .nav-center{display:flex;align-items:center;justify-content:center;gap:clamp(22px,2.6vw,44px);justify-self:center}
 .nav-right{display:flex;align-items:center;gap:18px;justify-self:end}
 .nav-center a{font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--panna-2);
@@ -62,19 +63,17 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .nav-center a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--terra-vivo);transition:right .3s ease}
 .nav-center a:hover{color:var(--panna)}
 .nav-center a:hover::after{right:0}
-.nav-cta{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--panna);
-  border:1px solid var(--hair);border-radius:2px;padding:11px 20px;transition:background .25s,border-color .25s,color .25s;white-space:nowrap}
-.nav-cta:hover{background:var(--terra);border-color:var(--terra);color:var(--panna)}
-.lang{display:flex;gap:1px}
-.lang button{font-size:11px;letter-spacing:.1em;padding:6px 8px;color:var(--ferro);transition:color .2s;font-weight:500}
-.lang button.on{color:var(--terra-vivo)}
+.lang{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--hair-soft);border-radius:999px;
+  background:rgba(20,17,16,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lang button{position:relative;font-size:11px;font-weight:600;letter-spacing:.08em;padding:6px 11px;border-radius:999px;
+  color:var(--ferro);transition:color .25s,background .25s}
 .lang button:hover{color:var(--panna)}
+.lang button.on{color:var(--panna);background:var(--terra)}
 @media(max-width:1040px){
   :root{--nav-h:62px}
   .nav{grid-template-columns:1fr auto}
   .nav-center{display:none}
-  .nav-cta{display:none}
-  .nav .brand img{max-width:190px}
+  .nav .brand img{height:26px}
 }
 
 /* ===== HERO ===== */
@@ -102,9 +101,12 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:background .25s,transform .2s}
 .btn-terra:hover{background:var(--terra-vivo)}
 .btn-terra:active{transform:scale(.98)}
-.btn-ghost{display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--panna-2)}
-.btn-ghost .ic{width:42px;height:42px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;font-size:16px;transition:border-color .25s,background .25s}
-.btn-ghost:hover .ic{border-color:var(--terra-vivo);background:var(--terra-soft)}
+.btn-outline{display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--panna);
+  border:1px solid var(--hair);border-radius:2px;padding:16px 26px;transition:background .25s,border-color .25s,color .25s,transform .2s}
+.btn-outline i{font-size:17px;color:var(--terra-vivo);transition:color .25s}
+.btn-outline:hover{background:var(--terra-soft);border-color:var(--terra-vivo)}
+.btn-outline:hover i{color:var(--panna)}
+.btn-outline:active{transform:scale(.98)}
 .hero-scroll{position:absolute;right:var(--pad);bottom:clamp(60px,10vh,120px);z-index:2;
   writing-mode:vertical-rl;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--ferro);display:flex;align-items:center;gap:14px}
 .hero-scroll::after{content:"";width:1px;height:60px;background:linear-gradient(var(--terra-vivo),transparent)}
@@ -177,21 +179,15 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .strip-view.drag{cursor:grabbing}
 .strip{display:flex;gap:clamp(16px,2vw,28px);align-items:flex-start;width:max-content;will-change:transform}
-.strip .slide{flex:0 0 auto;width:clamp(200px,21vw,260px);text-align:center;user-select:none}
-.strip .pz{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:3px;
+.strip .slide{flex:0 0 auto;width:clamp(210px,22vw,270px);text-align:center;user-select:none}
+.strip .pz{position:relative;width:100%;aspect-ratio:1;overflow:hidden;border-radius:3px;
+  background:linear-gradient(160deg,#211a17,#171210);
   box-shadow:inset 0 0 0 1px var(--hair-soft);transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .4s}
-.strip .pz img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1),filter .5s;filter:saturate(.92) brightness(.82);pointer-events:none}
-.strip .pz::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,17,16,.66));transition:opacity .4s}
+.strip .pz img{width:100%;height:100%;object-fit:contain;padding:8%;transition:transform .7s cubic-bezier(.22,1,.36,1),filter .5s;filter:saturate(.96) brightness(.9);pointer-events:none}
 .strip .slide:hover .pz{box-shadow:inset 0 0 0 1px var(--hair);transform:translateY(-4px)}
-.strip .slide:hover .pz img{filter:saturate(1.02) brightness(.95);transform:scale(1.05)}
-.strip .idx{position:absolute;left:12px;top:11px;z-index:2;font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--panna-2);opacity:.8}
-.strip .nm{margin-top:16px;font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--panna-2);transition:color .3s}
+.strip .slide:hover .pz img{filter:saturate(1.04) brightness(1);transform:scale(1.05)}
+.strip .nm{margin-top:18px;font-size:15px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--panna-2);transition:color .3s}
 .strip .slide:hover .nm{color:var(--terra-vivo)}
-.strip-hint{text-align:center;margin-top:34px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ferro);
-  display:inline-flex;align-items:center;gap:10px;width:100%;justify-content:center}
-.strip-hint i{font-size:15px;color:var(--terra-vivo);animation:nudge 2.4s ease-in-out infinite}
-@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
-@media(prefers-reduced-motion:reduce){.strip-hint i{animation:none}}
 
 /* ===== FULL MENU ===== */
 #menu{background:var(--carbone-2);padding:clamp(60px,9vh,110px) 0 90px;border-top:1px solid var(--hair-soft)}
@@ -216,12 +212,12 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .mcat .tag{color:var(--ferro);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:22px;margin-bottom:32px}
 .mlist{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 56px}
 @media(max-width:760px){.mlist{grid-template-columns:1fr}}
-.item{padding:14px 0;border-bottom:1px solid var(--hair-soft)}
+.item{padding:17px 0;border-bottom:1px solid var(--hair-soft)}
 .item .row{display:flex;align-items:baseline;gap:10px}
-.item .nome{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:500;color:var(--panna);letter-spacing:.01em}
+.item .nome{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:500;color:var(--panna);letter-spacing:.01em}
 .item .dots{flex:1;border-bottom:1px dotted var(--ferro-soft);transform:translateY(-4px)}
-.item .prezzo{font-size:16px;font-weight:500;color:var(--terra-vivo);letter-spacing:.03em;white-space:nowrap}
-.item .desc{color:var(--panna-2);font-size:15px;margin-top:5px;max-width:54ch;letter-spacing:.014em}
+.item .prezzo{font-size:18px;font-weight:500;color:var(--terra-vivo);letter-spacing:.03em;white-space:nowrap}
+.item .desc{color:var(--panna-2);font-size:16.5px;line-height:1.6;margin-top:6px;max-width:56ch;letter-spacing:.012em}
 .groupline{margin:34px 0 8px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-vivo)}
 .groupsub{color:var(--ferro);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:18px;margin:12px 0 2px}
 .multi .pricegrid{display:flex;gap:22px;margin-top:5px}
@@ -277,23 +273,18 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .rev-view.drag{cursor:grabbing}
 .rev-track{display:flex;gap:18px;width:max-content;will-change:transform}
 .rev{flex:0 0 auto;width:clamp(300px,32vw,400px);background:var(--carbone-3);border:1px solid var(--hair-soft);border-radius:3px;padding:32px 30px;display:flex;flex-direction:column;user-select:none}
-.rev .stars{color:var(--terra-vivo);font-size:14px;letter-spacing:3px;margin-bottom:18px}
+.rev-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.rev .stars{color:var(--terra-vivo);font-size:14px;letter-spacing:2px}
+.rev .rev-top .src{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ferro)}
 .rev p{font-family:"Cormorant Garamond",serif;font-size:23px;font-style:italic;line-height:1.48;color:var(--panna);flex:1}
 .rev .by{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--hair-soft)}
-.rev .src{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-vivo)}
-.rev .who{font-size:12px;letter-spacing:.08em;color:var(--ferro)}
+.rev .who{font-size:12px;letter-spacing:.08em;color:var(--panna-2)}
 .rev-view img{pointer-events:none}
 
 /* ===== MAP BAND ===== */
 .mapband{position:relative;display:block;height:clamp(300px,42vh,440px);overflow:hidden;
   border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);background:var(--carbone-2)}
-.mapband iframe{width:100%;height:100%;border:0;filter:grayscale(.45) contrast(.92) brightness(.78) sepia(.12);pointer-events:none}
-.mapband::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 50%,transparent 55%,rgba(20,17,16,.5));pointer-events:none}
-.mapband-pill{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;
-  display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:var(--panna);
-  padding:13px 24px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  transition:background .25s;box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.mapband:hover .mapband-pill{background:var(--terra-vivo)}
+.mapband iframe{width:100%;height:100%;border:0;filter:grayscale(.35) contrast(.95) brightness(.82) sepia(.1)}
 
 /* ===== FOOTER ===== */
 footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
@@ -335,7 +326,9 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 /* ===== LIGHTBOX ===== */
 #lightbox{position:fixed;inset:0;z-index:100;background:rgba(12,10,9,.96);display:none;align-items:center;justify-content:center;padding:24px}
 #lightbox.open{display:flex}
-#lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:2px}
+#lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none}
+#lightbox figure{cursor:grab;touch-action:pan-y}
+#lightbox figure:active{cursor:grabbing}
 #lightbox figcaption{text-align:center;margin-top:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ferro)}
 #lightbox .lb-x{position:absolute;top:22px;right:24px;width:44px;height:44px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--panna);font-size:18px}
 #lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:1px solid var(--hair);border-radius:50%;display:grid;place-items:center;color:var(--panna);font-size:18px;background:rgba(20,17,16,.5)}
@@ -355,7 +348,6 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
     <a href="tel:+393386803637" data-i18n="nav_chiama">Chiama</a>
   </div>
   <div class="nav-right">
-    <a class="nav-cta" href="https://wa.me/393386803637" target="_blank" rel="noopener" data-i18n="nav_prenota">Prenota un tavolo</a>
     <div class="lang" role="group" aria-label="Lingua">
       <button data-lang="it" class="on">IT</button>
       <button data-lang="en">EN</button>
@@ -376,7 +368,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
     <p class="sub" data-i18n="hero_sub">Pizza, birra e cucina friulana nell'antica officina dei battiferri, nel cuore di Maniago.</p>
     <div class="hero-actions">
       <a class="btn-terra" href="#menu" data-i18n="hero_menu">Scopri il menù</a>
-      <a class="btn-ghost" href="https://wa.me/393386803637" target="_blank" rel="noopener"><span class="ic"><i class="ph-light ph-calendar-check"></i></span><span data-i18n="nav_prenota">Prenota un tavolo</span></a>
+      <a class="btn-outline" href="https://wa.me/393386803637" target="_blank" rel="noopener"><i class="ph-light ph-calendar-check"></i><span data-i18n="nav_prenota">Prenota un tavolo</span></a>
     </div>
   </div>
   <div class="hero-scroll"><span data-i18n="hero_scroll">Scorri per scoprire</span></div>
@@ -432,7 +424,6 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 <div class="strip-wrap">
   <div class="strip-head"><span class="eyebrow" data-i18n="strip_k">Dal nostro forno</span></div>
   <div class="strip-view" id="stripview"><div class="strip" id="strip"></div></div>
-  <div class="strip-hint"><i class="ph-light ph-arrows-left-right"></i><span data-i18n="strip_hint">Trascina per esplorare</span></div>
 </div>
 
 <!-- ===== FULL MENU ===== -->
@@ -484,16 +475,14 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
   </div>
   <div class="rev-slider-wrap">
     <div class="rev-view" id="revview"><div class="rev-track" id="reviews"></div></div>
-    <div class="strip-hint"><i class="ph-light ph-arrows-left-right"></i><span data-i18n="rev_hint">Trascina per leggere</span></div>
   </div>
 </section>
 
-<!-- ===== MAP BAND (full-width) ===== -->
-<a class="mapband" id="dove" href="https://www.google.com/maps/place/Pizzeria+Antica+Coltelleria/@46.1792716,12.7095079,17z/data=!3m1!5s0x4779836e0d4f0ddd:0xe42dad4b291f0f69!4m6!3m5!1s0x477983720988bb7d:0x84b4b6fd9e0eab1f!8m2!3d46.1792716!4d12.7095079!16s%2Fg%2F1tg_kgnd" target="_blank" rel="noopener" aria-label="Apri in Google Maps">
-  <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa Antica Coltelleria" tabindex="-1"
+<!-- ===== MAP BAND (full-width, interactive) ===== -->
+<section class="mapband" id="dove" aria-label="Mappa Antica Coltelleria">
+  <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa Antica Coltelleria"
     src="https://www.google.com/maps?q=46.1792716,12.7095079&z=16&output=embed"></iframe>
-  <span class="mapband-pill"><i class="ph-light ph-map-pin"></i><span data-i18n="d_maps">Apri in Google Maps</span></span>
-</a>
+</section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -575,9 +564,10 @@ it:{
   r5:"Uno dei ristoranti più curati a Maniago in cui abbia mai mangiato. Atmosfera rilassante, personale garbato e gestore di una gentilezza encomiabile.", r5a:"Recensione Sluurpy",
   r6:"Locale molto bello e curato anche nei piccoli particolari. Personale disponibile e attento alle esigenze.", r6a:"lucajimbo",
   r7:"Ambiente piacevole e recupero valido di archeologia industriale. Birra ottima e buone pizze, servizio cordiale.", r7a:"Recensione Google",
+  r8:"Locale molto bello e curato. La pizza non è stata del tutto di mio gradimento, essendo napoletano, ma apprezzo l'impegno. Raccomandato.", r8a:"Recensione Tripadvisor",
+  r9:"Posto originale e spazioso, personale gentile e disponibile. La scelta per vegani è un po' limitata, ma le birre sono buone.", r9a:"Recensione Tripadvisor",
   d_dove:"Dove", d_orari:"Orari", d_orari_v:"18:00 - 22:30 · Martedì chiuso", d_contatti:"Contatti",
   d_maps:"Apri in Google Maps", foot_p:"Pizzeria Birreria · Maniago",
-  strip_hint:"Trascina per esplorare", rev_hint:"Trascina per leggere",
   g_cap_lounge:"Il salotto",
   tab_storia:"Storia", tab_menu:"Menù", tab_contatti:"Contatti", tab_chiama:"Chiama",
   cats:{
@@ -627,9 +617,10 @@ en:{
   r5:"Lovely place to eat, next to the river. Excellent food, we had a burger and a spicy pizza — both excellent. Also ideal for large groups as this place is huge.", r5a:"Restaurant Guru review",
   r6:"The location is beautiful since it used to be an old knife-making shop converted into a restaurant, so you can see the old machinery.", r6a:"TripAdvisor review",
   r7:"Loved the restaurant, loved the location, the food was great, and the staff very friendly.", r7a:"Google review",
+  r8:"Lovely, well-kept place. The pizza wasn't entirely to my taste — being Neapolitan — but I appreciate the effort. Recommended.", r8a:"Tripadvisor review",
+  r9:"Original and spacious spot, kind and helpful staff. Choice for vegans is a bit limited, but the beers are good.", r9a:"Tripadvisor review",
   d_dove:"Where", d_orari:"Hours", d_orari_v:"6:00 pm - 10:30 pm · Closed Tuesday", d_contatti:"Contact",
   d_maps:"Open in Google Maps", foot_p:"Pizzeria Brewery · Maniago",
-  strip_hint:"Drag to explore", rev_hint:"Drag to read",
   g_cap_lounge:"The lounge",
   tab_storia:"Story", tab_menu:"Menu", tab_contatti:"Contact", tab_chiama:"Call",
   cats:{
@@ -679,9 +670,10 @@ de:{
   r5:"Eines der gepflegtesten Restaurants in Maniago, in dem ich je gegessen habe. Entspannte Atmosphäre, höfliches Personal und ein überaus freundlicher Gastgeber.", r5a:"Sluurpy-Bewertung",
   r6:"Sehr schönes Lokal, auch in den kleinen Details gepflegt. Hilfsbereites und aufmerksames Personal.", r6a:"lucajimbo",
   r7:"Angenehmes Ambiente und gelungene Wiederverwertung von Industriearchäologie. Ausgezeichnetes Bier und gute Pizzen, freundlicher Service.", r7a:"Google-Bewertung",
+  r8:"Sehr schönes, gepflegtes Lokal. Die Pizza war nicht ganz nach meinem Geschmack — als Neapolitaner —, aber ich schätze die Mühe. Empfehlenswert.", r8a:"Tripadvisor-Bewertung",
+  r9:"Origineller und geräumiger Ort, freundliches und hilfsbereites Personal. Die Auswahl für Veganer ist etwas begrenzt, aber die Biere sind gut.", r9a:"Tripadvisor-Bewertung",
   d_dove:"Wo", d_orari:"Öffnungszeiten", d_orari_v:"18:00 - 22:30 · Dienstag geschlossen", d_contatti:"Kontakt",
   d_maps:"In Google Maps öffnen", foot_p:"Pizzeria Brauerei · Maniago",
-  strip_hint:"Zum Entdecken ziehen", rev_hint:"Zum Lesen ziehen",
   g_cap_lounge:"Die Lounge",
   tab_storia:"Geschichte", tab_menu:"Menü", tab_contatti:"Kontakt", tab_chiama:"Anrufen",
   cats:{
@@ -731,9 +723,10 @@ fr:{
   r5:"L'un des restaurants les plus soignés de Maniago où j'aie jamais mangé. Atmosphère détendue, personnel courtois et un patron d'une gentillesse remarquable.", r5a:"Avis Sluurpy",
   r6:"Très bel endroit, soigné jusque dans les petits détails. Personnel disponible et attentif.", r6a:"lucajimbo",
   r7:"Ambiance agréable et belle réhabilitation d'archéologie industrielle. Bière excellente et bonnes pizzas, service cordial.", r7a:"Avis Google",
+  r8:"Très bel endroit, soigné. La pizza n'était pas tout à fait à mon goût — étant napolitain — mais j'apprécie l'effort. Recommandé.", r8a:"Avis Tripadvisor",
+  r9:"Endroit original et spacieux, personnel aimable et disponible. Le choix pour végans est un peu limité, mais les bières sont bonnes.", r9a:"Avis Tripadvisor",
   d_dove:"Où", d_orari:"Horaires", d_orari_v:"18h00 - 22h30 · Mardi fermé", d_contatti:"Contact",
   d_maps:"Ouvrir dans Google Maps", foot_p:"Pizzeria Brasserie · Maniago",
-  strip_hint:"Glissez pour explorer", rev_hint:"Glissez pour lire",
   g_cap_lounge:"Le salon",
   tab_storia:"Histoire", tab_menu:"Menu", tab_contatti:"Contact", tab_chiama:"Appeler",
   cats:{
@@ -997,7 +990,7 @@ const STRIP = [
 ];
 function renderStrip(){
   $("#strip").innerHTML = STRIP.map(([img,nm],i)=>
-    `<div class="slide"><div class="pz"><span class="idx">${String(i+1).padStart(2,"0")}</span><img src="assets/${img}" alt="${nm}" loading="lazy" draggable="false"></div><div class="nm">${nm}</div></div>`).join("");
+    `<div class="slide"><div class="pz"><img src="assets/${img}" alt="${nm}" loading="lazy" draggable="false"></div><div class="nm">${nm}</div></div>`).join("");
   makeDragSlider($("#stripview"), $("#strip"), 26);
 }
 
@@ -1019,31 +1012,61 @@ function renderGallery(){
 }
 
 /* ============ reviews (draggable slider) ============ */
-const REVIEWS = ["r1","r2","r3","r4","r5","r6","r7"];
+const REVIEWS = [
+  {k:"r1", stars:5, src:"Tripadvisor"},
+  {k:"r2", stars:5, src:"Tripadvisor"},
+  {k:"r4", stars:5, src:"Tripadvisor"},
+  {k:"r5", stars:5, src:"Sluurpy"},
+  {k:"r7", stars:4, src:"Google"},
+  {k:"r3", stars:5, src:"Tripadvisor"},
+  {k:"r6", stars:4, src:"Tripadvisor"},
+  {k:"r8", stars:4, src:"Sluurpy"},
+  {k:"r9", stars:3, src:"Tripadvisor"}
+];
+function stars(n){ return "★★★★★".slice(0,n)+"☆☆☆☆☆".slice(0,5-n); }
 function renderReviews(){
   const t=T[LANG];
-  $("#reviews").innerHTML = REVIEWS.map(k=>
-    `<div class="rev"><div class="stars">★★★★★</div><p>“${t[k]}”</p><div class="by"><span class="who">${t[k+"a"]}</span></div></div>`).join("");
+  $("#reviews").innerHTML = REVIEWS.map(r=>
+    `<div class="rev"><div class="rev-top"><span class="stars">${stars(r.stars)}</span><span class="src">${r.src}</span></div><p>“${t[r.k]}”</p><div class="by"><span class="who">${t[r.k+"a"]}</span></div></div>`).join("");
   makeDragSlider($("#revview"), $("#reviews"), 34);
 }
 
-/* ============ lightbox ============ */
+/* ============ lightbox (with drag/swipe) ============ */
 let lbIdx=0;
 function openLB(i){lbIdx=i;showLB();$("#lightbox").classList.add("open");}
 function showLB(){
   const t=T[LANG];const[src,cap]=GALLERY[lbIdx];
+  const fig=$("#lightbox figure"); fig.style.transition="none"; fig.style.transform="translateX(0)"; fig.style.opacity="1";
   $("#lb-img").src="assets/"+src;$("#lb-cap").textContent=t[cap];
 }
-$(".lb-x").onclick=()=>$("#lightbox").classList.remove("open");
-$("#lightbox").onclick=e=>{if(e.target.id==="lightbox")$("#lightbox").classList.remove("open");};
-$(".lb-nav.l").onclick=()=>{lbIdx=(lbIdx-1+GALLERY.length)%GALLERY.length;showLB();};
-$(".lb-nav.r").onclick=()=>{lbIdx=(lbIdx+1)%GALLERY.length;showLB();};
+function lbGo(dir){ lbIdx=(lbIdx+dir+GALLERY.length)%GALLERY.length; 
+  const fig=$("#lightbox figure");
+  fig.style.transition="transform .25s ease, opacity .25s ease";
+  fig.style.transform=`translateX(${dir<0?'40px':'-40px'})`; fig.style.opacity="0";
+  setTimeout(showLB,180);
+}
+function lbClose(){$("#lightbox").classList.remove("open");}
+$(".lb-x").onclick=lbClose;
+$(".lb-nav.l").onclick=()=>lbGo(-1);
+$(".lb-nav.r").onclick=()=>lbGo(1);
+$("#lightbox").onclick=e=>{if(e.target.id==="lightbox")lbClose();};
 addEventListener("keydown",e=>{
   if(!$("#lightbox").classList.contains("open"))return;
-  if(e.key==="Escape")$("#lightbox").classList.remove("open");
-  if(e.key==="ArrowLeft")$(".lb-nav.l").click();
-  if(e.key==="ArrowRight")$(".lb-nav.r").click();
+  if(e.key==="Escape")lbClose();
+  if(e.key==="ArrowLeft")lbGo(-1);
+  if(e.key==="ArrowRight")lbGo(1);
 });
+/* drag / swipe on the figure */
+(function(){
+  const fig=$("#lightbox figure"); let sx=0,sy=0,drag=false,dx=0;
+  fig.addEventListener("pointerdown",e=>{drag=true;dx=0;sx=e.clientX;sy=e.clientY;fig.style.transition="none";try{fig.setPointerCapture(e.pointerId);}catch(_){}});
+  fig.addEventListener("pointermove",e=>{ if(!drag)return; dx=e.clientX-sx; fig.style.transform=`translateX(${dx}px)`; fig.style.opacity=String(Math.max(.3,1-Math.abs(dx)/500)); });
+  const endd=()=>{ if(!drag)return; drag=false;
+    if(Math.abs(dx)>70){ lbGo(dx<0?1:-1); }
+    else { fig.style.transition="transform .25s ease, opacity .25s ease"; fig.style.transform="translateX(0)"; fig.style.opacity="1"; }
+  };
+  fig.addEventListener("pointerup",endd); fig.addEventListener("pointercancel",endd);
+})();
 
 /* ============ i18n ============ */
 function applyLang(l){
