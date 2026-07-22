@@ -90,12 +90,8 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 @keyframes rise{0%{opacity:0;transform:translateY(0) scale(1)}10%{opacity:.9}90%{opacity:.5}100%{opacity:0;transform:translateY(-88vh) scale(.4)}}
 @media (prefers-reduced-motion:reduce){.ember{display:none}.hero-bg img{animation:none;transform:none}}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) clamp(60px,10vh,120px)}
-.hero .kicker{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.hero .kicker span{font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--panna-2)}
-.hero .kicker::before{content:"";width:40px;height:1px;background:var(--terra-vivo)}
-.hero .pre{font-family:"Work Sans";font-size:clamp(15px,2.4vw,20px);font-weight:300;letter-spacing:.04em;color:var(--panna-2);margin-bottom:6px}
-.hero h1{font-size:clamp(52px,12vw,132px);font-weight:500;letter-spacing:.01em;text-transform:uppercase;color:var(--panna)}
-.hero .sub{margin-top:24px;font-size:clamp(16px,1.7vw,19px);color:var(--panna-2);max-width:40ch;letter-spacing:.015em}
+.hero-logo{width:clamp(280px,42vw,560px);height:auto;filter:drop-shadow(0 6px 40px rgba(0,0,0,.55))}
+.hero .sub{margin-top:30px;font-size:clamp(16px,1.7vw,20px);color:var(--panna-2);max-width:44ch;letter-spacing:.015em;line-height:1.7}
 .hero-actions{display:flex;align-items:center;gap:26px;margin-top:40px;flex-wrap:wrap}
 .btn-terra{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:var(--panna);
   font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:background .25s,transform .2s}
@@ -127,8 +123,24 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .story-img{position:relative;aspect-ratio:4/3.4;overflow:hidden;border-radius:2px}
 .story-img img{width:100%;height:100%;object-fit:cover}
 .story-img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--hair-soft);border-radius:2px}
-.story-img .tag{position:absolute;left:0;bottom:22px;background:var(--terra);color:var(--panna);
-  font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:9px 16px;font-weight:600}
+
+/* story modal */
+#storyModal{position:fixed;inset:0;z-index:110;background:rgba(10,8,7,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px)}
+#storyModal.open{display:flex}
+.sm-panel{position:relative;background:var(--carbone-2);border:1px solid var(--hair-soft);border-radius:3px;
+  max-width:760px;width:100%;max-height:86vh;overflow-y:auto;padding:clamp(30px,4vw,52px)}
+.sm-panel .eyebrow{display:block;margin-bottom:14px}
+.sm-panel h2{font-size:clamp(28px,4vw,44px);color:var(--panna);margin-bottom:26px}
+.sm-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border:1px solid var(--hair);border-radius:50%;
+  display:grid;place-items:center;color:var(--panna);font-size:17px;transition:background .25s,border-color .25s}
+.sm-x:hover{background:var(--terra);border-color:var(--terra)}
+.sm-body section{padding-top:22px;margin-top:22px;border-top:1px solid var(--hair-soft)}
+.sm-body section:first-child{padding-top:0;margin-top:0;border-top:0}
+.sm-body h4{font-family:"Work Sans";font-size:11.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-vivo);margin-bottom:12px}
+.sm-body p{color:var(--panna-2);font-size:16.5px;line-height:1.75;margin-bottom:12px}
+.sm-body p:last-child{margin-bottom:0}
+.sm-body em{color:var(--panna);font-style:italic}
 @media(max-width:860px){
   .story-grid{grid-template-columns:1fr;gap:36px}
   .story-img{aspect-ratio:16/11;order:-1}
@@ -140,6 +152,8 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .valori .cell{padding:clamp(46px,6vh,74px) 26px;text-align:center;position:relative}
 .valori .cell + .cell::before{content:"";position:absolute;left:0;top:26%;bottom:26%;width:1px;background:var(--hair-soft)}
 .valori .ic{font-size:34px;color:var(--terra-vivo);display:block;margin-bottom:18px;line-height:1}
+.valori .ic-svg{display:flex;justify-content:center;align-items:center;height:34px;margin-bottom:18px}
+.valori .ic-svg svg{width:40px;height:auto;display:block}
 .valori h4{font-family:"Work Sans";font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;margin-bottom:12px;color:var(--panna)}
 .valori p{color:var(--panna-2);font-size:15px;line-height:1.65;max-width:24ch;margin:0 auto}
 @media(max-width:760px){
@@ -175,7 +189,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .strip-head{text-align:center;margin-bottom:44px}
 .strip-head .eyebrow{display:inline-flex;align-items:center;gap:14px}
 .strip-head .eyebrow::before,.strip-head .eyebrow::after{content:"";width:34px;height:1px;background:var(--hair)}
-.strip-view{position:relative;overflow:hidden;cursor:grab;
+.strip-view{position:relative;overflow:hidden;cursor:grab;touch-action:pan-y;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .strip-view.drag{cursor:grabbing}
 .strip{display:flex;gap:clamp(16px,2vw,28px);align-items:flex-start;width:max-content;will-change:transform}
@@ -220,10 +234,12 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
 .item .desc{color:var(--panna-2);font-size:16.5px;line-height:1.6;margin-top:6px;max-width:56ch;letter-spacing:.012em}
 .groupline{margin:34px 0 8px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-vivo)}
 .groupsub{color:var(--ferro);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:18px;margin:12px 0 2px}
-.multi .pricegrid{display:flex;gap:22px;margin-top:5px}
-.multi .pricegrid span{font-size:12px;color:var(--ferro)}
-.multi .pricegrid b{color:var(--terra-vivo);font-weight:500;margin-left:5px}
-.multi .sub{display:block;color:var(--ferro);font-style:italic;font-size:13px;margin-top:2px}
+.multi .pricegrid{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.multi .pricegrid .pcell{display:inline-flex;align-items:baseline;gap:8px;
+  border:1px solid var(--hair-soft);border-radius:2px;padding:7px 13px;background:rgba(150,84,72,.07)}
+.multi .pricegrid .pcell em{font-style:normal;font-size:13px;letter-spacing:.06em;color:var(--ferro)}
+.multi .pricegrid .pcell b{font-size:16px;font-weight:600;color:var(--terra-vivo)}
+.multi .sub{display:block;color:var(--panna-2);font-style:italic;font-size:15px;margin-top:4px}
 
 /* ===== GALLERY ===== */
 #gallery{background:var(--carbone);padding:clamp(60px,9vh,110px) 0}
@@ -268,7 +284,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-hei
   padding:12px 20px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--panna-2);transition:background .25s,border-color .25s,color .25s}
 .soc-links a:hover{background:var(--terra);border-color:var(--terra);color:var(--panna)}
 .rev-slider-wrap{position:relative}
-.rev-view{position:relative;overflow:hidden;cursor:grab;padding:0 var(--pad);
+.rev-view{position:relative;overflow:hidden;cursor:grab;touch-action:pan-y;padding:0 var(--pad);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .rev-view.drag{cursor:grabbing}
 .rev-track{display:flex;gap:18px;width:max-content;will-change:transform}
@@ -317,10 +333,10 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 .tabbar a i{font-size:20px}
 .tabbar a span{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
 .tabbar a.on{color:var(--terra-vivo)}
-@media(max-width:960px){
+@media(max-width:1040px){
   .tabbar{display:flex}
   body{padding-bottom:60px}
-  .chipbar{top:0}
+  .chipbar{top:var(--nav-h)}
 }
 
 /* ===== LIGHTBOX ===== */
@@ -362,10 +378,8 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
   <div class="hero-bg"><img src="assets/ac_ext3.webp" alt="Antica Coltelleria, Maniago"></div>
   <div class="ember" id="ember"></div>
   <div class="hero-inner">
-    <div class="kicker"><span data-i18n="hero_kicker">Pizzeria · Birreria · Cucina</span></div>
-    <p class="pre" data-i18n="hero_pre">Dove il ferro incontra</p>
-    <h1 data-i18n="hero_title">il fuoco<br>e il sapore</h1>
-    <p class="sub" data-i18n="hero_sub">Pizza, birra e cucina friulana nell'antica officina dei battiferri, nel cuore di Maniago.</p>
+    <img class="hero-logo" src="assets/logo_full.png" alt="Antica Coltelleria">
+    <p class="sub" data-i18n="hero_sub">Pizza, birra e cucina friulana nell'antica officina dei battiferri Maniaghese.</p>
     <div class="hero-actions">
       <a class="btn-terra" href="#menu" data-i18n="hero_menu">Scopri il menù</a>
       <a class="btn-outline" href="https://wa.me/393386803637" target="_blank" rel="noopener"><i class="ph-light ph-calendar-check"></i><span data-i18n="nav_prenota">Prenota un tavolo</span></a>
@@ -382,11 +396,10 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
       <h2 data-i18n="s_title">Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto.</h2>
       <div class="divider"></div>
       <p data-i18n="s_body">Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame. Un'antica officina dei battiferri, oggi luogo dove la passione per il cibo si unisce alla tradizione artigiana — tra pietra, ingranaggi e il fuoco del forno.</p>
-      <a class="btn-line" href="#menu"><span data-i18n="s_cta">Scopri di più</span><i class="ph-light ph-arrow-right"></i></a>
+      <button class="btn-line" id="storyMore" type="button"><span data-i18n="s_cta">Scopri di più</span><i class="ph-light ph-arrow-right"></i></button>
     </div>
     <div class="story-img fx">
-      <img src="assets/ac_int_bar2.webp" alt="Interno Antica Coltelleria con macchinari d'epoca">
-      <span class="tag">Maniago · 1453</span>
+      <img src="assets/ac_ingresso.webp" alt="Ingresso dell'Antica Coltelleria a Maniago">
     </div>
   </div>
 </section>
@@ -394,7 +407,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 <!-- ===== VALORI ===== -->
 <section class="valori fx">
   <div class="valori-grid">
-    <div class="cell"><i class="ic ph-light ph-hammer"></i><h4 data-i18n="v_trad">Tradizione</h4><p data-i18n="v_trad_d">Radici profonde nella storia di Maniago.</p></div>
+    <div class="cell"><span class="ic ic-svg"><svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11l4.5 4.2c1.6 1.5 3.7 2.3 5.9 2.3H29l-2.2 3.2a4 4 0 0 1-3.3 1.8H12a5 5 0 0 1-5-5V9H3a1.6 1.6 0 0 1 0-3Z"/><path d="M14.5 17.5v1.8"/><path d="M9 23h11l-1.2-2.4a2 2 0 0 0-1.8-1.1h-4.9a2 2 0 0 0-1.8 1.1L9 23Z"/></svg></span><h4 data-i18n="v_trad">Tradizione</h4><p data-i18n="v_trad_d">Radici profonde nella storia di Maniago.</p></div>
     <div class="cell"><i class="ic ph-light ph-fire"></i><h4 data-i18n="v_pass">Passione</h4><p data-i18n="v_pass_d">Il fuoco del forno, la passione di sempre.</p></div>
     <div class="cell"><i class="ic ph-light ph-leaf"></i><h4 data-i18n="v_qual">Qualità</h4><p data-i18n="v_qual_d">Ingredienti selezionati, freschi e genuini.</p></div>
     <div class="cell"><i class="ic ph-light ph-users-three"></i><h4 data-i18n="v_acc">Accoglienza</h4><p data-i18n="v_acc_d">Un ambiente caldo per sentirsi a casa.</p></div>
@@ -404,7 +417,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 <!-- ===== MENU PREVIEW ===== -->
 <section class="mprev">
   <div class="mprev-grid">
-    <div class="mprev-img"><img src="assets/pizza1.webp" alt="Pizza d'autore Antica Coltelleria"></div>
+    <div class="mprev-img"><img src="assets/forno.webp" alt="Il forno a legna dell'Antica Coltelleria"></div>
     <div class="mprev-txt fx">
       <span class="eyebrow" data-i18n="mp_eyebrow">Il nostro menù</span>
       <h2 data-i18n="mp_title">Pizze d'autore</h2>
@@ -415,7 +428,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
         <a href="#cat-hamburger"><i class="ic ph-light ph-hamburger"></i><span data-i18n="mp_l_burger">Hamburger</span></a>
         <a href="#cat-bevande"><i class="ic ph-light ph-beer-stein"></i><span data-i18n="mp_l_birre">Birre</span></a>
       </div>
-      <a class="btn-terra" href="#menu" data-i18n="mp_cta">Scopri le pizze</a>
+      <a class="btn-terra" href="#menu" data-i18n="hero_menu">Scopri il menù</a>
     </div>
   </div>
 </section>
@@ -481,7 +494,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 <!-- ===== MAP BAND (full-width, interactive) ===== -->
 <section class="mapband" id="dove" aria-label="Mappa Antica Coltelleria">
   <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa Antica Coltelleria"
-    src="https://www.google.com/maps?q=46.1792716,12.7095079&z=16&output=embed"></iframe>
+    src="https://www.google.com/maps?q=Pizzeria+Antica+Coltelleria,+Via+Battiferri+25/27,+33085+Maniago+PN&z=16&hl=it&output=embed"></iframe>
 </section>
 
 <!-- ===== FOOTER ===== -->
@@ -500,7 +513,9 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
       <div class="col">
         <h4 data-i18n="d_contatti">Contatti</h4>
         <p><a href="tel:+393386803637">338 680 3637</a></p>
+        <p><a href="https://wa.me/393386803637" target="_blank" rel="noopener">WhatsApp</a></p>
         <div class="foot-soc">
+          <a href="https://wa.me/393386803637" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph-light ph-whatsapp-logo"></i></a>
           <a href="https://www.instagram.com/pizzeriaantica.coltelleria/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-light ph-instagram-logo"></i></a>
           <a href="https://www.facebook.com/pizzerianticacoltelleria/" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph-light ph-facebook-logo"></i></a>
           <a href="https://www.tripadvisor.it/Restaurant_Review-g790406-d4770749-Reviews-Pizzeria_Antica_Coltelleria-Maniago_Province_of_Pordenone_Friuli_Venezia_Giulia.html" target="_blank" rel="noopener" aria-label="Tripadvisor"><i class="ph-light ph-star"></i></a>
@@ -508,7 +523,7 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
       </div>
     </div>
   </div>
-  <p class="foot-bottom">© 2026 Antica Coltelleria · <span data-i18n="foot_p">Pizzeria Birreria · Maniago</span> · <a href="https://mementostudio.it" target="_blank" rel="noopener">Memento Studio</a></p>
+  <p class="foot-bottom">© 2026 Antica Coltelleria &nbsp;&times;&nbsp; <a href="https://mementostudio.it/" target="_blank" rel="noopener">Memento Studio</a></p>
 </footer>
 
 <!-- ===== MOBILE TABBAR ===== -->
@@ -518,6 +533,31 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
   <a href="#dove" data-tab="dove"><i class="ph-light ph-map-pin"></i><span data-i18n="tab_contatti">Contatti</span></a>
   <a href="tel:+393386803637"><i class="ph-light ph-phone"></i><span data-i18n="tab_chiama">Chiama</span></a>
 </nav>
+
+<!-- ===== STORY MODAL ===== -->
+<div id="storyModal" role="dialog" aria-modal="true" aria-labelledby="sm-title">
+  <div class="sm-panel">
+    <button class="sm-x" aria-label="Chiudi"><i class="ph-light ph-x"></i></button>
+    <span class="eyebrow" data-i18n="s_eyebrow">La nostra storia</span>
+    <h2 id="sm-title" data-i18n="sm_title">Dal 1453, la via dei battiferri</h2>
+    <div class="sm-body">
+      <section>
+        <h4 data-i18n="sm_h1">Origine dei fabbri a Maniago</h4>
+        <p data-i18n="sm_p1">La lavorazione dell'acciaio a Maniago inizia nel 1453, quando il Conte Nicolò ottiene dalla Repubblica di Venezia il permesso di derivare l'acqua del torrente Colvera per azionare molini e segherie.</p>
+        <p data-i18n="sm_p2">Lungo la roggia nascono così i primi battiferri, dove si usava il maglio per forgiare falci, mannaie, coltelli e spade destinati a contadini, boscaioli, macellai e soldati. I fabbri di questi opifici erano noti come <em>favri da gros</em>.</p>
+      </section>
+      <section>
+        <h4 data-i18n="sm_h2">Via Battiferri e coltellerie</h4>
+        <p data-i18n="sm_p3">Nel 1700 compaiono i <em>favri da fin</em>, artigiani specializzati in coltelleria fine, che aprono piccole botteghe (<em>butiqute</em>) nel centro urbano, senza più dipendere dall'energia idrica. La via Battiferri diventa il fulcro della produzione.</p>
+      </section>
+      <section>
+        <h4 data-i18n="sm_h3">L'Antica Coltelleria</h4>
+        <p data-i18n="sm_p4">Uno degli esempi storici più significativi è il Battiferro di Beltrame "Ciapòn", risalente alla fine dell'Ottocento, costruito con materiali locali e caratterizzato da ampi spazi e struttura semplice. Nel 1950 viene ampliato dai fratelli Poggioli con un capannone industriale post-bellico.</p>
+        <p data-i18n="sm_p5">Qui, fino al 1997, si producono coltelli da cucina, professionali e per subacquei, con fino a 30 dipendenti. L'edificio conserva ancora oggi alcuni macchinari originali, a testimonianza della tradizione coltelleria maniaghese.</p>
+      </section>
+    </div>
+  </div>
+</div>
 
 <!-- ===== LIGHTBOX ===== -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto">
@@ -531,19 +571,26 @@ footer{background:var(--carbone);border-top:1px solid var(--hair-soft)}
 const T = {
 it:{
   nav_storia:"Storia", nav_menu:"Menù", nav_contatti:"Contatti", nav_chiama:"Chiama", nav_prenota:"Prenota un tavolo",
-  hero_kicker:"Pizzeria · Birreria · Cucina", hero_pre:"Dove il ferro incontra",
-  hero_title:"il fuoco<br>e il sapore", hero_sub:"Pizza, birra e cucina friulana nell'antica officina dei battiferri, nel cuore di Maniago.",
+  hero_sub:"Pizza, birra e cucina friulana nell'antica officina dei battiferri Maniaghese.",
   hero_menu:"Scopri il menù", hero_scroll:"Scorri per scoprire",
   s_eyebrow:"La nostra storia", s_title:"Dal ferro<br>nascono le lame,<br>dal fuoco<br>nasce il gusto.",
   s_body:"Antica Coltelleria nasce nel cuore di Maniago, città famosa in tutto il mondo per la lavorazione delle lame. Un'antica officina dei battiferri, oggi luogo dove la passione per il cibo si unisce alla tradizione artigiana — tra pietra, ingranaggi e il fuoco del forno.",
   s_cta:"Scopri di più",
+  sm_title:"Dal 1453, la via dei battiferri",
+  sm_h1:"Origine dei fabbri a Maniago",
+  sm_p1:"La lavorazione dell'acciaio a Maniago inizia nel 1453, quando il Conte Nicolò ottiene dalla Repubblica di Venezia il permesso di derivare l'acqua del torrente Colvera per azionare molini e segherie.",
+  sm_p2:"Lungo la roggia nascono così i primi battiferri, dove si usava il maglio per forgiare falci, mannaie, coltelli e spade destinati a contadini, boscaioli, macellai e soldati. I fabbri di questi opifici erano noti come <em>favri da gros</em>.",
+  sm_h2:"Via Battiferri e coltellerie",
+  sm_p3:"Nel 1700 compaiono i <em>favri da fin</em>, artigiani specializzati in coltelleria fine, che aprono piccole botteghe (<em>butiqute</em>) nel centro urbano, senza più dipendere dall'energia idrica. La via Battiferri diventa il fulcro della produzione.",
+  sm_h3:"L'Antica Coltelleria",
+  sm_p4:"Uno degli esempi storici più significativi è il Battiferro di Beltrame \"Ciapòn\", risalente alla fine dell'Ottocento, costruito con materiali locali e caratterizzato da ampi spazi e struttura semplice. Nel 1950 viene ampliato dai fratelli Poggioli con un capannone industriale post-bellico.",
+  sm_p5:"Qui, fino al 1997, si producono coltelli da cucina, professionali e per subacquei, con fino a 30 dipendenti. L'edificio conserva ancora oggi alcuni macchinari originali, a testimonianza della tradizione coltelleria maniaghese.",
   v_trad:"Tradizione", v_trad_d:"Radici profonde nella storia di Maniago.",
   v_pass:"Passione", v_pass_d:"Il fuoco del forno, la passione di sempre.",
   v_qual:"Qualità", v_qual_d:"Ingredienti selezionati, freschi e genuini.",
   v_acc:"Accoglienza", v_acc_d:"Un ambiente caldo per sentirsi a casa.",
   mp_eyebrow:"Il nostro menù", mp_title:"Pizze d'autore",
   mp_body:"Impasto a lunga lievitazione, farine selezionate e ingredienti di altissima qualità. Ogni pizza racconta la nostra passione.",
-  mp_cta:"Scopri le pizze",
   mp_l_pizze:"Pizze", mp_l_cucina:"Cucina", mp_l_burger:"Hamburger", mp_l_birre:"Birre", mp_l_sandwich:"Sandwich", mp_l_vini:"Vini",
   m_eyebrow:"La carta", m_title:"Il Menù",
   m_note:"Impasto a lunga lievitazione, prodotti selezionati, cottura nel forno",
@@ -561,11 +608,11 @@ it:{
   r2:"La pizza è ottima, il servizio veloce e cortese. La sala è immensa, si presta bene anche per cene ed eventi in compagnia.", r2a:"kappa19S",
   r3:"Locale molto caratteristico, ricavato in una vecchia fabbrica. Pizza ben stesa e sottile, ingredienti ottimi. Ci ritornerò sicuramente!", r3a:"Flavio B.",
   r4:"Bellissima birreria ricavata in un'ex coltelleria, con gli arredi e la struttura originali. Taglieri abbondanti, panini superbi. Consigliatissimo!", r4a:"EnriNico",
-  r5:"Uno dei ristoranti più curati a Maniago in cui abbia mai mangiato. Atmosfera rilassante, personale garbato e gestore di una gentilezza encomiabile.", r5a:"Recensione Sluurpy",
+  r5:"Uno dei ristoranti più curati a Maniago in cui abbia mai mangiato. Atmosfera rilassante, personale garbato e gestore di una gentilezza encomiabile.", r5a:"Ospite",
   r6:"Locale molto bello e curato anche nei piccoli particolari. Personale disponibile e attento alle esigenze.", r6a:"lucajimbo",
-  r7:"Ambiente piacevole e recupero valido di archeologia industriale. Birra ottima e buone pizze, servizio cordiale.", r7a:"Recensione Google",
-  r8:"Locale molto bello e curato. La pizza non è stata del tutto di mio gradimento, essendo napoletano, ma apprezzo l'impegno. Raccomandato.", r8a:"Recensione Tripadvisor",
-  r9:"Posto originale e spazioso, personale gentile e disponibile. La scelta per vegani è un po' limitata, ma le birre sono buone.", r9a:"Recensione Tripadvisor",
+  r7:"Ambiente piacevole e recupero valido di archeologia industriale. Birra ottima e buone pizze, servizio cordiale.", r7a:"Ospite",
+  r8:"Locale molto bello e curato. La pizza non è stata del tutto di mio gradimento, essendo napoletano, ma apprezzo l'impegno. Raccomandato.", r8a:"Ospite",
+  r9:"Posto originale e spazioso, personale gentile e disponibile. La scelta per vegani è un po' limitata, ma le birre sono buone.", r9a:"Ospite",
   d_dove:"Dove", d_orari:"Orari", d_orari_v:"18:00 - 22:30 · Martedì chiuso", d_contatti:"Contatti",
   d_maps:"Apri in Google Maps", foot_p:"Pizzeria Birreria · Maniago",
   g_cap_lounge:"Il salotto",
@@ -584,19 +631,26 @@ it:{
 },
 en:{
   nav_storia:"Story", nav_menu:"Menu", nav_contatti:"Contact", nav_chiama:"Call", nav_prenota:"Book a table",
-  hero_kicker:"Pizzeria · Brewery · Kitchen", hero_pre:"Where iron meets",
-  hero_title:"fire<br>and flavour", hero_sub:"Pizza, beer and Friulian cooking in the old blacksmiths' forge, in the heart of Maniago.",
+  hero_sub:"Pizza, beer and Friulian cooking in the old blacksmiths' forge of Maniago.",
   hero_menu:"Discover the menu", hero_scroll:"Scroll to discover",
   s_eyebrow:"Our story", s_title:"From iron<br>come the blades,<br>from fire<br>comes the taste.",
   s_body:"Antica Coltelleria was born in the heart of Maniago, a town famous worldwide for blade-making. An old forge workshop, today a place where passion for food meets artisan tradition — among stone, gears and the fire of the oven.",
   s_cta:"Read more",
+  sm_title:"Since 1453, the street of the ironworks",
+  sm_h1:"Origin of the smiths of Maniago",
+  sm_p1:"Steelworking in Maniago began in 1453, when Count Nicolò obtained permission from the Republic of Venice to divert water from the Colvera stream to power mills and sawmills.",
+  sm_p2:"Along the millrace the first ironworks were born, where the trip hammer was used to forge scythes, cleavers, knives and swords for farmers, woodsmen, butchers and soldiers. The smiths of these workshops were known as <em>favri da gros</em>.",
+  sm_h2:"Via Battiferri and the cutlery shops",
+  sm_p3:"In the 1700s came the <em>favri da fin</em>, artisans specialised in fine cutlery, who opened small shops (<em>butiqute</em>) in the town centre, no longer dependent on water power. Via Battiferri became the heart of production.",
+  sm_h3:"The Antica Coltelleria",
+  sm_p4:"One of the most significant historic examples is the Beltrame \"Ciapòn\" ironworks, dating from the late 1800s, built with local materials and characterised by wide spaces and a simple structure. In 1950 it was enlarged by the Poggioli brothers with a post-war industrial shed.",
+  sm_p5:"Here, until 1997, kitchen, professional and diving knives were produced, with up to 30 employees. The building still preserves some original machinery, a testament to Maniago's cutlery tradition.",
   v_trad:"Tradition", v_trad_d:"Deep roots in the history of Maniago.",
   v_pass:"Passion", v_pass_d:"The fire of the oven, the passion of always.",
   v_qual:"Quality", v_qual_d:"Selected ingredients, fresh and genuine.",
   v_acc:"Hospitality", v_acc_d:"A warm place to feel at home.",
   mp_eyebrow:"Our menu", mp_title:"Signature pizzas",
   mp_body:"Slow-leavened dough, selected flours and top-quality ingredients. Every pizza tells our passion.",
-  mp_cta:"Discover the pizzas",
   mp_l_pizze:"Pizzas", mp_l_cucina:"Kitchen", mp_l_burger:"Burgers", mp_l_birre:"Beers", mp_l_sandwich:"Sandwiches", mp_l_vini:"Wines",
   m_eyebrow:"The menu", m_title:"The Menu",
   m_note:"Slow-leavened dough, selected ingredients, oven baked",
@@ -613,12 +667,12 @@ en:{
   r1:"A lovely place inside a restored old cutlery workshop. Rustic and modern at once, excellent pizza and friendly service.", r1a:"sgocichri",
   r2:"The pizza is excellent, service quick and courteous. The room is huge, great for dinners and gatherings too.", r2a:"kappa19S",
   r3:"A very characterful place inside an old factory. Thin, well-stretched pizza, great ingredients. I'll definitely be back!", r3a:"Flavio B.",
-  r4:"Beautiful location, wonderful pizza! My calzone with prosciutto, funghi e ricotta affumicata was so good it disappeared before I could take a pic.", r4a:"TripAdvisor review",
-  r5:"Lovely place to eat, next to the river. Excellent food, we had a burger and a spicy pizza — both excellent. Also ideal for large groups as this place is huge.", r5a:"Restaurant Guru review",
-  r6:"The location is beautiful since it used to be an old knife-making shop converted into a restaurant, so you can see the old machinery.", r6a:"TripAdvisor review",
-  r7:"Loved the restaurant, loved the location, the food was great, and the staff very friendly.", r7a:"Google review",
-  r8:"Lovely, well-kept place. The pizza wasn't entirely to my taste — being Neapolitan — but I appreciate the effort. Recommended.", r8a:"Tripadvisor review",
-  r9:"Original and spacious spot, kind and helpful staff. Choice for vegans is a bit limited, but the beers are good.", r9a:"Tripadvisor review",
+  r4:"Beautiful location, wonderful pizza! My calzone with prosciutto, funghi e ricotta affumicata was so good it disappeared before I could take a pic.", r4a:"Guest",
+  r5:"Lovely place to eat, next to the river. Excellent food, we had a burger and a spicy pizza — both excellent. Also ideal for large groups as this place is huge.", r5a:"Guest",
+  r6:"The location is beautiful since it used to be an old knife-making shop converted into a restaurant, so you can see the old machinery.", r6a:"Guest",
+  r7:"Loved the restaurant, loved the location, the food was great, and the staff very friendly.", r7a:"Guest",
+  r8:"Lovely, well-kept place. The pizza wasn't entirely to my taste — being Neapolitan — but I appreciate the effort. Recommended.", r8a:"Guest",
+  r9:"Original and spacious spot, kind and helpful staff. Choice for vegans is a bit limited, but the beers are good.", r9a:"Guest",
   d_dove:"Where", d_orari:"Hours", d_orari_v:"6:00 pm - 10:30 pm · Closed Tuesday", d_contatti:"Contact",
   d_maps:"Open in Google Maps", foot_p:"Pizzeria Brewery · Maniago",
   g_cap_lounge:"The lounge",
@@ -637,19 +691,26 @@ en:{
 },
 de:{
   nav_storia:"Geschichte", nav_menu:"Menü", nav_contatti:"Kontakt", nav_chiama:"Anrufen", nav_prenota:"Tisch reservieren",
-  hero_kicker:"Pizzeria · Brauerei · Küche", hero_pre:"Wo Eisen auf",
-  hero_title:"Feuer<br>und Geschmack trifft", hero_sub:"Pizza, Bier und friaulische Küche in der alten Schmiedewerkstatt, im Herzen von Maniago.",
+  hero_sub:"Pizza, Bier und friaulische Küche in der alten Schmiedewerkstatt von Maniago.",
   hero_menu:"Menü entdecken", hero_scroll:"Scrollen zum Entdecken",
   s_eyebrow:"Unsere Geschichte", s_title:"Aus Eisen<br>entstehen die Klingen,<br>aus Feuer<br>der Geschmack.",
   s_body:"Antica Coltelleria entstand im Herzen von Maniago, einer weltweit für die Klingenherstellung berühmten Stadt. Eine alte Schmiedewerkstatt, heute ein Ort, wo Leidenschaft fürs Essen auf Handwerkstradition trifft — zwischen Stein, Zahnrädern und dem Feuer des Ofens.",
   s_cta:"Mehr erfahren",
+  sm_title:"Seit 1453, die Straße der Hammerwerke",
+  sm_h1:"Ursprung der Schmiede von Maniago",
+  sm_p1:"Die Stahlverarbeitung in Maniago begann 1453, als Graf Nicolò von der Republik Venedig die Erlaubnis erhielt, Wasser aus dem Colvera-Bach abzuleiten, um Mühlen und Sägewerke anzutreiben.",
+  sm_p2:"Entlang des Kanals entstanden die ersten Hammerwerke, wo mit dem Schwanzhammer Sensen, Beile, Messer und Schwerter für Bauern, Holzfäller, Metzger und Soldaten geschmiedet wurden. Die Schmiede dieser Werkstätten waren als <em>favri da gros</em> bekannt.",
+  sm_h2:"Via Battiferri und die Messerwerkstätten",
+  sm_p3:"Im 18. Jahrhundert kamen die <em>favri da fin</em>, auf feine Messerschmiedekunst spezialisierte Handwerker, die kleine Werkstätten (<em>butiqute</em>) im Stadtzentrum eröffneten, unabhängig von der Wasserkraft. Die Via Battiferri wurde zum Zentrum der Produktion.",
+  sm_h3:"Die Antica Coltelleria",
+  sm_p4:"Eines der bedeutendsten historischen Beispiele ist das Hammerwerk Beltrame \"Ciapòn\" aus dem späten 19. Jahrhundert, aus lokalen Materialien erbaut, mit weiten Räumen und einfacher Struktur. 1950 wurde es von den Brüdern Poggioli um eine Industriehalle der Nachkriegszeit erweitert.",
+  sm_p5:"Hier wurden bis 1997 Küchen-, Profi- und Tauchermesser hergestellt, mit bis zu 30 Beschäftigten. Das Gebäude bewahrt bis heute einige Originalmaschinen als Zeugnis der Messertradition von Maniago.",
   v_trad:"Tradition", v_trad_d:"Tiefe Wurzeln in der Geschichte Maniagos.",
   v_pass:"Leidenschaft", v_pass_d:"Das Feuer des Ofens, die Leidenschaft von immer.",
   v_qual:"Qualität", v_qual_d:"Ausgewählte Zutaten, frisch und echt.",
   v_acc:"Gastfreundschaft", v_acc_d:"Ein warmer Ort, um sich wie zu Hause zu fühlen.",
   mp_eyebrow:"Unser Menü", mp_title:"Signature-Pizzen",
   mp_body:"Lang gereifter Teig, ausgewählte Mehle und Zutaten höchster Qualität. Jede Pizza erzählt unsere Leidenschaft.",
-  mp_cta:"Pizzen entdecken",
   mp_l_pizze:"Pizzen", mp_l_cucina:"Küche", mp_l_burger:"Burger", mp_l_birre:"Biere", mp_l_sandwich:"Sandwiches", mp_l_vini:"Weine",
   m_eyebrow:"Die Karte", m_title:"Das Menü",
   m_note:"Lang gereifter Teig, ausgewählte Zutaten, im Ofen gebacken",
@@ -667,11 +728,11 @@ de:{
   r2:"Die Pizza ist ausgezeichnet, der Service schnell und höflich. Der Saal ist riesig, ideal auch für Abendessen und Feiern.", r2a:"kappa19S",
   r3:"Ein sehr charaktervoller Ort in einer alten Fabrik. Dünne, gut ausgezogene Pizza, tolle Zutaten. Ich komme sicher wieder!", r3a:"Flavio B.",
   r4:"Wunderschöne Brauerei in einer ehemaligen Messerwerkstatt, mit originaler Einrichtung. Üppige Aufschnittplatten, herrliche Sandwiches. Sehr empfehlenswert!", r4a:"EnriNico",
-  r5:"Eines der gepflegtesten Restaurants in Maniago, in dem ich je gegessen habe. Entspannte Atmosphäre, höfliches Personal und ein überaus freundlicher Gastgeber.", r5a:"Sluurpy-Bewertung",
+  r5:"Eines der gepflegtesten Restaurants in Maniago, in dem ich je gegessen habe. Entspannte Atmosphäre, höfliches Personal und ein überaus freundlicher Gastgeber.", r5a:"Gast",
   r6:"Sehr schönes Lokal, auch in den kleinen Details gepflegt. Hilfsbereites und aufmerksames Personal.", r6a:"lucajimbo",
-  r7:"Angenehmes Ambiente und gelungene Wiederverwertung von Industriearchäologie. Ausgezeichnetes Bier und gute Pizzen, freundlicher Service.", r7a:"Google-Bewertung",
-  r8:"Sehr schönes, gepflegtes Lokal. Die Pizza war nicht ganz nach meinem Geschmack — als Neapolitaner —, aber ich schätze die Mühe. Empfehlenswert.", r8a:"Tripadvisor-Bewertung",
-  r9:"Origineller und geräumiger Ort, freundliches und hilfsbereites Personal. Die Auswahl für Veganer ist etwas begrenzt, aber die Biere sind gut.", r9a:"Tripadvisor-Bewertung",
+  r7:"Angenehmes Ambiente und gelungene Wiederverwertung von Industriearchäologie. Ausgezeichnetes Bier und gute Pizzen, freundlicher Service.", r7a:"Gast",
+  r8:"Sehr schönes, gepflegtes Lokal. Die Pizza war nicht ganz nach meinem Geschmack — als Neapolitaner —, aber ich schätze die Mühe. Empfehlenswert.", r8a:"Gast",
+  r9:"Origineller und geräumiger Ort, freundliches und hilfsbereites Personal. Die Auswahl für Veganer ist etwas begrenzt, aber die Biere sind gut.", r9a:"Gast",
   d_dove:"Wo", d_orari:"Öffnungszeiten", d_orari_v:"18:00 - 22:30 · Dienstag geschlossen", d_contatti:"Kontakt",
   d_maps:"In Google Maps öffnen", foot_p:"Pizzeria Brauerei · Maniago",
   g_cap_lounge:"Die Lounge",
@@ -690,19 +751,26 @@ de:{
 },
 fr:{
   nav_storia:"Histoire", nav_menu:"Menu", nav_contatti:"Contact", nav_chiama:"Appeler", nav_prenota:"Réserver une table",
-  hero_kicker:"Pizzeria · Brasserie · Cuisine", hero_pre:"Où le fer rencontre",
-  hero_title:"le feu<br>et la saveur", hero_sub:"Pizza, bière et cuisine frioulane dans l'ancienne forge des battiferri, au cœur de Maniago.",
+  hero_sub:"Pizza, bière et cuisine frioulane dans l'ancienne forge des battiferri de Maniago.",
   hero_menu:"Découvrir le menu", hero_scroll:"Défiler pour découvrir",
   s_eyebrow:"Notre histoire", s_title:"Du fer<br>naissent les lames,<br>du feu<br>naît le goût.",
   s_body:"Antica Coltelleria est née au cœur de Maniago, ville mondialement célèbre pour la fabrication des lames. Un ancien atelier de forge, aujourd'hui un lieu où la passion de la cuisine rencontre la tradition artisanale — parmi la pierre, les engrenages et le feu du four.",
   s_cta:"En savoir plus",
+  sm_title:"Depuis 1453, la rue des forges",
+  sm_h1:"Origine des forgerons de Maniago",
+  sm_p1:"Le travail de l'acier à Maniago commence en 1453, lorsque le comte Nicolò obtient de la République de Venise l'autorisation de dériver l'eau du torrent Colvera pour actionner moulins et scieries.",
+  sm_p2:"Le long du canal naissent les premières forges, où le martinet servait à forger faux, couperets, couteaux et épées destinés aux paysans, bûcherons, bouchers et soldats. Les forgerons de ces ateliers étaient connus comme <em>favri da gros</em>.",
+  sm_h2:"Via Battiferri et les coutelleries",
+  sm_p3:"Au XVIIIe siècle apparaissent les <em>favri da fin</em>, artisans spécialisés en coutellerie fine, qui ouvrent de petites boutiques (<em>butiqute</em>) au centre-ville, sans plus dépendre de l'énergie hydraulique. La via Battiferri devient le cœur de la production.",
+  sm_h3:"L'Antica Coltelleria",
+  sm_p4:"L'un des exemples historiques les plus significatifs est la forge Beltrame \"Ciapòn\", datant de la fin du XIXe siècle, construite avec des matériaux locaux et caractérisée par de vastes espaces et une structure simple. En 1950, elle est agrandie par les frères Poggioli avec un hangar industriel d'après-guerre.",
+  sm_p5:"Ici, jusqu'en 1997, on produisait des couteaux de cuisine, professionnels et de plongée, avec jusqu'à 30 employés. Le bâtiment conserve encore aujourd'hui certaines machines d'origine, témoignage de la tradition coutelière de Maniago.",
   v_trad:"Tradition", v_trad_d:"Des racines profondes dans l'histoire de Maniago.",
   v_pass:"Passion", v_pass_d:"Le feu du four, la passion de toujours.",
   v_qual:"Qualité", v_qual_d:"Des ingrédients sélectionnés, frais et authentiques.",
   v_acc:"Accueil", v_acc_d:"Un lieu chaleureux pour se sentir chez soi.",
   mp_eyebrow:"Notre menu", mp_title:"Pizzas signature",
   mp_body:"Pâte à longue levée, farines sélectionnées et ingrédients de très haute qualité. Chaque pizza raconte notre passion.",
-  mp_cta:"Découvrir les pizzas",
   mp_l_pizze:"Pizzas", mp_l_cucina:"Cuisine", mp_l_burger:"Burgers", mp_l_birre:"Bières", mp_l_sandwich:"Sandwichs", mp_l_vini:"Vins",
   m_eyebrow:"La carte", m_title:"Le Menu",
   m_note:"Pâte à longue levée, ingrédients sélectionnés, cuite au four",
@@ -720,11 +788,11 @@ fr:{
   r2:"La pizza est excellente, le service rapide et courtois. La salle est immense, parfaite aussi pour dîners et fêtes.", r2a:"kappa19S",
   r3:"Un lieu plein de caractère dans une ancienne usine. Pizza fine et bien étalée, excellents ingrédients. J'y retournerai sûrement !", r3a:"Flavio B.",
   r4:"Magnifique brasserie aménagée dans une ancienne coutellerie, avec le mobilier et la structure d'origine. Planches généreuses, sandwichs superbes. Vivement recommandé !", r4a:"EnriNico",
-  r5:"L'un des restaurants les plus soignés de Maniago où j'aie jamais mangé. Atmosphère détendue, personnel courtois et un patron d'une gentillesse remarquable.", r5a:"Avis Sluurpy",
+  r5:"L'un des restaurants les plus soignés de Maniago où j'aie jamais mangé. Atmosphère détendue, personnel courtois et un patron d'une gentillesse remarquable.", r5a:"Client",
   r6:"Très bel endroit, soigné jusque dans les petits détails. Personnel disponible et attentif.", r6a:"lucajimbo",
-  r7:"Ambiance agréable et belle réhabilitation d'archéologie industrielle. Bière excellente et bonnes pizzas, service cordial.", r7a:"Avis Google",
-  r8:"Très bel endroit, soigné. La pizza n'était pas tout à fait à mon goût — étant napolitain — mais j'apprécie l'effort. Recommandé.", r8a:"Avis Tripadvisor",
-  r9:"Endroit original et spacieux, personnel aimable et disponible. Le choix pour végans est un peu limité, mais les bières sont bonnes.", r9a:"Avis Tripadvisor",
+  r7:"Ambiance agréable et belle réhabilitation d'archéologie industrielle. Bière excellente et bonnes pizzas, service cordial.", r7a:"Client",
+  r8:"Très bel endroit, soigné. La pizza n'était pas tout à fait à mon goût — étant napolitain — mais j'apprécie l'effort. Recommandé.", r8a:"Client",
+  r9:"Endroit original et spacieux, personnel aimable et disponible. Le choix pour végans est un peu limité, mais les bières sont bonnes.", r9a:"Client",
   d_dove:"Où", d_orari:"Horaires", d_orari_v:"18h00 - 22h30 · Mardi fermé", d_contatti:"Contact",
   d_maps:"Ouvrir dans Google Maps", foot_p:"Pizzeria Brasserie · Maniago",
   g_cap_lounge:"Le salon",
@@ -875,9 +943,177 @@ let LANG = "it";
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 
+/* dizionario ingredienti: it -> en/de/fr (usato per tradurre le descrizioni del menù) */
+const ING = {
+"a scelta tra piccante o normale":["choice of spicy or plain","wahlweise scharf oder mild","au choix : épicé ou nature"],
+"acciughe":["anchovies","Sardellen","anchois"],
+"aglio":["garlic","Knoblauch","ail"],
+"alla piastra con patatine":["grilled, with fries","vom Grill, mit Pommes","grillé, avec frites"],
+"bacon":["bacon","Bacon","bacon"],
+"basilico":["basil","Basilikum","basilic"],
+"bresaola":["bresaola","Bresaola","bresaola"],
+"brie":["brie","Brie","brie"],
+"broccoli napoletani":["Neapolitan broccoli","neapolitanischer Brokkoli","brocolis napolitains"],
+"bufala":["buffalo mozzarella","Büffelmozzarella","mozzarella de bufflonne"],
+"bufala 250g":["buffalo mozzarella 250g","Büffelmozzarella 250g","mozzarella de bufflonne 250g"],
+"burrata":["burrata","Burrata","burrata"],
+"capperi":["capers","Kapern","câpres"],
+"carciofi":["artichokes","Artischocken","artichauts"],
+"cheddar":["cheddar","Cheddar","cheddar"],
+"chiedi informazioni al personale":["ask our staff","fragen Sie unser Personal","demandez au personnel"],
+"cipolla":["onion","Zwiebel","oignon"],
+"con patate":["with potatoes","mit Kartoffeln","avec pommes de terre"],
+"con patate e polenta":["with potatoes and polenta","mit Kartoffeln und Polenta","avec pommes de terre et polenta"],
+"con patate e verdure":["with potatoes and vegetables","mit Kartoffeln und Gemüse","avec pommes de terre et légumes"],
+"con patate fritte":["with fries","mit Pommes","avec frites"],
+"con polenta":["with polenta","mit Polenta","avec polenta"],
+"cotoletta di pollo":["breaded chicken cutlet","paniertes Hähnchenschnitzel","escalope de poulet panée"],
+"crudo":["prosciutto crudo","Rohschinken","jambon cru"],
+"edamer":["edam","Edamer","édam"],
+"fagioli":["beans","Bohnen","haricots"],
+"feta greca":["Greek feta","griechischer Feta","feta grecque"],
+"frico":["frico (Friulian cheese cake)","Frico (friaulischer Käsefladen)","frico (galette de fromage frioulane)"],
+"funghi":["mushrooms","Pilze","champignons"],
+"funghi misti":["mixed mushrooms","gemischte Pilze","champignons mélangés"],
+"gorgonzola":["gorgonzola","Gorgonzola","gorgonzola"],
+"grana":["grana cheese","Grana","grana"],
+"grana in scaglie":["grana shavings","Grana-Späne","copeaux de grana"],
+"granella di pistacchio":["chopped pistachios","Pistazienstückchen","éclats de pistache"],
+"guanciale":["guanciale","Guanciale","guanciale"],
+"hamburger 150g":["150g beef patty","150g Rindfleisch-Patty","steak haché 150g"],
+"hamburger 220g":["220g beef patty","220g Rindfleisch-Patty","steak haché 220g"],
+"lattuga":["lettuce","Salat","laitue"],
+"lattuga e pomodoro":["lettuce and tomato","Salat und Tomate","laitue et tomate"],
+"mais":["sweetcorn","Mais","maïs"],
+"melanzane":["aubergine","Auberginen","aubergines"],
+"melanzane fritte":["fried aubergine","frittierte Auberginen","aubergines frites"],
+"miele":["honey","Honig","miel"],
+"montasio":["montasio cheese","Montasio","montasio"],
+"mortadella":["mortadella","Mortadella","mortadelle"],
+"mozzarella":["mozzarella","Mozzarella","mozzarella"],
+"mozzarella di bufala":["buffalo mozzarella","Büffelmozzarella","mozzarella de bufflonne"],
+"n'duja":["n'duja","N'duja","n'duja"],
+"noci":["walnuts","Walnüsse","noix"],
+"olio":["olive oil","Olivenöl","huile d'olive"],
+"olive":["olives","Oliven","olives"],
+"origano":["oregano","Oregano","origan"],
+"pancetta":["pancetta","Pancetta","pancetta"],
+"pane della pizza":["pizza bread","Pizzabrot","pain à pizza"],
+"panna":["cream","Sahne","crème"],
+"patate":["potatoes","Kartoffeln","pommes de terre"],
+"patate al forno":["roast potatoes","Ofenkartoffeln","pommes de terre au four"],
+"patate e polenta":["potatoes and polenta","Kartoffeln und Polenta","pommes de terre et polenta"],
+"patate fritte":["fries","Pommes","frites"],
+"patatine":["fries","Pommes","frites"],
+"pecorino":["pecorino","Pecorino","pecorino"],
+"pepe":["black pepper","Pfeffer","poivre"],
+"peperoni":["bell peppers","Paprika","poivrons"],
+"pesto alla genovese":["Genovese pesto","Pesto alla genovese","pesto à la génoise"],
+"polenta":["polenta","Polenta","polenta"],
+"pollo fritto":["fried chicken","frittiertes Hähnchen","poulet frit"],
+"pomodori secchi":["sun-dried tomatoes","getrocknete Tomaten","tomates séchées"],
+"pomodorini":["cherry tomatoes","Kirschtomaten","tomates cerises"],
+"pomodoro":["tomato","Tomate","tomate"],
+"porcini":["porcini mushrooms","Steinpilze","cèpes"],
+"prosciutto":["ham","Schinken","jambon"],
+"prosciutto cotto":["cooked ham","Kochschinken","jambon blanc"],
+"prosciutto cotto e formaggio":["cooked ham and cheese","Kochschinken und Käse","jambon blanc et fromage"],
+"prosciutto crudo":["prosciutto crudo","Rohschinken","jambon cru"],
+"provola":["provola","Provola","provola"],
+"provola affumicata":["smoked provola","geräucherte Provola","provola fumée"],
+"radicchio":["radicchio","Radicchio","radicchio"],
+"ricotta":["ricotta","Ricotta","ricotta"],
+"ricotta affumicata":["smoked ricotta","geräucherte Ricotta","ricotta fumée"],
+"rosmarino":["rosemary","Rosmarin","romarin"],
+"rucola":["rocket","Rucola","roquette"],
+"salamino":["salami","Salami","salami"],
+"salamino piccante":["spicy salami","scharfe Salami","salami piquant"],
+"salsa antica":["house sauce","Hausssauce","sauce maison"],
+"salsiccia":["sausage","Wurst","saucisse"],
+"salsiccia 2pz":["sausage x2","Wurst x2","saucisse x2"],
+"scamorza":["scamorza","Scamorza","scamorza"],
+"scamorza affumicata":["smoked scamorza","geräucherte Scamorza","scamorza fumée"],
+"sopressa":["sopressa salami","Sopressa","sopressa"],
+"speck":["speck","Speck","speck"],
+"spinaci":["spinach","Spinat","épinards"],
+"stracchino":["stracchino","Stracchino","stracchino"],
+"stracciatella":["stracciatella","Stracciatella","stracciatella"],
+"tagliata":["sliced beef","Rinderstreifen","tagliata de bœuf"],
+"tagliata 2pz":["sliced beef x2","Rinderstreifen x2","tagliata de bœuf x2"],
+"tonno":["tuna","Thunfisch","thon"],
+"uovo":["egg","Ei","œuf"],
+"uovo alla piastra":["fried egg","Spiegelei","œuf au plat"],
+"verdure crude e grigliate":["raw and grilled vegetables","rohes und gegrilltes Gemüse","légumes crus et grillés"],
+"verdure e arrosticini d'agnello":["vegetables and lamb skewers","Gemüse und Lammspieße","légumes et brochettes d'agneau"],
+"verdure miste":["mixed vegetables","gemischtes Gemüse","légumes mélangés"],
+"würstel":["frankfurter","Würstchen","saucisse de Francfort"],
+"würstel 2pz":["frankfurter x2","Würstchen x2","saucisse de Francfort x2"],
+"zucchine":["courgettes","Zucchini","courgettes"],
+"lager chiara":["pale lager","helles Lager","lager blonde"],
+"ambrata":["amber ale","Bernstein","ambrée"],
+"bianca di frumento":["wheat beer","Weizenbier","bière de blé"],
+"selezione del territorio":["local selection","Auswahl aus der Region","sélection du terroir"],
+"naturale / frizzante":["still / sparkling","still / mit Kohlensäure","plate / gazeuse"],
+"analcoliche 0,33 l":["soft drinks 0.33 l","alkoholfrei 0,33 l","sans alcool 0,33 l"]
+};
+const LANGIDX = {en:0, de:1, fr:2};
+/* traduce una descrizione (lista di ingredienti separati da virgola) */
+function trDesc(d){
+  if(!d || LANG==="it") return d;
+  const i = LANGIDX[LANG]; if(i===undefined) return d;
+  return d.split(",").map(part=>{
+    const raw = part.trim();
+    const hit = ING[raw.toLowerCase()];
+    if(hit) return (part.startsWith(" ")?" ":"") + hit[i];
+    return part;
+  }).join(",");
+}
+/* traduce i nomi dei piatti che sono descrittivi (non nomi propri) */
+const DISH = {
+"Classico":["Classic","Classic","Classique"],
+"Maxi Burger":["Maxi Burger","Maxi Burger","Maxi Burger"],
+"Hamburger":["Burger","Burger","Burger"],
+"Bistecca Impanata":["Breaded steak","Paniertes Steak","Steak pané"],
+"Tagliata di Manzo":["Sliced beef","Rinder-Tagliata","Tagliata de bœuf"],
+"Salsiccia":["Sausage","Wurst","Saucisse"],
+"Grigliata Mista":["Mixed grill","Gemischte Grillplatte","Grillade mixte"],
+"Grigliata Mista per 2":["Mixed grill for 2","Gemischte Grillplatte für 2","Grillade mixte pour 2"],
+"Arrosticini d'Agnello":["Lamb skewers","Lammspieße","Brochettes d'agneau"],
+"Galletto con Patate Fritte":["Spring chicken with fries","Stubenküken mit Pommes","Coquelet avec frites"],
+"Galletto con Verdure":["Spring chicken with vegetables","Stubenküken mit Gemüse","Coquelet avec légumes"],
+"Panino Caldo Vegetariano":["Warm vegetarian sandwich","Warmes vegetarisches Sandwich","Sandwich chaud végétarien"],
+"Club Sandwich Classico":["Classic club sandwich","Klassisches Club-Sandwich","Club sandwich classique"],
+"Toast":["Toastie","Toast","Croque"],
+"Verdure":["Vegetables","Gemüse","Légumes"],
+"Pizza del Mese":["Pizza of the month","Pizza des Monats","Pizza du mois"],
+"Aggiunta di Bufala":["Add buffalo mozzarella","Büffelmozzarella dazu","Supplément mozzarella de bufflonne"],
+"Aggiunta di Crudo":["Add prosciutto crudo","Rohschinken dazu","Supplément jambon cru"],
+"Maggiorazione x aggiunta":["Each extra topping","Aufpreis pro Extra","Supplément par garniture"],
+"Impasto integrale":["Wholemeal dough","Vollkornteig","Pâte complète"],
+"Coperto":["Cover charge","Gedeck","Couvert"],
+"Acqua 0,5 l · naturale / frizzante":["Water 0.5 l · still / sparkling","Wasser 0,5 l · still / mit Kohlensäure","Eau 0,5 l · plate / gazeuse"],
+"Bibite · analcoliche 0,33 l":["Soft drinks · 0.33 l","Softdrinks · 0,33 l","Boissons · 0,33 l"],
+"Caffè":["Coffee","Kaffee","Café"],
+"Bionda":["Bionda","Bionda","Bionda"],
+"Rossa":["Rossa","Rossa","Rossa"],
+"Weiss":["Weiss","Weiss","Weiss"],
+"Artigianali Friulane":["Friulian craft beers","Friaulische Craft-Biere","Bières artisanales frioulanes"],
+"Pale Ale":["Pale Ale","Pale Ale","Pale Ale"],
+"Pils":["Pils","Pils","Pils"],
+"Ambrata":["Amber","Bernstein","Ambrée"],
+"Scura":["Dark","Dunkel","Brune"]
+};
+function trName(n){
+  if(!n || LANG==="it") return n;
+  const i = LANGIDX[LANG]; if(i===undefined) return n;
+  const hit = DISH[n];
+  return hit ? hit[i] : n;
+}
+
 /* ============ menu render ============ */
 function item(n,d,p){
-  return `<div class="item"><div class="row"><span class="nome">${n}</span><span class="dots"></span>${p?`<span class="prezzo">${p}</span>`:""}</div>${d?`<p class="desc">${d}</p>`:""}</div>`;
+  const N=trName(n), D=trDesc(d);
+  return `<div class="item"><div class="row"><span class="nome">${N}</span><span class="dots"></span>${p?`<span class="prezzo">${p}</span>`:""}</div>${D?`<p class="desc">${D}</p>`:""}</div>`;
 }
 const simple = rows => rows.map(r=>item(r[0],"",r[1])).join("");
 
@@ -895,15 +1131,15 @@ function renderMenu(){
     if(id==="bevande"){
       html += `<div class="mlist">`;
       html += `<div><p class="groupline">${t.spina}</p>`;
-      html += SPINA.map(b=>`<div class="item multi"><div class="row"><span class="nome">${b[0]}</span><span class="dots"></span></div><span class="sub">${b[1]}</span><div class="pricegrid"><span>0,3 l<b>${b[2]}</b></span><span>0,5 l<b>${b[3]}</b></span></div></div>`).join("");
+      html += SPINA.map(b=>`<div class="item multi"><div class="row"><span class="nome">${trName(b[0])}</span><span class="dots"></span></div><span class="sub">${trDesc(b[1])}</span><div class="pricegrid"><span class="pcell"><em>0,3 l</em><b>${b[2]}</b></span><span class="pcell"><em>0,5 l</em><b>${b[3]}</b></span></div></div>`).join("");
       html += `<p class="groupline">${t.bottiglia}</p>`;
       for(const g of BOTTIGLIA){
-        html += `<p class="groupsub">${g[0]}${g[1]?` — ${g[1]}`:""}</p>`;
+        html += `<p class="groupsub">${trName(g[0])}${g[1]?` — ${trDesc(g[1])}`:""}</p>`;
         html += g[2].map(b=>item(b[0],b[1],b[2])).join("");
       }
       html += `</div><div>`;
       html += `<p class="groupline">${t.vini}</p>`;
-      html += VINI.map(v=>`<div class="item multi"><div class="row"><span class="nome">${v[0]}</span><span class="dots"></span></div><div class="pricegrid"><span>${t.calice}<b>${v[1]}</b></span><span>${t.bott} 0,75<b>${v[2]}</b></span></div></div>`).join("");
+      html += VINI.map(v=>`<div class="item multi"><div class="row"><span class="nome">${trName(v[0])}</span><span class="dots"></span></div><div class="pricegrid"><span class="pcell"><em>${t.calice}</em><b>${v[1]}</b></span><span class="pcell"><em>${t.bott} 0,75</em><b>${v[2]}</b></span></div></div>`).join("");
       html += `<p class="groupline">${t.altro}</p>` + simple(ALTRO);
       html += `</div></div>`;
     } else {
@@ -923,7 +1159,7 @@ function bindChips(){
     b.onclick=()=>{
       const el=document.getElementById("cat-"+b.dataset.go);
       const cb=$(".chipbar");
-      const off=(matchMedia("(max-width:960px)").matches?0:parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")))+(cb?cb.offsetHeight:56)+12;
+      const off=parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"))+(cb?cb.offsetHeight:56)+12;
       scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
     };
   });
@@ -955,30 +1191,44 @@ function makeDragSlider(view, track, speed){
     if(track.scrollWidth > base*8) break;
   }
   const setW = base;
-  let x = 0, paused = false, dragging = false, startX = 0, startPos = 0, moved = false, last = performance.now();
+  let x = 0, hover = false, dragging = false, startX = 0, startY = 0, startPos = 0,
+      moved = false, axisLocked = null, last = performance.now();
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  if(reduce) paused = true;
   function norm(){ if(x<=-setW) x+=setW; if(x>0) x-=setW; }
   function frame(now){
     if(!alive) return;
     const dt = Math.min(now-last, 40); last = now;
-    if(!paused && !dragging){ x -= speed*dt/1000; norm(); track.style.transform=`translate3d(${x}px,0,0)`; }
+    const paused = reduce || hover || dragging;
+    if(!paused){ x -= speed*dt/1000; norm(); track.style.transform=`translate3d(${x}px,0,0)`; }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
-  view.onpointerenter=()=>{ if(!reduce) paused=true; };
-  view.onpointerleave=()=>{ if(!dragging && !reduce) paused=false; };
-  view.onpointerdown=e=>{
-    dragging=true; moved=false; startX=e.clientX; startPos=x; view.classList.add("drag");
+  // hover pause only for real pointers (mouse/pen) — never for touch
+  view.addEventListener("pointerenter",e=>{ if(e.pointerType!=="touch") hover=true; });
+  view.addEventListener("pointerleave",e=>{ if(e.pointerType!=="touch") hover=false; });
+  view.addEventListener("pointerdown",e=>{
+    dragging=true; moved=false; axisLocked=null;
+    startX=e.clientX; startY=e.clientY; startPos=x;
+    view.classList.add("drag");
     try{view.setPointerCapture(e.pointerId);}catch(_){}
-  };
-  view.onpointermove=e=>{
+  });
+  view.addEventListener("pointermove",e=>{
     if(!dragging) return;
-    const d=e.clientX-startX; if(Math.abs(d)>4) moved=true;
-    x=startPos+d; norm(); track.style.transform=`translate3d(${x}px,0,0)`;
+    const dx=e.clientX-startX, dy=e.clientY-startY;
+    // decide once whether this gesture is horizontal (drag) or vertical (page scroll)
+    if(axisLocked===null && (Math.abs(dx)>6 || Math.abs(dy)>6)) axisLocked = Math.abs(dx)>Math.abs(dy) ? "x" : "y";
+    if(axisLocked==="y"){ dragging=false; view.classList.remove("drag"); return; }  // let the page scroll
+    if(Math.abs(dx)>4) moved=true;
+    if(e.cancelable) e.preventDefault();
+    x=startPos+dx; norm(); track.style.transform=`translate3d(${x}px,0,0)`;
+  });
+  const end=e=>{
+    if(!dragging) return; dragging=false; view.classList.remove("drag");
+    if(e && e.pointerType==="touch") hover=false;   // always resume drift after a touch
   };
-  const end=()=>{ if(!dragging) return; dragging=false; view.classList.remove("drag"); if(!reduce) paused=false; };
-  view.onpointerup=end; view.onpointercancel=end;
+  view.addEventListener("pointerup",end);
+  view.addEventListener("pointercancel",end);
+  view.addEventListener("lostpointercapture",end);
   view.addEventListener("click",e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); } },true);
 }
 
@@ -1030,6 +1280,16 @@ function renderReviews(){
     `<div class="rev"><div class="rev-top"><span class="stars">${stars(r.stars)}</span><span class="src">${r.src}</span></div><p>“${t[r.k]}”</p><div class="by"><span class="who">${t[r.k+"a"]}</span></div></div>`).join("");
   makeDragSlider($("#revview"), $("#reviews"), 34);
 }
+
+/* ============ story modal ============ */
+(function(){
+  const m=$("#storyModal"), open=()=>{m.classList.add("open");document.body.style.overflow="hidden";},
+        close=()=>{m.classList.remove("open");document.body.style.overflow="";};
+  $("#storyMore").onclick=open;
+  $(".sm-x").onclick=close;
+  m.onclick=e=>{if(e.target===m)close();};
+  addEventListener("keydown",e=>{if(e.key==="Escape"&&m.classList.contains("open"))close();});
+})();
 
 /* ============ lightbox (with drag/swipe) ============ */
 let lbIdx=0;
